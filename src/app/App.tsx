@@ -1,23 +1,30 @@
+import { AuthPage } from 'pages/AuthPage/AuthPage'
+import { FeedBackPage } from 'pages/FeedbackPage/FeedBackPage'
+import { MyInterviewsPage } from 'pages/MyInterviewsPage/MyInterviewsPage'
+import { RatingPage } from 'pages/RatingPage/RatingPage'
+import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage'
+import { Layout } from 'shared/ui/Layout'
 import { Routes, Route } from 'react-router-dom'
-import { MyInterviewsPage } from '../pages/MyInterviewsPage/MyInterviewsPage'
-import { RatingPage } from '../pages/RatingPage/RatingPage'
-import { Header } from '../widgets/Header/Header'
+
 
 
 export const App = () => {
 
 	return (
-		<>
-			<div className='wrapper'>
-				<Header />
-				<main className='main'>
-					<Routes>
-						<Route path='/' element={< MyInterviewsPage />} />
+		<div className='wrapper'>
+			<main className='main'>
+				<Routes>
+					<Route path='/registration' element={< RegistrationPage />} />
+					<Route path='/auth' element={< AuthPage />} />
+
+					<Route path='/' element={<Layout />}>
+						<Route index element={< MyInterviewsPage />} />
 						<Route path='/rating' element={< RatingPage />} />
-					</Routes>
-				</main>
-			</div>
-		</>
+						<Route path='/feed-back' element={< FeedBackPage />} />
+					</Route>
+				</Routes>
+			</main>
+		</div>
 	)
 }
 
