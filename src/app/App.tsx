@@ -12,18 +12,15 @@ export const App = () => {
 
 	return (
 		<div className='wrapper'>
-			<main className='main'>
-				<Routes>
-					<Route path='/registration' element={< RegistrationPage />} />
-					<Route path='/auth' element={< AuthPage />} />
-
-					<Route path='/' element={<Layout />}>
-						<Route index element={< MyInterviewsPage />} />
-						<Route path='/rating' element={< RatingPage />} />
-						<Route path='/feed-back' element={< FeedBackPage />} />
-					</Route>
-				</Routes>
-			</main>
+			<Routes>
+				<Route path='/registration' element={< RegistrationPage />} />
+				<Route path='/auth' element={< AuthPage />} />
+				<Route path='/' element={<Layout />}>
+					<Route index element={< MyInterviewsPage />} />
+					<Route path='/rating' element={< RatingPage />} />
+					<Route path='/feed-back' element={< FeedBackPage />} />
+				</Route>
+			</Routes>
 		</div>
 	)
 }

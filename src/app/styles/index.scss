@@ -3,18 +3,16 @@
 @import "./vars.scss";
 
 body {
-	// background-color: var(--color-white);
-	// color: var(--font-color);
-	background-color: #212121;
-	color: #fff;
-	font-family: var(--font-family);
-	font-size: var(--text-lh-12);
-	font-weight: var(--text-regular);
+	background-color: $colorWhite;
+	color: $fontColor;
+	// background-color: #212121;
+	font-family: $fontFamily;
+	font-size: $textLh12;
+	font-weight: $textRegular;
+
 }
 
-.wrapper {
-	background-color: #333333;
-	margin: 0 auto;
-	height: 100%;
+.main {
 	max-width: 1300px;
+	margin: 0 auto;
 }
