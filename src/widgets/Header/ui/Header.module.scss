@@ -3,16 +3,18 @@
 
 
 .header {
-	padding: 5px 0;
-
 	width: 100%;
+	padding: 5px 0;
+	margin-bottom: 25px;
 	box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
 	.headerContainer {
 		max-width: 1300px;
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
 		.headerBlock {
 			display: flex;
 			align-items: center;

@@ -1,0 +1,40 @@
+@import "/src/app/styles/vars";
+
+
+
+.statistic {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 35px;
+	border-radius: 10px;
+	border: solid 1px $colorLightGray;
+	padding: 10px;
+	// .statistic__items
+	&__items {
+		min-height: 71px;
+		min-width: 174px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+	// .statistic__subtitle
+	&__subtitle {
+		font-size: $textLh14;
+		color: $colorLightBlue;
+	}
+	// .statistic__item
+	&__item {
+		display: flex;
+		align-items: center;
+	}
+	// .statistic__title
+	&__title {
+		font-size: $textLh40;
+		font-weight: $textSemibold;
+		color: $colorBlue;
+		margin-bottom: 7px;
+	}
+	// .statistic__icon
+	&__icon {}
+}

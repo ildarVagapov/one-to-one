@@ -1,10 +1,11 @@
+import { Statistic } from "widgets/Statistic/ui/Statistic"
 
 export const MyInterviewsPage = () => {
 
 
 	return (
 		<div>
-			мои собеседования
+			<Statistic />
 		</div>
 	)
 }
