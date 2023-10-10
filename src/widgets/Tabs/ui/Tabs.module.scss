@@ -1,0 +1,48 @@
+@import "/src/app/styles/vars";
+
+.tabs {
+	border-radius: 10px;
+	border: solid 1px $colorLightGray;
+	height: 70vh;
+}
+
+.tabsBtn {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	font-size: $textLh14;
+	color: $colorLightBlue;
+	button {
+		min-height: 39px;
+		transition: $transition;
+		border-right: 1px solid $colorLightGray;
+		border-bottom: 1px solid $colorLightGray;
+		border-radius: 10px 0 0 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		span {
+			position: absolute;
+			right: 10px;
+			&:hover {
+				img {
+					content: url('/public/assets/plus-circle-hover.svg');
+				}
+			}
+		}
+		&:hover {
+			color: $colorBlue;
+		}
+	}
+}
+
+.active {
+	color: $colorBlue;
+	font-weight: $textSemibold;
+}
+
+.tabsContainer {
+	padding: 11px;
+}
+
+.tabsContent {}

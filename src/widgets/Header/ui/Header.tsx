@@ -7,14 +7,10 @@ export const Header = () => {
 		<header className={style.header}>
 			<div className={style.headerContainer}>
 				<div className={style.headerBlock}>
-					<div className={style.logo}>
-						<Link to='/'>
-							<img src="/public/assets/headerLogo.svg" alt="headerLogo" />
-						</Link>
-					</div>
-					<div className={style.btn}>
-						<Link to='/rating'>Рейтинг</Link>
-					</div>
+					<Link className={style.logo} to='/'>
+						<img src="/public/assets/headerLogo.svg" alt="headerLogo" />
+					</Link>
+					<Link className={style.btn} to='/rating'>Рейтинг</Link>
 				</div>
 				<div className={style.user}>
 					<div className={style.userInfo}>
