@@ -1,12 +1,12 @@
 @import "/src/app/styles/vars";
 
-.registration {
+.auth {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	// .registration__container
+	// .{style.auth__container}
 	&__container {
 		box-shadow: $blurShadow;
 		border-radius: 10px;
@@ -15,15 +15,15 @@
 		flex-direction: column;
 		align-items: center;
 	}
-	// .registration__icon
-	&__icon {
+	// .{style.auth__logo}
+	&__logo {
 	}
-	// .registration__form
+	// .{style.auth__form}
 	&__form {
 		min-width: 400px;
 		margin-top: 50px;
 	}
-	// .registration__formItem
+	// .{style.auth__formItem}
 	&__formItem {
 		margin-bottom: 30px;
 		display: flex;
@@ -39,7 +39,7 @@
 			margin-left: 10px;
 		}
 	}
-	// .registration__Btn
+	// .{style.auth__Btn}
 	&__Btn {
 		margin-bottom: 10px;
 		font-size: $textLh14;
