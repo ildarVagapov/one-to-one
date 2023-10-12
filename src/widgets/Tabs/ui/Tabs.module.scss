@@ -3,7 +3,6 @@
 .tabs {
 	border-radius: 10px;
 	border: solid 1px $colorLightGray;
-	height: 70vh;
 }
 
 .tabsBtn {
@@ -11,6 +10,7 @@
 	grid-template-columns: repeat(4, 1fr);
 	font-size: $textLh14;
 	color: $colorLightBlue;
+
 	button {
 		min-height: 39px;
 		transition: $transition;
@@ -21,28 +21,64 @@
 		align-items: center;
 		justify-content: center;
 		position: relative;
+
+		&.active {
+			color: $colorBlue;
+			font-weight: $textSemibold;
+			border-bottom: none;
+		}
+
+		&:last-child {
+			border-right: none;
+		}
+
 		span {
 			position: absolute;
 			right: 10px;
+
 			&:hover {
 				img {
-					content: url('/public/assets/plus-circle-hover.svg');
+					content: url("/public/assets/plus-circle-hover.svg");
 				}
 			}
 		}
+
 		&:hover {
 			color: $colorBlue;
 		}
 	}
 }
 
-.active {
-	color: $colorBlue;
-	font-weight: $textSemibold;
-}
-
 .tabsContainer {
-	padding: 11px;
+	padding: 15px 11px;
 }
 
-.tabsContent {}
+.myInterviews__filters {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	justify-items: center;
+	min-height: 32px;
+}
+
+.myInterviews__content {
+	padding: 11px;
+	justify-items: center;
+	border: solid 1px $colorLightGray;
+	border-radius: 5px;
+	height: 567px;
+}
+.myInterviews__items {
+	display: grid;
+	padding: 11px;
+	grid-template-columns: repeat(7, 1fr);
+	justify-items: center;
+	border: solid 1px $colorLightGray;
+	width: 99%;
+	background-color: #fff;
+	margin: 0 auto;
+}
+
+.back {
+	border-radius: 5px;
+	background-color: $colorBlue;
+}

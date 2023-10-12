@@ -1,0 +1,88 @@
+@import "/src/app/styles/vars";
+
+.interviews {
+	// .interviews__filters
+	&__filters {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		justify-items: center;
+		min-height: 30px;
+		// .interviews__filters_btn
+		&_item {
+			display: flex;
+			align-items: center;
+		}
+		&_btn {
+			display: flex;
+			flex-direction: column;
+			margin-left: 24px;
+			& button {
+				height: 8px;
+				width: 6px;
+				&:hover {
+					&:first-child {
+						& img {
+							content: url("/public/assets/vectorHover1.svg");
+						}
+					}
+					&:last-child {
+						& img {
+							content: url("/public/assets/vectorHover2.svg");
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.content {
+	padding: 11px;
+	justify-items: center;
+	border: solid 1px $colorLightGray;
+	border-radius: 5px;
+	height: 567px;
+	// .content__items
+	&__items {
+		display: grid;
+		padding: 7px 0;
+		grid-template-columns: repeat(7, 1fr);
+		justify-items: center;
+		border: solid 1px $colorLightGray;
+		border-radius: 5px;
+		background-color: #fff;
+		margin: 0 auto;
+		position: relative;
+		align-items: center;
+		&::after {
+			content: "";
+			width: 5px;
+			height: 100%;
+			background-color: $colorBlue;
+			position: absolute;
+			left: 0;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+		&::before {
+			content: "";
+			width: 5px;
+			height: 100%;
+			background-color: $colorBlue;
+			position: absolute;
+			right: 0;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+	}
+	// .content__button
+	&__button {
+		color: $colorLightGray;
+		border-radius: 5px;
+		border: 1px solid $colorLightGray;
+		padding: 7px 30px;
+		transition: $transition;
+		&:hover {
+			color: $colorBlack;
+		}
+	}
+}

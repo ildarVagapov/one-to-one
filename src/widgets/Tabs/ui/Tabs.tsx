@@ -1,14 +1,8 @@
 import { useState } from "react"
 import style from "./Tabs.module.scss"
+import { MyInterviews } from "./MyInterviews/MyInterviews"
 
-const MyInterviews = () => {
-	return (
-		<>
-			<div>фильтры</div>
-			<div>мои собесы</div>
-		</>
-	)
-}
+
 const SearchInterviews = () => {
 	return (
 		<div>поиск собесов</div>
@@ -25,12 +19,14 @@ const MyStatistics = () => {
 	)
 }
 
+
+
 export const Tabs = () => {
 
 	const [idTabs, setIdTabs] = useState(1)
 
 	const tabs = [
-		{ id: 1, title: 'Мои собеседования (0)', addData: 'addData' },
+		{ id: 1, title: `Мои собеседования (0)`, addData: 'addData' },
 		{ id: 2, title: 'Поиск собеседований' },
 		{ id: 3, title: 'Мои вопросы (0)', addData: 'addData' },
 		{ id: 4, title: 'Моя статистика' },
@@ -47,12 +43,10 @@ export const Tabs = () => {
 				))}
 			</div>
 			<div className={style.tabsContainer}>
-				<div className={style.tabsContent}>
-					{idTabs === 1 && < MyInterviews />}
-					{idTabs === 2 && < SearchInterviews />}
-					{idTabs === 3 && < MyQuestions />}
-					{idTabs === 4 && < MyStatistics />}
-				</div>
+				{idTabs === 1 && < MyInterviews />}
+				{idTabs === 2 && < SearchInterviews />}
+				{idTabs === 3 && < MyQuestions />}
+				{idTabs === 4 && < MyStatistics />}
 			</div>
 		</div>
 	)
