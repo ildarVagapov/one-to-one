@@ -1,0 +1,27 @@
+@import "/src/app/styles/vars";
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid $colorGray;
+	padding: 20px 0;
+	&__item {
+		gap: 5px;
+		display: flex;
+		align-items: center;
+	}
+	&__btn {
+		background-color: $colorLightGreen;
+		color: $colorWhite;
+		border-radius: 5px;
+		width: 139px;
+		height: 25px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: $transition;
+		&:hover {
+			background-color: $colorGreen;
+		}
+	}
+}
