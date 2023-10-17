@@ -1,0 +1,17 @@
+@import "/src/app/styles/vars";
+
+.input {
+	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	& input {
+		width: 100%;
+		border: 1px solid $colorBlack;
+		padding: 10px 5px;
+		border-radius: 5px;
+	}
+	& label {
+		margin-left: 10px;
+	}
+}

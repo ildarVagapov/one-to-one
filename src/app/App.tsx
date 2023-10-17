@@ -1,10 +1,10 @@
-import { AuthPage } from 'pages/AuthPage/AuthPage'
 import { FeedBackPage } from 'pages/FeedbackPage/FeedBackPage'
 import { MyInterviewsPage } from 'pages/MyInterviewsPage/MyInterviewsPage'
 import { RatingPage } from 'pages/RatingPage/RatingPage'
-import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage'
-import { Layout } from 'shared/ui/Layout/Layout'
+import { Layout } from 'shared/components/Layout/Layout'
 import { Routes, Route } from 'react-router-dom'
+import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage'
+import { AuthPage } from 'pages/AuthPage/AuthPage'
 
 
 
