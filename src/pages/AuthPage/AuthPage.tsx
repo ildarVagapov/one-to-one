@@ -12,7 +12,7 @@ export const AuthPage = () => {
 				<Logo />
 				<form action="" className={style.auth__form}>
 					<Input label={'E-mail'} placeholder={'Email'} />
-					<Input label={'Пароль'} placeholder={'Пароль'} type={'password'} />
+					{/* <Input label={'Пароль'} placeholder={'Пароль'} type={'password'} /> */}
 				</form>
 				<button className={style.auth__btn}>Войти</button>
 				<p className={style.auth__info}>Нет аккаунта ? <Link to='/registration'>Зарегистрироваться</Link> </p>
