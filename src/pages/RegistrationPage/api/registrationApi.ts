@@ -17,7 +17,7 @@ export const registrationApi = createApi({
 	reducerPath: 'registrationApi',
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://158.160.83.38:8080/one-to-one/api/v1/' }),
 	endpoints: (builder) => ({
-		register: builder.mutation<any, UserRegistrationData>({
+		registration: builder.mutation<any, UserRegistrationData>({
 			query: (userData) => ({
 				url: '/user/register',
 				method: 'POST',
@@ -27,4 +27,4 @@ export const registrationApi = createApi({
 	}),
 })
 
-export const { useRegisterMutation } = registrationApi
+export const { useRegistrationMutation } = registrationApi

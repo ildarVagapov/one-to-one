@@ -8,6 +8,7 @@
 - Scss,
 - Typescript,
 - Module css,
+- React-Hook-Form,
 
 В качестве архитектурного подхода используется Feature sliced design.
 
