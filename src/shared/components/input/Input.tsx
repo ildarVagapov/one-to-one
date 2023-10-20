@@ -1,4 +1,5 @@
 
+import { FieldErrors } from 'react-hook-form';
 import style from './Input.module.scss'
 
 interface InputProps {
@@ -6,7 +7,7 @@ interface InputProps {
 	type?: string,
 	name: string,
 	value: string,
-	errors: any
+	errors: FieldErrors,
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -24,9 +25,7 @@ export const Input = (props: InputProps) => {
 				type={type}
 				onChange={onChange}
 			/>
-			{errors.email && (
-				<p className={style.errorText}>{errors.email.message}</p>
-			)}
+			{errors[name] && <div className={style.errors}>Ошибка ввода!</div>}
 		</div>
 	)
 }

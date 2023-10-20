@@ -17,7 +17,7 @@ interface Input {
 
 export const RegistrationPage = () => {
 	const [registration, { isError, isLoading }] = useRegistrationMutation();
-	const { handleSubmit, control, formState: { errors }, reset } = useForm<UserRegistrationData>()
+	const { handleSubmit, control, reset, formState: { errors, isValid } } = useForm<UserRegistrationData>({ mode: 'onBlur' })
 
 	const onSubmit: SubmitHandler<UserRegistrationData> = (data) => {
 		// register(data);
@@ -40,10 +40,11 @@ export const RegistrationPage = () => {
 					{inputArr.map((input, i) => (
 						<Controller
 							key={i}
+							// name={input.name as "username" | "password" | "surname" | "email"}
 							name={input.name as "username" | "password" | "surname" | "email"}
 							control={control}
-							rules={{ required: `${input.label} обязательно для заполнения` }}
-							render={({ field: { onChange, value, name } }) => (
+							rules={{ required: true }}
+							render={({ field: { onChange, value, name }, }) => (
 								<Input
 									label={input.label}
 									value={value}
@@ -54,7 +55,7 @@ export const RegistrationPage = () => {
 								/>)}
 						/>
 					))}
-					<button className={style.registration__btn} type="submit" disabled={isLoading} >Зарегистрироваться</button>
+					<button className={style.registration__btn} type="submit" disabled={isLoading || !isValid} >Зарегистрироваться</button>
 				</form>
 				<p className={style.registration__info}>Есть аккаунт ? <Link to='/auth'>Войти</Link> </p>
 				{isError && <p>Ошибка</p>}
