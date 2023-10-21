@@ -1,7 +1,7 @@
 @import "/src/app/styles/vars";
 
 .input {
-	// margin-bottom: 30px;
+	margin-bottom: 5px;
 	height: 90px;
 	display: flex;
 	flex-direction: column;
@@ -21,12 +21,22 @@
 	display: flex;
 	border: 1px solid $colorLightGray;
 	border-radius: 5px;
-	padding: 10px 5px;
+	height: 40px;
 	& input {
 		border-radius: 5px;
+		padding: 0 5px;
 		width: 100%;
 	}
 	&:focus-within {
 		border: 1px solid $colorGray;
+		& img {
+			opacity: 1;
+		}
+	}
+	& img {
+		opacity: 0.5;
+	}
+	& button {
+		margin-right: 5px;
 	}
 }

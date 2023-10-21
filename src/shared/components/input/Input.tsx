@@ -34,7 +34,7 @@ export const Input = (props: InputProps) => {
 				{type === 'password' && (
 					<button type='button' onClick={onToggleVisible}>
 						{visible ? (
-							<img src="/public/assets/hidden.svg" alt="hidden" />
+							<img src="/public/assets/hidden.png" alt="hidden" />
 						) : (
 							<img src="/public/assets/visible.svg" alt="visible" />
 						)}
