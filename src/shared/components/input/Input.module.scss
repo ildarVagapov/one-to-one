@@ -6,15 +6,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	& input {
-		width: 100%;
-		border: 1px solid $colorLightGray;
-		padding: 10px 5px;
-		border-radius: 5px;
-		&:focus {
-			border: 1px solid $colorGray;
-		}
-	}
 	& label {
 		margin-left: 10px;
 		color: $colorGray;
@@ -24,4 +15,18 @@
 	margin-left: 10px;
 	color: $colorRed;
 	font-size: $textLh10;
+}
+
+.block {
+	display: flex;
+	border: 1px solid $colorLightGray;
+	border-radius: 5px;
+	padding: 10px 5px;
+	& input {
+		border-radius: 5px;
+		width: 100%;
+	}
+	&:focus-within {
+		border: 1px solid $colorGray;
+	}
 }

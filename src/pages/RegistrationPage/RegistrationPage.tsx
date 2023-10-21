@@ -3,44 +3,29 @@ import style from './RegistrtionPage.module.scss'
 import { Input, Logo } from "shared/components"
 import { useRegistrationMutation } from "./api/registrationApi";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { arrReg } from "./consts/constRegistration";
+import { UserRegistrationData } from "./model/types";
 
 
-interface UserRegistrationData {
-	username: string;
-	password: string;
-	surname: string;
-	email: string;
-}
-interface Input {
-	name: string, label: string
-}
 
 export const RegistrationPage = () => {
 	const [registration, { isError, isLoading }] = useRegistrationMutation();
-	const { handleSubmit, control, reset, formState: { errors, isValid } } = useForm<UserRegistrationData>({ mode: 'onBlur' })
+	const { handleSubmit, control, reset, formState: { errors } } = useForm<UserRegistrationData>()
 
 	const onSubmit: SubmitHandler<UserRegistrationData> = (data) => {
-		// register(data);
+		// registration(data);
 		reset()
-		console.log(data)
+		alert(JSON.stringify(data))
 	};
-
-	const inputArr = [
-		{ name: 'email', label: 'E-mail', type: 'text' },
-		{ name: 'password', label: 'Пароль', type: 'password' },
-		{ name: 'username', label: 'Имя', type: 'text' },
-		{ name: 'surname', label: 'Фамилия', type: 'text' },
-	]
 
 	return (
 		<section className={style.registration}>
 			<div className={style.registration__container}>
 				<Logo />
 				<form onSubmit={handleSubmit(onSubmit)} className={style.registration__form}>
-					{inputArr.map((input, i) => (
+					{arrReg.map((input, i) => (
 						<Controller
 							key={i}
-							// name={input.name as "username" | "password" | "surname" | "email"}
 							name={input.name as "username" | "password" | "surname" | "email"}
 							control={control}
 							rules={{ required: true }}
@@ -55,7 +40,9 @@ export const RegistrationPage = () => {
 								/>)}
 						/>
 					))}
-					<button className={style.registration__btn} type="submit" disabled={isLoading || !isValid} >Зарегистрироваться</button>
+					{!isLoading ? <button className={style.registration__btn} type="submit"  >Зарегистрироваться</button>
+						: <button className={style.registration__btn2} type="submit" >Регистрируем</button>
+					}
 				</form>
 				<p className={style.registration__info}>Есть аккаунт ? <Link to='/auth'>Войти</Link> </p>
 				{isError && <p>Ошибка</p>}

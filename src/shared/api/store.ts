@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { registrationApi } from 'pages/RegistrationPage/api/registrationApi'
+import { baseApi } from './baseApi'
 
 
 export const store = configureStore({
 	reducer: {
-		[registrationApi.reducerPath]: registrationApi.reducer,
+		[baseApi.reducerPath]: baseApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(registrationApi.middleware),
+		getDefaultMiddleware().concat(baseApi.middleware),
 })

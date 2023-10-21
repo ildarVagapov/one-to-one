@@ -1,21 +1,8 @@
+import { baseApi } from 'shared/api/baseApi';
+import { UserRegistrationData } from '../model/types';
 
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-
-// interface User {
-// 	// Определите поля пользователя, которые вернутся от сервера
-// }
-
-interface UserRegistrationData {
-	username: string;
-	password: string;
-	lastname: string;
-	email: string;
-}
-
-export const registrationApi = createApi({
-	reducerPath: 'registrationApi',
-	baseQuery: fetchBaseQuery({ baseUrl: 'http://158.160.83.38:8080/one-to-one/api/v1/' }),
+export const registrationApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
 		registration: builder.mutation<any, UserRegistrationData>({
 			query: (userData) => ({
@@ -25,6 +12,7 @@ export const registrationApi = createApi({
 			}),
 		}),
 	}),
+	overrideExisting: false,
 })
 
 export const { useRegistrationMutation } = registrationApi
