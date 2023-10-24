@@ -1,7 +1,5 @@
 @import "/src/app/styles/vars";
 
-
-
 .header {
 	width: 100%;
 	padding: 5px 0;
@@ -36,37 +34,6 @@
 				justify-content: center;
 				&:hover {
 					background: $colorBlue;
-				}
-			}
-		}
-
-		.user {
-			display: flex;
-			align-items: center;
-			.userInfo {
-				display: grid;
-				justify-items: end;
-			}
-			.userName {
-				font-size: $textLh14;
-				font-weight: $textSemibold;
-				margin-bottom: 3px;
-			}
-			.userMail {
-				color: $colorGray;
-				font-size: $textLh10;
-			}
-			.userImg {
-				margin-left: 8px;
-
-			}
-			.userOut {
-				margin-left: 8px;
-				transition: $transition;
-				&:hover {
-					img {
-						content: url('/public/assets/userOutHover.svg');
-					}
 				}
 			}
 		}

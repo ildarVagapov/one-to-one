@@ -56,3 +56,14 @@
 		}
 	}
 }
+
+.success {
+	margin: 30px 0;
+	font-size: $textLh14;
+}
+
+.error {
+	margin-top: 20px;
+	font-size: $textLh14;
+	color: $colorRed;
+}

@@ -1,0 +1,37 @@
+@import "/src/app/styles/vars";
+
+.user {
+	display: flex;
+	align-items: center;
+	&__info {
+		display: grid;
+		justify-items: end;
+	}
+	&__name {
+		font-size: $textLh14;
+		font-weight: $textSemibold;
+		margin-bottom: 3px;
+	}
+	&__mail {
+		color: $colorGray;
+		font-size: $textLh10;
+	}
+	&__img {
+		margin-left: 8px;
+		width: 30px;
+		height: 30px;
+		background-color: $colorGray;
+		border-radius: 100%;
+	}
+	&__out {
+		margin-left: 5px;
+		margin-top: 2px;
+		transition: $transition;
+		font-size: 20px;
+		color: $colorLightGray;
+		cursor: pointer;
+		&:hover {
+			color: $colorGray;
+		}
+	}
+}
