@@ -12,7 +12,7 @@
 	color: $colorLightBlue;
 
 	button {
-		min-height: 39px;
+		padding: 10px 0;
 		transition: $transition;
 		border-right: 1px solid $colorLightGray;
 		border-bottom: 1px solid $colorLightGray;
@@ -30,18 +30,6 @@
 		&:last-child {
 			border-right: none;
 		}
-
-		span {
-			position: absolute;
-			right: 10px;
-
-			&:hover {
-				img {
-					content: url("/public/assets/plus-circle-hover.svg");
-				}
-			}
-		}
-
 		&:hover {
 			color: $colorBlue;
 		}
@@ -80,4 +68,14 @@
 .back {
 	border-radius: 5px;
 	background-color: $colorBlue;
+}
+
+.icon {
+	position: absolute;
+	right: 15px;
+	transition: $transition;
+	color: $colorLightBlue;
+	&:hover {
+		color: $colorBlue;
+	}
 }

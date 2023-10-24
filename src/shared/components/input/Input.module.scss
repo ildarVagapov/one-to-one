@@ -29,14 +29,13 @@
 	}
 	&:focus-within {
 		border: 1px solid $colorGray;
-		& img {
-			opacity: 1;
-		}
-	}
-	& img {
-		opacity: 0.5;
 	}
 	& button {
 		margin-right: 5px;
 	}
+}
+
+.icon {
+	opacity: 0.5;
+	font-size: 17px;
 }

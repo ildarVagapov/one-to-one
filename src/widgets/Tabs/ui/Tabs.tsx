@@ -1,7 +1,7 @@
 import { useState } from "react"
 import style from "./Tabs.module.scss"
 import { MyInterviews } from "./MyInterviews/MyInterviews"
-
+import { FiPlusCircle } from "react-icons/fi"
 
 const SearchInterviews = () => {
 	return (
@@ -38,7 +38,7 @@ export const Tabs = () => {
 				{tabs.map(tab => (
 					<button className={idTabs === tab.id ? `${style.active}` : ''} onClick={() => setIdTabs(tab.id)}>
 						{tab.title}
-						{tab.addData && <span><img src="/public/assets/plus-circle.svg" /></span>}
+						{tab.addData && <FiPlusCircle className={style.icon} />}
 					</button>
 				))}
 			</div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FieldErrors } from 'react-hook-form';
 import style from './Input.module.scss'
+import { FiEyeOff, FiEye } from "react-icons/fi"
+
 
 interface InputProps {
 	label: string,
@@ -16,10 +18,6 @@ export const Input = (props: InputProps) => {
 
 	const [visible, setVisible] = useState(false)
 
-	const onToggleVisible = () => {
-		setVisible(!visible);
-	}
-
 	return (
 		<div className={style.input}>
 			<label >{label}</label>
@@ -32,11 +30,11 @@ export const Input = (props: InputProps) => {
 					onChange={onChange}
 				/>
 				{type === 'password' && (
-					<button type='button' onClick={onToggleVisible}>
+					<button type='button' onClick={() => setVisible(!visible)}>
 						{visible ? (
-							<img src="/public/assets/hidden.png" alt="hidden" />
+							<FiEye className={style.icon} />
 						) : (
-							<img src="/public/assets/visible.svg" alt="visible" />
+							<FiEyeOff className={style.icon} />
 						)}
 					</button>
 				)}
