@@ -1,34 +1,33 @@
-	$colorBlue: #213a8f;
-	$colorGreen: #7a9f80;
-	$colorGray: #808080;
-	$colorBlack: #000000;
-	$colorWhite: #ffffff;
-	$colorLightBlue: #909cc7;
-	$colorLightGreen: #a3d0ab;
-	$colorLightGray: #d9d9d9;
-	$colorRed: #c70025;
-	$colorYellow: #ffb904;
-	$colorHoverBlue: rgba(247, 248, 251, 0.5);
-	$colorTransparency: rgba(0, 0, 0, 0.8);
+$colorBlue: #213a8f;
+$colorGreen: #7a9f80;
+$colorGray: #808080;
+$colorBlack: #000000;
+$colorWhite: #ffffff;
+$colorLightBlue: #909cc7;
+$colorLightGreen: #a3d0ab;
+$colorLightGray: #d9d9d9;
+$colorRed: #c70025;
+$colorYellow: #ffb904;
+$colorHoverBlue: rgba(247, 248, 251, 0.5);
+$colorTransparency: rgba(0, 0, 0, 0.8);
 
+//effects
+$blurBackground: #d9d9d9;
+$blurShadow: 0px 0px 10px #abadde;
 
-	//effects
-	$blurBackground: #d9d9d9;
-	$blurShadow: 0px 0px 10px #abadde;
+//text
+$fontColor: $colorBlack;
+$fontFamily: "Inter";
+$fontStyle: normal;
+$textSemibold: 600;
+$textRegular: 400;
+$textLh10: 10px;
+$textLh12: 12px;
+$textLh14: 14px;
+$textLh20: 20px;
+$textLh24: 24px;
+$textLh40: 40px;
+$textLh48: 48px;
 
-
-	//text
-	$fontColor: $colorBlack;
-	$fontFamily: "Inter";
-	$fontStyle: normal;
-	$textSemibold: 600;
-	$textRegular: 400;
-	$textLh10: 10px;
-	$textLh12: 12px;
-	$textLh14: 14px;
-	$textLh24: 24px;
-	$textLh40: 40px;
-	$textLh48: 48px;
-
-	//animate
-	$transition: all 0.2s ease-in-out;
+//animate
+$transition: all 0.2s ease-in-out;

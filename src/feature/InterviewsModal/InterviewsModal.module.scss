@@ -1,0 +1,67 @@
+@import "/src/app/styles/vars";
+
+.modal {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba($color: #000000, $alpha: 0.5);
+	// .modal__body
+	&__body {
+		background-color: $colorWhite;
+		border-radius: 10px;
+		padding: 25px 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 380px;
+	}
+	// .modal__item
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	// .modal__title
+	&__title {
+		font-size: $textLh20;
+		color: $colorGray;
+	}
+	// .modal__close
+	&__close {
+		font-size: 17px;
+		color: $colorGray;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: $transition;
+		&:hover {
+			color: $colorLightGray;
+		}
+	}
+	// .modal__save
+	&__save {
+		color: $colorWhite;
+		font-size: $textLh12;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 5px;
+		padding: 6px 35px;
+		background-color: $colorGreen;
+		transition: $transition;
+		&:hover {
+			background-color: $colorLightGreen;
+		}
+	}
+}
+.form {
+	// .form__items
+	&__items {
+	}
+}
