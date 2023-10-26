@@ -1,7 +1,5 @@
 @import "/src/app/styles/vars";
 
-
-
 .statistic {
 	display: flex;
 	justify-content: space-around;
@@ -37,6 +35,8 @@
 	}
 	// .statistic__icon
 	&__icon {
-		margin-left: 5px;
+		font-size: 20px;
+		margin: 0 0 5px 5px;
+		color: $colorYellow;
 	}
 }

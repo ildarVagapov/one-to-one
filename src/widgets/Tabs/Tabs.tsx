@@ -1,6 +1,6 @@
 import { useState } from "react"
 import style from "./Tabs.module.scss"
-import { MyInterviews } from "./MyInterviews/MyInterviews"
+import { MyInterviews } from "./ui/MyInterviews/MyInterviews"
 import { FiPlusCircle } from "react-icons/fi"
 
 const SearchInterviews = () => {

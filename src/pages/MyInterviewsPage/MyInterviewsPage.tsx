@@ -1,5 +1,5 @@
-import { Statistic } from "widgets/Statistic/ui/Statistic"
-import { Tabs } from "widgets/Tabs/ui/Tabs"
+import { Tabs } from "widgets/Tabs/Tabs"
+import { Statistic } from "./components/Statistic/Statistic"
 
 export const MyInterviewsPage = () => {
 

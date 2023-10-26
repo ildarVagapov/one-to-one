@@ -13,8 +13,8 @@ export const User = () => {
 
 	return (
 		<div className={style.user}>
-			{user.map(user => (
-				<div className={style.user__info}>
+			{user.map((user, i) => (
+				<div key={i} className={style.user__info}>
 					<span className={style.user__name}>{user.name} {user.surname}</span>
 					<span className={style.user__mail}>{user.email}</span>
 				</div>

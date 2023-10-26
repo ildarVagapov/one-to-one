@@ -9,6 +9,7 @@ export default defineConfig({
 			"pages": '/src/pages',
 			"widgets": '/src/widgets',
 			"shared": '/src/shared',
+			"feature": '/src/feature',
 		}
 	}
 })

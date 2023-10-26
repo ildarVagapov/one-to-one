@@ -9,7 +9,8 @@
 		"paths": {
 			"pages/*": ["pages/*"],
 			"widgets/*": ["widgets/*"],
-			"shared/*": ["shared/*"]
+			"shared/*": ["shared/*"],
+			"feature/*": ["feature/*"]
 		},
 
 		/* Bundler mode */

@@ -4,10 +4,12 @@ import { User } from "./components/User/User"
 
 
 export const Header = () => {
+
+
 	return (
 		<header className={style.header}>
-			<div className={style.headerContainer}>
-				<div className={style.headerBlock}>
+			<div className={style.header__container}>
+				<div className={style.header__block}>
 					<Link className={style.logo} to='/'>
 						<img src="/public/assets/headerLogo.svg" alt="headerLogo" />
 					</Link>
