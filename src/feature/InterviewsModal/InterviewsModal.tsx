@@ -2,6 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { useState } from "react";
 import { FiX } from "react-icons/fi";
 import style from "./InterviewsModal.module.scss";
+import { Stack } from "./components/Stack/Stack";
 
 export const InterviewsModal = () => {
 
@@ -19,9 +20,8 @@ export const InterviewsModal = () => {
 						</div>
 						<form className={style.form}>
 							<div className={style.form__items}>
-
+								<Stack />
 							</div>
-
 						</form>
 						<button className={style.modal__save}>Сохранить</button>
 					</Dialog.Panel>

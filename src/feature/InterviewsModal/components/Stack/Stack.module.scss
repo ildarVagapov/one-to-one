@@ -1,0 +1,50 @@
+@import "/src/app/styles/vars";
+
+.stack {
+	// .stack__items
+	&__items {
+		position: relative;
+		border: 1px solid $colorLightGray;
+		border-radius: 3px;
+		width: 144px;
+	}
+	// .stack__item
+	&__title {
+		margin-bottom: 5px;
+	}
+	&__item {
+		display: flex;
+		align-items: center;
+	}
+	// .stack__input
+	&__input {
+		width: 100%;
+		text-align: center;
+		padding-left: 15px;
+	}
+	// .stack__btn
+	&__btn {
+		font-size: 20px;
+		color: $colorLightGray;
+	}
+	// .stack__options
+	&__options {
+		padding: 5px 0px;
+		margin: 1px;
+		position: absolute;
+		max-height: 150px;
+		background-color: $colorWhite;
+		overflow: auto;
+		cursor: pointer;
+		width: 100%;
+		border-radius: 3px;
+	}
+	// .stack__option
+	&__option {
+		transition: $transition;
+		padding: 5px 5px;
+		&:hover {
+			background-color: $colorLightGray;
+		}
+	}
+}
