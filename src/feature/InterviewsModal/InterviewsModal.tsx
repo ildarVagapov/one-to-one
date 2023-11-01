@@ -84,7 +84,7 @@ export const InterviewsModal = () => {
 									)}
 								/>
 							</div>
-							<Button disabled={!isValid} width="139px" text='Сохранить' />
+							<Button btn="green" disabled={!isValid} text='Сохранить' />
 						</form>
 					</Dialog.Panel>
 				</div>

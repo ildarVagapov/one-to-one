@@ -45,21 +45,6 @@
 			color: $colorLightGray;
 		}
 	}
-	// .modal__save
-	&__save {
-		color: $colorWhite;
-		font-size: $textLh12;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 5px;
-		padding: 6px 35px;
-		background-color: $colorGreen;
-		transition: $transition;
-		&:hover {
-			background-color: $colorLightGreen;
-		}
-	}
 }
 .form {
 	display: flex;

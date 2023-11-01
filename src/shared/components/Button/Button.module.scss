@@ -2,18 +2,37 @@
 
 .button {
 	color: $colorWhite;
-	font-size: $textLh12;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 5px;
-	padding: 6px 0;
-	background-color: $colorGreen;
 	transition: $transition;
+	font-size: $textLh12;
+	min-height: 25px;
+	min-width: 139px;
+	background-color: $colorLightGreen;
 	&:hover {
-		background-color: $colorLightGreen;
+		background-color: $colorGreen;
 	}
 }
 .disabled {
-	background-color: $colorGray;
+	background-color: $colorLightGray;
+	&:hover {
+		background-color: $colorLightGray;
+	}
+}
+
+.auth {
+	min-height: 37px;
+	font-size: $textLh14;
+	width: 100%;
+}
+.loading {
+	min-height: 37px;
+	font-size: $textLh14;
+	width: 100%;
+	background-color: $colorLightBlue;
+	&:hover {
+		background-color: $colorLightBlue;
+	}
 }
