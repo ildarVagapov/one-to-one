@@ -84,11 +84,7 @@ export const InterviewsModal = () => {
 									)}
 								/>
 							</div>
-							<Button disabled={isValid} width="139px" text='Сохранить' />
-							{/* <B className={style.modal__save} >Сохранить</B> */}
-							{/* {isValid ? <button className={style.modal__save} >Сохранить</button> :
-								<button className={style.modal__save_dis} >Сохранить</button>
-							} */}
+							<Button disabled={!isValid} width="139px" text='Сохранить' />
 						</form>
 					</Dialog.Panel>
 				</div>
