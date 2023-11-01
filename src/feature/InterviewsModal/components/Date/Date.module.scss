@@ -1,0 +1,17 @@
+@import "/src/app/styles/vars";
+
+.date {
+	& input {
+		display: flex;
+		flex-direction: row-reverse;
+		color: $colorGray;
+		cursor: pointer;
+		text-align: center;
+		border: 1px solid $colorLightGray;
+		border-radius: 3px;
+		width: 144px;
+		min-height: 25px;
+		padding: 0 5px;
+		margin-top: 5px;
+	}
+}

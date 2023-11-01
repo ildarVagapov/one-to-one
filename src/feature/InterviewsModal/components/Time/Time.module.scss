@@ -1,0 +1,17 @@
+@import "/src/app/styles/vars";
+
+.time {
+	& input {
+		cursor: pointer;
+		display: flex;
+		flex-direction: row-reverse;
+		border-radius: 3px;
+		text-align: center;
+		color: $colorGray;
+		margin-top: 5px;
+		border: 1px solid $colorLightGray;
+		padding-right: 20px;
+		width: 144px;
+		height: 25px;
+	}
+}

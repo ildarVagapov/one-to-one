@@ -1,14 +1,6 @@
 import { baseApi } from 'shared/api/baseApi';
+import { ITechnologyResponse } from '../model/types';
 
-
-export interface ITechnology {
-	id?: number;
-	name: string;
-}
-export interface ITechnologyResponse {
-	totalItems: number;
-	items: ITechnology[];
-}
 
 export const stackApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({

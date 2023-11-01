@@ -3,10 +3,13 @@ import { useState } from "react";
 import { FiX } from "react-icons/fi";
 import style from "./InterviewsModal.module.scss";
 import { Stack } from "./components/Stack/Stack";
+import { Level } from "./components/Level/Level";
+import { DatePick } from "./components/Date/Date";
+import { Time } from "./components/Time/Time";
 
 export const InterviewsModal = () => {
 
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(true)
 
 	return (
 		<div>
@@ -20,6 +23,9 @@ export const InterviewsModal = () => {
 						</div>
 						<form className={style.form}>
 							<div className={style.form__items}>
+								{/* <DatePick /> */}
+								{/* <Level /> */}
+								{/* <Time /> */}
 								<Stack />
 							</div>
 						</form>

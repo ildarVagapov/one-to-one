@@ -1,14 +1,14 @@
 @import "/src/app/styles/vars";
 
-.stack {
-	// .stack__items
+.level {
+	// .level__items
 	&__items {
 		position: relative;
 		border: 1px solid $colorLightGray;
 		border-radius: 3px;
 		width: 144px;
 	}
-	// .stack__item
+	// .level__item
 	&__title {
 		margin-bottom: 5px;
 	}
@@ -16,23 +16,23 @@
 		display: flex;
 		align-items: center;
 	}
-	// .stack__input
+	// .level__input
 	&__input {
 		width: 100%;
 		text-align: center;
 		padding-left: 15px;
 	}
-	// .stack__btn
+	// .level__btn
 	&__btn {
 		font-size: 20px;
 		color: $colorLightGray;
 	}
-	// .stack__options
+	// .level__options
 	&__options {
 		border: 1px solid $colorLightGray;
+		margin: 3px 3px 0 0;
 		z-index: 1;
 		padding: 5px 0px;
-		margin: 3px 3px 0 0;
 		position: absolute;
 		max-height: 150px;
 		background-color: $colorWhite;
@@ -41,7 +41,7 @@
 		width: 100%;
 		border-radius: 3px;
 	}
-	// .stack__option
+	// .level__option
 	&__option {
 		transition: $transition;
 		padding: 5px 5px;

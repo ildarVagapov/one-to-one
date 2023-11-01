@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Combobox } from '@headlessui/react'
 import { FiChevronDown } from "react-icons/fi"
 import style from './Stack.module.scss'
+import { ITechnology } from './model/types'
 import { useStackQuery } from './api/stackApi'
 
 export const Stack = () => {
@@ -139,7 +140,7 @@ export const Stack = () => {
 							<Combobox.Input
 								className={style.stack__input}
 								placeholder='выбрать'
-								displayValue={(stack) => stack.name}
+								displayValue={(stack: ITechnology) => stack.name}
 								onChange={(event) => setQuery(event.target.value)}
 							/>
 							<Combobox.Button>
