@@ -1,6 +1,6 @@
 import style from './Date.module.scss'
 
-export interface DateProps {
+interface DateProps {
 	value: string,
 	name: string,
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void

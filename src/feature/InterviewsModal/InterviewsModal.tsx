@@ -6,13 +6,15 @@ import { Stack } from "./components/Stack/Stack";
 import { Level } from "./components/Level/Level";
 import { Date } from "./components/Date/Date";
 import { Time } from "./components/Time/Time";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { Button } from "shared/components";
+
 
 export const InterviewsModal = () => {
-	const { handleSubmit, control, reset, formState: { errors } } = useForm()
+	const { handleSubmit, control, reset, formState: { isValid } } = useForm()
 	const [isOpen, setIsOpen] = useState(true)
 
-	const onSubmit: SubmitHandler<any> = (data) => {
+	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		reset()
 		alert(JSON.stringify(data))
 	}
@@ -29,7 +31,7 @@ export const InterviewsModal = () => {
 						</div>
 						<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
 							<div className={style.form__items}>
-								{/* <Controller
+								<Controller
 									control={control}
 									name={'date'}
 									rules={{ required: true }}
@@ -41,10 +43,11 @@ export const InterviewsModal = () => {
 											name={name}
 										/>
 									)}
-								/> */}
+								/>
 								<Controller
 									control={control}
-									name={'stack'}
+									name={'technology'}
+									rules={{ required: true }}
 									render={({ field: { onChange, value, name }, }) => (
 
 										< Stack
@@ -54,10 +57,38 @@ export const InterviewsModal = () => {
 										/>
 									)}
 								/>
-								{/* <Level /> */}
-								{/* <Time /> */}
+								<Controller
+									control={control}
+									name={'time'}
+									rules={{ required: true }}
+									render={({ field: { onChange, value, name }, }) => (
+
+										< Time
+											value={value}
+											onChange={onChange}
+											name={name}
+										/>
+									)}
+								/>
+								<Controller
+									control={control}
+									name={'level'}
+									rules={{ required: true }}
+									render={({ field: { onChange, value, name }, }) => (
+
+										< Level
+											value={value}
+											onChange={onChange}
+											name={name}
+										/>
+									)}
+								/>
 							</div>
-							<button className={style.modal__save} >Сохранить</button>
+							<Button disabled={isValid} width="139px" text='Сохранить' />
+							{/* <B className={style.modal__save} >Сохранить</B> */}
+							{/* {isValid ? <button className={style.modal__save} >Сохранить</button> :
+								<button className={style.modal__save_dis} >Сохранить</button>
+							} */}
 						</form>
 					</Dialog.Panel>
 				</div>

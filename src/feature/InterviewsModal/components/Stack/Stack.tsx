@@ -5,16 +5,15 @@ import style from './Stack.module.scss'
 import { ITechnology } from './model/types'
 import { useStackQuery } from './api/stackApi'
 
-export interface DateProps {
-	value?: ITechnology[], // Обратите внимание, что тип value изменен на ITechnology[]
+interface StackProps {
+	value?: ITechnology[],
 	name: string,
-	onChange: (value: ITechnology[]) => void // Изменен тип аргумента на массив ITechnology[]
+	onChange: (value: ITechnology[]) => void
 }
 
-export const Stack = (props: DateProps) => {
+export const Stack = (props: StackProps) => {
 	const { name, value, onChange } = props;
 	const [query, setQuery] = useState('')
-
 	const { data } = useStackQuery()
 
 	const filteredStack = data ? query === '' ? data.items : data.items.filter((stack) => stack.name
@@ -23,15 +22,13 @@ export const Stack = (props: DateProps) => {
 		.includes(query.toLowerCase().replace(/\s+/g, ''))
 	)
 		: [];
-	const [selected, setSelected] = useState(filteredStack)
-
 
 	return (
 		<>
 			<div className={style.stack}>
 				<h3 className={style.stack__title}>Стэк</h3>
 				<div className={style.stack__items}>
-					<Combobox value={selected} onChange={onChange}>
+					<Combobox value={value || ''} onChange={onChange}>
 						<div className={style.stack__item}>
 							<Combobox.Input
 								className={style.stack__input}
