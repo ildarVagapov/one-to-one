@@ -4,12 +4,18 @@ import { FiX } from "react-icons/fi";
 import style from "./InterviewsModal.module.scss";
 import { Stack } from "./components/Stack/Stack";
 import { Level } from "./components/Level/Level";
-import { DatePick } from "./components/Date/Date";
+import { Date } from "./components/Date/Date";
 import { Time } from "./components/Time/Time";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
 export const InterviewsModal = () => {
-
+	const { handleSubmit, control, reset, formState: { errors } } = useForm()
 	const [isOpen, setIsOpen] = useState(true)
+
+	const onSubmit: SubmitHandler<any> = (data) => {
+		reset()
+		alert(JSON.stringify(data))
+	}
 
 	return (
 		<div>
@@ -21,15 +27,38 @@ export const InterviewsModal = () => {
 							<Dialog.Title className={style.modal__title}>Создание собеседования</Dialog.Title>
 							<button className={style.modal__close} onClick={() => setIsOpen(false)}> <FiX /> </button>
 						</div>
-						<form className={style.form}>
+						<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
 							<div className={style.form__items}>
-								{/* <DatePick /> */}
+								{/* <Controller
+									control={control}
+									name={'date'}
+									rules={{ required: true }}
+									render={({ field: { onChange, value, name }, }) => (
+
+										< Date
+											value={value}
+											onChange={onChange}
+											name={name}
+										/>
+									)}
+								/> */}
+								<Controller
+									control={control}
+									name={'stack'}
+									render={({ field: { onChange, value, name }, }) => (
+
+										< Stack
+											value={value}
+											onChange={onChange}
+											name={name}
+										/>
+									)}
+								/>
 								{/* <Level /> */}
 								{/* <Time /> */}
-								<Stack />
 							</div>
+							<button className={style.modal__save} >Сохранить</button>
 						</form>
-						<button className={style.modal__save}>Сохранить</button>
 					</Dialog.Panel>
 				</div>
 			</Dialog >
