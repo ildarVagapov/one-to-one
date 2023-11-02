@@ -14,9 +14,9 @@ export const Level = (props: LevelProps) => {
 	const [query, setQuery] = useState('')
 
 	const data = [
-		"Junior",
-		"Middle",
-		"Senior",
+		{ id: 1, level: "Junior" },
+		{ id: 2, level: "Middle" },
+		{ id: 3, level: "Senior" }
 	]
 
 	const filteredlevel =
@@ -24,7 +24,7 @@ export const Level = (props: LevelProps) => {
 			? query === ''
 				? data
 				: data.filter((level) =>
-					level
+					level.level
 						.toLowerCase()
 						.replace(/\s+/g, '')
 						.includes(query.toLowerCase().replace(/\s+/g, ''))
@@ -56,7 +56,7 @@ export const Level = (props: LevelProps) => {
 									key={i}
 									value={level}
 								>
-									{level}
+									{level.level}
 								</Combobox.Option>
 							))}
 						</Combobox.Options>

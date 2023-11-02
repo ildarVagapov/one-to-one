@@ -7,16 +7,40 @@ import { Level } from "./components/Level/Level";
 import { Date } from "./components/Date/Date";
 import { Time } from "./components/Time/Time";
 import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Button } from "shared/components";
+import { Button, Error } from "shared/components";
+import { useCreateInterviewMutation } from "./api/interviewsModalApi";
 
+export interface FormData {
+	date: string
+	technology: Technology
+	time: string
+	level: Level
+}
+
+export interface Technology {
+	id: number
+	name: string
+}
+export interface Level {
+	id: number
+	name: string
+}
 
 export const InterviewsModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm()
 	const [isOpen, setIsOpen] = useState(true)
+	const [createInterview, { isError, isLoading }] = useCreateInterviewMutation()
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		reset()
-		alert(JSON.stringify(data))
+		const userData = {
+			initiatorId: 0,
+			comment: '',
+			technologyId: data.technology.id,
+			dateTime: `${data.date}' '${data.time}`,
+			levelId: data.level.id,
+		}
+		createInterview(userData)
 	}
 
 	return (
@@ -84,7 +108,8 @@ export const InterviewsModal = () => {
 									)}
 								/>
 							</div>
-							<Button btn="green" disabled={!isValid} text='Сохранить' />
+							<Button loading={isLoading} disabled={!isValid} text='Сохранить' />
+							{isError && <Error />}
 						</form>
 					</Dialog.Panel>
 				</div>

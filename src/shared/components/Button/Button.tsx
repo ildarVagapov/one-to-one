@@ -5,18 +5,20 @@ import { Loader } from '..'
 interface ButtonProps {
 	text: string,
 	disabled?: boolean,
-	btn: string,
-	loading?: boolean
+	btn?: string,
+	loading?: boolean,
+	type?: string
 }
 
 export const Button = (props: ButtonProps) => {
-	const { text, disabled, loading, btn } = props
+	const { text, disabled, loading, btn, type } = props
 
 	const btnClass = classNames(
 		styles.button,
 		{
 			[styles.auth]: btn === 'auth',
 			[styles.blue]: btn === 'blue',
+			[styles.fill]: type === 'fill',
 			[styles.loading]: loading,
 			[styles.disabled]: disabled,
 		}
@@ -24,7 +26,7 @@ export const Button = (props: ButtonProps) => {
 
 	return (
 		<>
-			<button disabled={disabled} className={btnClass}>{loading ? <Loader /> : `${text}`}</button >
+			<button disabled={disabled || loading} className={btnClass}>{loading ? <Loader /> : `${text}`}</button >
 		</>
 	)
 }

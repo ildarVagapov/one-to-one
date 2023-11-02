@@ -20,21 +20,5 @@
 		.logo {
 			margin-right: 74px;
 		}
-		.btn {
-			transition: $transition;
-			color: $colorWhite;
-			background: $colorLightBlue;
-			border-radius: 5px;
-			padding: 5px 46px;
-			height: 25px;
-			cursor: pointer;
-			text-align: center;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			&:hover {
-				background: $colorBlue;
-			}
-		}
 	}
 }

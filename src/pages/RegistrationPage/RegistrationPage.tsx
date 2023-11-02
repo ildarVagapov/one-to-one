@@ -49,7 +49,7 @@ export const RegistrationPage = () => {
 										/>)}
 								/>
 							))}
-							<Button loading={isLoading} text="Войти" btn='auth' />
+							<Button type='fill' loading={isLoading} text="Войти" btn='auth' />
 						</form>
 						<p className={style.registration__info}>Есть аккаунт ? <Link to='/auth'>Войти</Link></p>
 						{isError && <p className={style.error}>Ошибка регистрации!</p>}

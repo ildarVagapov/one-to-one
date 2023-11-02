@@ -28,9 +28,6 @@
 	width: 100%;
 }
 .loading {
-	min-height: 37px;
-	font-size: $textLh14;
-	width: 100%;
 	background-color: $colorLightBlue;
 	&:hover {
 		background-color: $colorLightBlue;
@@ -42,4 +39,9 @@
 	&:hover {
 		background: $colorBlue;
 	}
+}
+.fill {
+	min-height: 37px;
+	font-size: $textLh14;
+	width: 100%;
 }

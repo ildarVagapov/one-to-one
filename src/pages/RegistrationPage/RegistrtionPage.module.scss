@@ -15,34 +15,11 @@
 		flex-direction: column;
 		align-items: center;
 	}
-	// .registration__icon
-	&__icon {
-	}
 	// .registration__form
 	&__form {
 		min-width: 400px;
 		margin-top: 50px;
 		margin-bottom: 20px;
-	}
-	// .registration__Btn
-	&__btn {
-		margin-bottom: 10px;
-		font-size: $textLh14;
-		background-color: $colorLightGreen;
-		width: 100%;
-		padding: 10px;
-		color: $colorWhite;
-		border-radius: 5px;
-		transition: $transition;
-		&:disabled {
-			background-color: $colorGray;
-			&:hover {
-				background-color: $colorGray;
-			}
-		}
-		&:hover {
-			background-color: $colorGreen;
-		}
 	}
 	// .registration__info
 	&__info {
