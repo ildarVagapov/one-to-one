@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import style from './Header.module.scss'
 import { User } from "./components/User/User"
+import { Button } from "shared/components"
 
 
 export const Header = () => {
@@ -13,7 +14,9 @@ export const Header = () => {
 					<Link className={style.logo} to='/'>
 						<img src="/public/assets/headerLogo.svg" alt="headerLogo" />
 					</Link>
-					<Link className={style.btn} to='/rating'>Рейтинг</Link>
+					<Link to='/rating'>
+						<Button text='Рейтинг' btn='blue' />
+					</Link>
 				</div>
 				<User />
 			</div>

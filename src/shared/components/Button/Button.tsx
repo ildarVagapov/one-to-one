@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import styles from './Button.module.scss'
+import { Loader } from '..'
 
 interface ButtonProps {
 	text: string,
@@ -12,18 +13,18 @@ export const Button = (props: ButtonProps) => {
 	const { text, disabled, loading, btn } = props
 
 	const btnClass = classNames(
-		styles.button, // Общий класс из модуля
+		styles.button,
 		{
 			[styles.auth]: btn === 'auth',
+			[styles.blue]: btn === 'blue',
 			[styles.loading]: loading,
-			[styles.disabled]: disabled, // Условный класс для состояния "disabled"
+			[styles.disabled]: disabled,
 		}
 	);
 
 	return (
 		<>
-			{btn === 'green' && <button disabled={disabled} className={btnClass}>{text}</button >}
-			{btn === 'auth' && <button disabled={disabled} className={btnClass}>{loading ? '...' : `${text}`}</button >}
+			<button disabled={disabled} className={btnClass}>{loading ? <Loader /> : `${text}`}</button >
 		</>
 	)
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import style from './RegistrtionPage.module.scss'
-import { Input, Logo } from "shared/components"
+import { Button, Input, Logo } from "shared/components"
 import { useRegistrationMutation } from "./api/registrationApi";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { arrReg } from "./consts/constRegistration";
@@ -49,9 +49,7 @@ export const RegistrationPage = () => {
 										/>)}
 								/>
 							))}
-							{!isLoading ? <button className={style.registration__btn} type="submit"  >Зарегистрироваться</button>
-								: <button className={style.registration__btn2} type="submit" >Регистрируем...</button>
-							}
+							<Button loading={isLoading} text="Войти" btn='auth' />
 						</form>
 						<p className={style.registration__info}>Есть аккаунт ? <Link to='/auth'>Войти</Link></p>
 						{isError && <p className={style.error}>Ошибка регистрации!</p>}

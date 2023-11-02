@@ -19,20 +19,7 @@
 	&__form {
 		min-width: 400px;
 		margin-top: 50px;
-	}
-	// .{style.auth__Btn}
-	&__btn {
-		margin-bottom: 10px;
-		font-size: $textLh14;
-		background-color: $colorLightGreen;
-		width: 100%;
-		padding: 10px;
-		color: $colorWhite;
-		border-radius: 5px;
-		transition: $transition;
-		&:hover {
-			background-color: $colorGreen;
-		}
+		margin-bottom: 20px;
 	}
 	// .registration__info
 	&__info {

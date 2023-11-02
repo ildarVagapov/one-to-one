@@ -9,7 +9,7 @@ import { arrAuth } from "./consts/constAuth";
 
 
 export const AuthPage = () => {
-	// const [auth, { isLoading }] = useAuthMutation();
+	const [auth, { isLoading }] = useAuthMutation();
 	const { handleSubmit, control, reset, formState: { errors } } = useForm<UserAuthData>()
 
 	const onSubmit: SubmitHandler<UserAuthData> = (data) => {
@@ -17,7 +17,7 @@ export const AuthPage = () => {
 		reset()
 		alert(JSON.stringify(data))
 	};
-	const isLoading = true
+
 	return (
 		<section className={style.auth}>
 			<div className={style.auth__container}>
@@ -43,9 +43,6 @@ export const AuthPage = () => {
 					))}
 
 					<Button loading={isLoading} text="Войти" btn='auth' />
-					{/* {!isLoading ? <button className={style.auth__btn} type="submit">Войти</button>
-						: <button className={style.auth__btn2} type="submit">Вход...</button>
-					} */}
 				</form>
 				<p className={style.auth__info}>Нет аккаунта ? <Link to='/registration'>Зарегистрироваться</Link> </p>
 			</div>
