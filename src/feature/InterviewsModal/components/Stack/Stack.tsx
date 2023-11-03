@@ -43,7 +43,11 @@ export const Stack = (props: StackProps) => {
 						</div>
 						<Combobox.Options className={style.stack__options}>
 							{filteredStack.map((stack) => (
-								<Combobox.Option className={style.stack__option} key={stack.id} value={stack}>
+								<Combobox.Option
+									className={style.stack__option}
+									key={stack.id}
+									value={stack}
+								>
 									{stack.name}
 								</Combobox.Option>
 							))}

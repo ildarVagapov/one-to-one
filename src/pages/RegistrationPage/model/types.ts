@@ -1,8 +1,8 @@
 
 
 export interface UserRegistrationData {
-	username: string;
+	name: string;
 	password: string;
-	surname: string;
+	surName: string;
 	email: string;
 }

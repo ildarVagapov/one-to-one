@@ -6,7 +6,7 @@ interface DateProps {
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Date = (props: DateProps) => {
+export const Datep = (props: DateProps) => {
 	const { name, value, onChange } = props;
 
 	return (

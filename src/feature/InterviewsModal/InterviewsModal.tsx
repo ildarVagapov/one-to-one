@@ -4,40 +4,27 @@ import { FiX } from "react-icons/fi";
 import style from "./InterviewsModal.module.scss";
 import { Stack } from "./components/Stack/Stack";
 import { Level } from "./components/Level/Level";
-import { Date } from "./components/Date/Date";
+import { Datep } from "./components/Date/Date";
 import { Time } from "./components/Time/Time";
 import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Button, Error } from "shared/components";
 import { useCreateInterviewMutation } from "./api/interviewsModalApi";
+import { FormData } from "./model/types";
 
-export interface FormData {
-	date: string
-	technology: Technology
-	time: string
-	level: Level
-}
-
-export interface Technology {
-	id: number
-	name: string
-}
-export interface Level {
-	id: number
-	name: string
-}
 
 export const InterviewsModal = () => {
-	const { handleSubmit, control, reset, formState: { isValid } } = useForm()
+	const { handleSubmit, control, reset, formState: { isValid } } = useForm<FormData>()
 	const [isOpen, setIsOpen] = useState(true)
 	const [createInterview, { isError, isLoading }] = useCreateInterviewMutation()
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		reset()
 		const userData = {
-			initiatorId: 0,
+			initiatorId: 1,
 			comment: '',
 			technologyId: data.technology.id,
-			dateTime: `${data.date}' '${data.time}`,
+			// dateTime: `${data.date}' '${data.time}`,
+			dateTime: "2022-09-22T11:00:00",
 			levelId: data.level.id,
 		}
 		createInterview(userData)
@@ -61,7 +48,7 @@ export const InterviewsModal = () => {
 									rules={{ required: true }}
 									render={({ field: { onChange, value, name }, }) => (
 
-										< Date
+										< Datep
 											value={value}
 											onChange={onChange}
 											name={name}

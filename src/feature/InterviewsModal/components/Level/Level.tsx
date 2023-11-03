@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Combobox } from '@headlessui/react'
 import { FiChevronDown } from "react-icons/fi"
 import style from './Level.module.scss'
+import { ILevel } from 'feature/InterviewsModal/model/types'
 
 interface LevelProps {
-	value?: string,
+	value?: ILevel[],
 	name: string,
-	onChange: (value: string) => void
+	onChange: (value: ILevel[]) => void
 }
 
 export const Level = (props: LevelProps) => {
@@ -41,7 +42,7 @@ export const Level = (props: LevelProps) => {
 							<Combobox.Input
 								className={style.level__input}
 								placeholder='выбрать'
-								displayValue={(level: string) => level}
+								displayValue={(level: ILevel) => level.level}
 								onChange={(event) => setQuery(event.target.value)}
 								name={name}
 							/>

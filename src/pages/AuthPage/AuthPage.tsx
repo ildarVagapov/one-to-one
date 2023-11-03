@@ -42,7 +42,7 @@ export const AuthPage = () => {
 						/>
 					))}
 
-					<Button type='fill' loading={isLoading} text="Войти" btn='auth' />
+					<Button type='fill' loading={isLoading} text="Войти" />
 				</form>
 				<p className={style.auth__info}>Нет аккаунта ? <Link to='/registration'>Зарегистрироваться</Link> </p>
 			</div>

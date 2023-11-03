@@ -16,7 +16,6 @@ export const Button = (props: ButtonProps) => {
 	const btnClass = classNames(
 		styles.button,
 		{
-			[styles.auth]: btn === 'auth',
 			[styles.blue]: btn === 'blue',
 			[styles.fill]: type === 'fill',
 			[styles.loading]: loading,

@@ -1,3 +1,5 @@
+import { ITechnology } from "../components/Stack/model/types";
+
 export interface IInterviewItem {
 	id: number;
 	initiatorId: number;
@@ -17,4 +19,17 @@ export interface ICreateInterview {
 	levelId: number | undefined;
 	comment: string;
 	initiatorId: number | undefined;
+}
+
+export interface FormData {
+	date: string
+	technology: ITechnology[]
+	time: string
+	level: ILevel[]
+}
+
+
+export interface ILevel {
+	id: number
+	level: string
 }
