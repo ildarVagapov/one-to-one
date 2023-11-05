@@ -8,8 +8,8 @@ export const MyInterviewsPage = () => {
 	return (
 		<>
 			<Statistic />
-			{/* <Tabs /> */}
-			<InterviewsModal />
+			<Tabs />
+			{/* <InterviewsModal /> */}
 		</>
 	)
 }

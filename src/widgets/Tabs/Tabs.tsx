@@ -22,7 +22,6 @@ const MyStatistics = () => {
 
 
 export const Tabs = () => {
-
 	const [idTabs, setIdTabs] = useState(1)
 
 	const tabs = [

@@ -14,7 +14,7 @@ import { FormData } from "./model/types";
 
 export const InterviewsModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm<FormData>()
-	const [isOpen, setIsOpen] = useState(true)
+	const [isOpen, setIsOpen] = useState(false)
 	const [createInterview, { isError, isLoading }] = useCreateInterviewMutation()
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -37,7 +37,7 @@ export const InterviewsModal = () => {
 			dateTime: formattedDateTime,
 			levelId: data.level.id,
 		};
-		console.log(userData)
+
 		createInterview(userData)
 	}
 
