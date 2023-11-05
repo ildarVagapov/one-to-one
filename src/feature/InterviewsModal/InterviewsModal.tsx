@@ -4,7 +4,7 @@ import { FiX } from "react-icons/fi";
 import style from "./InterviewsModal.module.scss";
 import { Stack } from "./components/Stack/Stack";
 import { Level } from "./components/Level/Level";
-import { Datep } from "./components/Date/Date";
+import { DatePicker } from "./components/Date/Date";
 import { Time } from "./components/Time/Time";
 import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Button, Error } from "shared/components";
@@ -19,14 +19,25 @@ export const InterviewsModal = () => {
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		reset()
+
+		const timeParts = data.time.split(":");
+		const hours = parseInt(timeParts[0], 10);
+		const minutes = parseInt(timeParts[1], 10);
+
+		const dateTime = new Date(data.date);
+		dateTime.setHours(hours);
+		dateTime.setMinutes(minutes);
+
+		const formattedDateTime = dateTime.toISOString();
+
 		const userData = {
 			initiatorId: 1,
 			comment: '',
 			technologyId: data.technology.id,
-			// dateTime: `${data.date}' '${data.time}`,
-			dateTime: "2022-09-22T11:00:00",
+			dateTime: formattedDateTime,
 			levelId: data.level.id,
-		}
+		};
+		console.log(userData)
 		createInterview(userData)
 	}
 
@@ -48,7 +59,7 @@ export const InterviewsModal = () => {
 									rules={{ required: true }}
 									render={({ field: { onChange, value, name }, }) => (
 
-										< Datep
+										< DatePicker
 											value={value}
 											onChange={onChange}
 											name={name}
