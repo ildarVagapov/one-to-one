@@ -15,8 +15,8 @@ export const TabsFilter = (props: TabsFilterProps) => {
 	return (
 		<div className={style.filters} >
 			{
-				filters.map(filter => (
-					<div className={style.filters__items}>
+				filters.map((filter, i) => (
+					<div key={i} className={style.filters__items}>
 						{filter.title}
 						<div className={style.filters__item}>
 							<IoCaretUp className={style.filters__btn1} />

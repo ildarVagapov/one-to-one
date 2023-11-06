@@ -11,18 +11,18 @@ export const Tabs = (props: TabsProps) => {
 	return (
 		<div className={style.tabs}>
 			<div className={style.tabs__btn}>
-				{tabs.map(tab => (
-					<button className={idTabs === tab.id ? `${style.active}` : ''} onClick={() => setIdTabs(tab.id)}>
+				{tabs.map((tab, i) => (
+					<button key={i} className={idTabs === tab.id ? `${style.active}` : ''} onClick={() => setIdTabs(tab.id)}>
 						{tab.title}
 						{tab.popap && <FiPlusCircle className={style.icon} />}
 					</button>
 				))}
 			</div >
 			<div className={style.tabs__container}>
-				{tabs.map(tab => (
-					<>
+				{tabs.map((tab, i) => (
+					<div key={i} >
 						{idTabs === tab.id && tab.component}
-					</>
+					</div>
 				))}
 			</div >
 		</div >

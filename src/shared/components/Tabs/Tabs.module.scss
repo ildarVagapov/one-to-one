@@ -38,3 +38,13 @@
 		padding: 15px 11px;
 	}
 }
+
+.icon {
+	position: absolute;
+	right: 20px;
+	color: $colorLightBlue;
+	transition: $transition;
+	&:hover {
+		color: $colorBlue;
+	}
+}
