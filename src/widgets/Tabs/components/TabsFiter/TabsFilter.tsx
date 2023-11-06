@@ -1,16 +1,30 @@
 import style from './TabsFilter.module.scss'
+import { IoCaretDown, IoCaretUp } from "react-icons/io5";
 
-export const TabsFilter = () => {
+interface IFilter {
+	id: number,
+	title: string
+}
+interface TabsFilterProps {
+	filters: IFilter[]
+}
 
-	<div className={style.interviews__filters}>
-		{filters.map(filter => (
-			<div className={style.interviews__filters_item}>
-				{filter.title}
-				<div className={style.interviews__filters_btn}>
-					<button><img src="/public/assets/vector1.svg" alt="" /></button>
-					<button><img src="/public/assets/vector2.svg" alt="" /></button>
-				</div>
-			</div>
-		))}
-	</div>
+export const TabsFilter = (props: TabsFilterProps) => {
+	const { filters } = props
+
+	return (
+		<div className={style.filters} >
+			{
+				filters.map(filter => (
+					<div className={style.filters__items}>
+						{filter.title}
+						<div className={style.filters__item}>
+							<IoCaretUp className={style.filters__btn1} />
+							<IoCaretDown className={style.filters__btn2} />
+						</div>
+					</div>
+				))
+			}
+		</div >
+	)
 }

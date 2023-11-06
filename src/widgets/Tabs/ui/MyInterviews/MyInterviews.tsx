@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import style from "./MyInterviews.module.scss"
 import { TabsButton } from "widgets/Tabs/components/TabsButton/TabsButton"
 import { StatusButton } from "widgets/Tabs/components/StatusButton/StatusButton"
+import { TabsFilter } from "widgets/Tabs/components/TabsFiter/TabsFilter"
 
 export const MyInterviews = () => {
 
@@ -16,17 +17,7 @@ export const MyInterviews = () => {
 
 	return (
 		<div className={style.interviews}>
-			<div className={style.interviews__filters}>
-				{filters.map(filter => (
-					<div className={style.interviews__filters_item}>
-						{filter.title}
-						<div className={style.interviews__filters_btn}>
-							<button><img src="/public/assets/vector1.svg" alt="" /></button>
-							<button><img src="/public/assets/vector2.svg" alt="" /></button>
-						</div>
-					</div>
-				))}
-			</div>
+			<TabsFilter filters={filters} />
 			<div className={style.content}>
 				<div className={style.content__items}>
 					<div className={style.content__item}>03.02.2023 10:00 MSK</div>
