@@ -5,13 +5,13 @@
 	border: solid 1px $colorLightGray;
 
 	&__btn {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
 		font-size: $textLh14;
 		color: $colorLightBlue;
+		display: flex;
 
 		button {
-			padding: 10px 0;
+			width: 100%;
+			min-height: 39px;
 			transition: $transition;
 			border-right: 1px solid $colorLightGray;
 			border-bottom: 1px solid $colorLightGray;
@@ -34,10 +34,9 @@
 			}
 		}
 	}
-}
-
-.tabsContainer {
-	padding: 15px 11px;
+	&__container {
+		padding: 15px 11px;
+	}
 }
 
 .myInterviews__filters {

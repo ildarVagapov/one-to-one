@@ -4,7 +4,7 @@
 	// .interviews__filters
 	&__filters {
 		display: grid;
-		grid-template-columns: repeat(7, 1fr);
+		grid-template-columns: repeat(6, 1fr);
 		justify-items: center;
 		min-height: 30px;
 		// .interviews__filters_btn
@@ -45,7 +45,7 @@
 	&__items {
 		display: grid;
 		padding: 7px 0;
-		grid-template-columns: repeat(7, 1fr);
+		grid-template-columns: repeat(6, 1fr);
 		justify-items: center;
 		border: solid 1px $colorLightGray;
 		border-radius: 5px;

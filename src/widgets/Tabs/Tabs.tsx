@@ -1,10 +1,7 @@
 import { useState } from "react"
 import style from "./Tabs.module.scss"
-import { MyInterviews } from "./ui/MyInterviews/MyInterviews"
 import { FiPlusCircle } from "react-icons/fi"
 import { TabsProps } from "./model/types"
-
-
 
 
 export const Tabs = (props: TabsProps) => {
@@ -21,7 +18,7 @@ export const Tabs = (props: TabsProps) => {
 					</button>
 				))}
 			</div >
-			<div className={style.tabsContainer}>
+			<div className={style.tabs__container}>
 				{tabs.map(tab => (
 					<>
 						{idTabs === tab.id && tab.component}

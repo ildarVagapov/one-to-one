@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import style from "./MyInterviews.module.scss"
+import { TabsButton } from "widgets/Tabs/components/TabsButton/TabsButton"
+import { StatusButton } from "widgets/Tabs/components/StatusButton/StatusButton"
 
 export const MyInterviews = () => {
 
@@ -7,7 +9,6 @@ export const MyInterviews = () => {
 		{ id: 1, title: 'Дата, время' },
 		{ id: 2, title: 'Стэк' },
 		{ id: 3, title: 'Оппонент' },
-		{ id: 4, title: 'Телеграм' },
 		{ id: 5, title: 'Уровень' },
 		{ id: 6, title: 'Фитбэк' },
 		{ id: 7, title: 'Статус' },
@@ -31,10 +32,9 @@ export const MyInterviews = () => {
 					<div className={style.content__item}>03.02.2023 10:00 MSK</div>
 					<div className={style.content__item}>Python</div>
 					<div className={style.content__item}>Виктор Иванов</div>
-					<div className={style.content__item}>nagibator</div>
 					<div className={style.content__item}>Middle</div>
-					<Link to='/feed-back' className={style.content__button}>Подробнее</Link>
-					<button className={style.content__item}></button>
+					<Link to='/feed-back' ><TabsButton text='Подробнее' /> </Link>
+					<StatusButton text='Откликнуться' />
 				</div>
 			</div>
 		</div>
