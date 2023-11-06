@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 import style from "./MyInterviews.module.scss"
-import { TabsButton } from "widgets/Tabs/components/TabsButton/TabsButton"
-import { StatusButton } from "widgets/Tabs/components/StatusButton/StatusButton"
-import { TabsFilter } from "widgets/Tabs/components/TabsFiter/TabsFilter"
+import { TabsFilter } from "shared/components/Tabs/components/TabsFiter/TabsFilter"
+import { StatusButton } from "shared/components/Tabs/components/StatusButton/StatusButton"
+import { TabsButton } from "shared/components/Tabs/components/TabsButton/TabsButton"
+
 
 export const MyInterviews = () => {
 

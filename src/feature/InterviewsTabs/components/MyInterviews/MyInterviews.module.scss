@@ -1,51 +1,18 @@
 @import "/src/app/styles/vars";
 
-.interviews {
-	// .interviews__filters
-	&__filters {
-		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		justify-items: center;
-		min-height: 30px;
-		// .interviews__filters_btn
-		&_item {
-			display: flex;
-			align-items: center;
-		}
-		&_btn {
-			display: flex;
-			flex-direction: column;
-			margin-left: 24px;
-			& button {
-				height: 8px;
-				width: 6px;
-				&:hover {
-					&:first-child {
-						& img {
-							content: url("/public/assets/vectorHover1.svg");
-						}
-					}
-					&:last-child {
-						& img {
-							content: url("/public/assets/vectorHover2.svg");
-						}
-					}
-				}
-			}
-		}
-	}
-}
 .content {
 	padding: 11px;
 	justify-items: center;
 	border: solid 1px $colorLightGray;
-	border-radius: 5px;
-	height: 567px;
+	border-radius: 10px;
+	height: 500px;
 	// .content__items
 	&__items {
-		display: grid;
-		padding: 7px 0;
-		grid-template-columns: repeat(6, 1fr);
+		// display: grid;
+		display: flex;
+		justify-content: space-around;
+		min-height: 35px;
+		// grid-template-columns: repeat(6, 1fr);
 		justify-items: center;
 		border: solid 1px $colorLightGray;
 		border-radius: 5px;
