@@ -8,11 +8,9 @@
 	height: 500px;
 	// .content__items
 	&__items {
-		// display: grid;
 		display: flex;
 		justify-content: space-around;
 		min-height: 35px;
-		// grid-template-columns: repeat(6, 1fr);
 		justify-items: center;
 		border: solid 1px $colorLightGray;
 		border-radius: 5px;
@@ -39,17 +37,6 @@
 			right: 0;
 			border-top-right-radius: 5px;
 			border-bottom-right-radius: 5px;
-		}
-	}
-	// .content__button
-	&__button {
-		color: $colorLightGray;
-		border-radius: 5px;
-		border: 1px solid $colorLightGray;
-		padding: 7px 30px;
-		transition: $transition;
-		&:hover {
-			color: $colorBlack;
 		}
 	}
 }
