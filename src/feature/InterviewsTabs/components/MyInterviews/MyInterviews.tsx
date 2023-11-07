@@ -16,7 +16,7 @@ export const MyInterviews = () => {
 		{ id: 6, title: 'Фитбэк' },
 		{ id: 7, title: 'Статус' },
 	]
-	const items = [
+	const data = [
 		{ id: 1, title: '03.02.2023 10:00 MSK' },
 		{ id: 2, title: 'Python' },
 		{ id: 3, title: 'Виктор Иванов' },
@@ -27,7 +27,7 @@ export const MyInterviews = () => {
 		<div className={style.interviews}>
 			<TabsFilter filters={filters} />
 			<div className={style.content}>
-				<TabsItem items={items} >
+				<TabsItem data={data} >
 					<Link to='/feed-back' ><TabsButton text='Подробнее' /> </Link>
 					<StatusButton text='Откликнуться' />
 				</TabsItem>

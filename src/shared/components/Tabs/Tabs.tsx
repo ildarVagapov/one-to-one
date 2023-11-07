@@ -2,11 +2,21 @@ import { useState } from "react"
 import style from "./Tabs.module.scss"
 import { FiPlusCircle } from "react-icons/fi"
 import { TabsProps } from "./model/types"
+import { useDispatch } from "react-redux"
+import { openCloseModal1 } from "shared/api/baseSlice"
 
 
 export const Tabs = (props: TabsProps) => {
 	const { tabs } = props
 	const [idTabs, setIdTabs] = useState(1)
+
+	const dispatch = useDispatch()
+
+	const handleModal = (popapId: number) => {
+		if (popapId === 1) {
+			dispatch(openCloseModal1(true))
+		}
+	}
 
 	return (
 		<div className={style.tabs}>
@@ -14,7 +24,7 @@ export const Tabs = (props: TabsProps) => {
 				{tabs.map((tab, i) => (
 					<button key={i} className={idTabs === tab.id ? `${style.active}` : ''} onClick={() => setIdTabs(tab.id)}>
 						{tab.title}
-						{tab.popap && <FiPlusCircle className={style.icon} />}
+						{tab.popap && <FiPlusCircle onClick={() => handleModal(tab.id)} className={style.icon} />}
 					</button>
 				))}
 			</div >

@@ -1,5 +1,4 @@
 import { Dialog } from "@headlessui/react";
-import { useState } from "react";
 import { FiX } from "react-icons/fi";
 import style from "./InterviewsModal.module.scss";
 import { Stack } from "./components/Stack/Stack";
@@ -10,11 +9,12 @@ import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form
 import { Button, Error } from "shared/components";
 import { useCreateInterviewMutation } from "./api/interviewsModalApi";
 import { FormData } from "./model/types";
+import { useDispatch, useSelector } from "react-redux";
+import { openCloseModal1 } from "shared/api/baseSlice";
 
 
 export const InterviewsModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm<FormData>()
-	const [isOpen, setIsOpen] = useState(false)
 	const [createInterview, { isError, isLoading }] = useCreateInterviewMutation()
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -41,15 +41,17 @@ export const InterviewsModal = () => {
 		createInterview(userData)
 	}
 
+	const modalState = useSelector((state: any) => state.baseSlice.modalState1)
+	const dispatch = useDispatch()
+
 	return (
 		<div>
-			<button onClick={() => setIsOpen(true)}> open</button>
-			<Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+			<Dialog open={modalState} onClose={() => dispatch(openCloseModal1(false))}>
 				<div className={style.modal}>
 					<Dialog.Panel className={style.modal__body}>
 						<div className={style.modal__item}>
 							<Dialog.Title className={style.modal__title}>Создание собеседования</Dialog.Title>
-							<button className={style.modal__close} onClick={() => setIsOpen(false)}> <FiX /> </button>
+							<button className={style.modal__close} onClick={() => dispatch(openCloseModal1(false))}> <FiX /> </button>
 						</div>
 						<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
 							<div className={style.form__items}>

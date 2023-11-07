@@ -1,23 +1,25 @@
 import { ReactNode } from "react"
 
-interface IItems {
-	id: 1,
+
+
+interface IData {
+	id: number,
 	title: string
 }
 
 interface TabsItemProps {
-	items: IItems[]
+	data: IData[]
 	children: ReactNode
 }
 
 export const TabsItem = (props: TabsItemProps) => {
-	const { children, items } = props
+	const { children, data } = props
 
 	return (
 		<div className="tabs">
 			<>
-				{items.map((item, i) => (
-					<div>{item.title}</div>
+				{data.map((item, i) => (
+					<div key={i}>{item.title}</div>
 				))}
 			</>
 			{children}
