@@ -3,7 +3,7 @@ import style from "./Tabs.module.scss"
 import { FiPlusCircle } from "react-icons/fi"
 import { TabsProps } from "./model/types"
 import { useDispatch } from "react-redux"
-import { openCloseModal1 } from "shared/api/baseSlice"
+import { openCloseModal1, openCloseModal2 } from "shared/api/baseSlice"
 
 
 export const Tabs = (props: TabsProps) => {
@@ -15,6 +15,8 @@ export const Tabs = (props: TabsProps) => {
 	const handleModal = (popapId: number) => {
 		if (popapId === 1) {
 			dispatch(openCloseModal1(true))
+		} else if (popapId === 3) {
+			dispatch(openCloseModal2(true))
 		}
 	}
 
