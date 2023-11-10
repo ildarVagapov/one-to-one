@@ -7,7 +7,7 @@ import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form
 import style from './QuestionModal.module.scss'
 import { Stack } from "./components/Stack/Stack";
 import { QuestionInput } from "./components/Question/QuestionInput";
-import { ResponseInput } from "./components/Response/ResponseInput";
+import { Answer } from "./components/Answer/Answer";
 
 export const QuestionModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm()
@@ -17,7 +17,7 @@ export const QuestionModal = () => {
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		reset()
-
+		alert(JSON.stringify(data))
 	}
 
 	return (
@@ -28,7 +28,7 @@ export const QuestionModal = () => {
 						<FiPlusCircle className={style.modal__add} />
 						<button className={style.modal__close} onClick={() => dispatch(openCloseModal2(false))}> <FiX /> </button>
 					</div>
-					<form className={style.form}>
+					<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
 						<div className={style.form__items}>
 							<Controller
 								control={control}
@@ -43,10 +43,34 @@ export const QuestionModal = () => {
 									/>
 								)}
 							/>
-							<ResponseInput />
-							<QuestionInput />
+							<Controller
+								control={control}
+								name={'answer'}
+								rules={{ required: true }}
+								render={({ field: { onChange, value, name }, }) => (
+
+									<Answer
+										value={value}
+										onChange={onChange}
+										name={name}
+									/>
+								)}
+							/>
+							<Controller
+								control={control}
+								name={'question'}
+								rules={{ required: true }}
+								render={({ field: { onChange, value, name }, }) => (
+
+									<QuestionInput
+										value={value}
+										onChange={onChange}
+										name={name}
+									/>
+								)}
+							/>
 						</div>
-						<Button text="Сохранить" />
+						<Button text="Сохранить" disabled={!isValid} />
 					</form>
 				</Dialog.Panel >
 			</div >

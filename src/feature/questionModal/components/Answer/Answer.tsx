@@ -1,4 +1,4 @@
-import style from './QuestionInput.module.scss'
+import style from './Answer.module.scss'
 
 interface AnswerTypeProps {
 	name: string,
@@ -6,12 +6,12 @@ interface AnswerTypeProps {
 	onChange: () => void
 }
 
-export const QuestionInput = (props: AnswerTypeProps) => {
+export const Answer = (props: AnswerTypeProps) => {
 	const { value, onChange, name } = props
 
 	return (
 		<textarea
-			className={style.question}
+			className={style.answer}
 			onChange={onChange}
 			name={name}
 			value={value || ''}

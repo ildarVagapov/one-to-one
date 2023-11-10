@@ -23,6 +23,8 @@ export const Stack = (props: StackProps) => {
 	)
 		: [];
 
+	console.log(onChange)
+
 	return (
 		<>
 			<div className={style.stack}>
