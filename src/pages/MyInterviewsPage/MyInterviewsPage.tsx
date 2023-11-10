@@ -1,5 +1,5 @@
 import { Statistic } from "./components/Statistic/Statistic"
-import { InterviewsModal, InterviewsTabs } from "feature/index"
+import { InterviewsModal, InterviewsTabs, QuestionModal } from "feature/index"
 
 export const MyInterviewsPage = () => {
 
@@ -10,6 +10,7 @@ export const MyInterviewsPage = () => {
 			<Statistic />
 			<InterviewsTabs />
 			<InterviewsModal />
+			<QuestionModal />
 		</>
 	)
 }

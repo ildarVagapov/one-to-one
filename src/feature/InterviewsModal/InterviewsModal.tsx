@@ -52,75 +52,73 @@ export const InterviewsModal = () => {
 	const dispatch = useDispatch()
 
 	return (
-		<div>
-			<Dialog open={modalState} onClose={() => dispatch(openCloseModal1(false))}>
-				<div className={style.modal}>
-					<Dialog.Panel className={style.modal__body}>
-						<div className={style.modal__item}>
-							<Dialog.Title className={style.modal__title}>Создание собеседования</Dialog.Title>
-							<button className={style.modal__close} onClick={() => dispatch(openCloseModal1(false))}> <FiX /> </button>
+		<Dialog open={modalState} onClose={() => dispatch(openCloseModal1(false))}>
+			<div className={style.modal}>
+				<Dialog.Panel className={style.modal__body}>
+					<div className={style.modal__item}>
+						<Dialog.Title className={style.modal__title}>Создание собеседования</Dialog.Title>
+						<button className={style.modal__close} onClick={() => dispatch(openCloseModal1(false))}> <FiX /> </button>
+					</div>
+					<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+						<div className={style.form__items}>
+							<Controller
+								control={control}
+								name={'date'}
+								rules={{ required: true }}
+								render={({ field: { onChange, value, name }, }) => (
+
+									< DatePicker
+										value={value}
+										onChange={onChange}
+										name={name}
+									/>
+								)}
+							/>
+							<Controller
+								control={control}
+								name={'technology'}
+								rules={{ required: true }}
+								render={({ field: { onChange, value, name }, }) => (
+
+									< Stack
+										value={value}
+										onChange={onChange}
+										name={name}
+									/>
+								)}
+							/>
+							<Controller
+								control={control}
+								name={'time'}
+								rules={{ required: true }}
+								render={({ field: { onChange, value, name }, }) => (
+
+									< Time
+										value={value}
+										onChange={onChange}
+										name={name}
+									/>
+								)}
+							/>
+							<Controller
+								control={control}
+								name={'level'}
+								rules={{ required: true }}
+								render={({ field: { onChange, value, name }, }) => (
+
+									< Level
+										value={value}
+										onChange={onChange}
+										name={name}
+									/>
+								)}
+							/>
 						</div>
-						<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
-							<div className={style.form__items}>
-								<Controller
-									control={control}
-									name={'date'}
-									rules={{ required: true }}
-									render={({ field: { onChange, value, name }, }) => (
-
-										< DatePicker
-											value={value}
-											onChange={onChange}
-											name={name}
-										/>
-									)}
-								/>
-								<Controller
-									control={control}
-									name={'technology'}
-									rules={{ required: true }}
-									render={({ field: { onChange, value, name }, }) => (
-
-										< Stack
-											value={value}
-											onChange={onChange}
-											name={name}
-										/>
-									)}
-								/>
-								<Controller
-									control={control}
-									name={'time'}
-									rules={{ required: true }}
-									render={({ field: { onChange, value, name }, }) => (
-
-										< Time
-											value={value}
-											onChange={onChange}
-											name={name}
-										/>
-									)}
-								/>
-								<Controller
-									control={control}
-									name={'level'}
-									rules={{ required: true }}
-									render={({ field: { onChange, value, name }, }) => (
-
-										< Level
-											value={value}
-											onChange={onChange}
-											name={name}
-										/>
-									)}
-								/>
-							</div>
-							<Button loading={isLoading} disabled={!isValid} text='Сохранить' />
-							{isError && <Error />}
-						</form>
-					</Dialog.Panel>
-				</div>
-			</Dialog >
-		</div >
+						<Button loading={isLoading} disabled={!isValid} text='Сохранить' />
+						{isError && <Error />}
+					</form>
+				</Dialog.Panel>
+			</div>
+		</Dialog >
 	)
 };

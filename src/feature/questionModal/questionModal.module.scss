@@ -1,0 +1,56 @@
+@import "/src/app/styles/vars";
+
+.modal {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba($color: #000000, $alpha: 0.5);
+	// .modal__body
+	&__body {
+		background-color: $colorWhite;
+		border-radius: 10px;
+		padding: 25px 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 380px;
+	}
+	// .modal__item
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 20px;
+		position: relative;
+	}
+	// .modal__close
+	&__close {
+		font-size: 17px;
+		color: $colorGray;
+		position: absolute;
+		right: 0;
+		transition: $transition;
+		&:hover {
+			color: $colorLightGray;
+		}
+	}
+}
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	// .form__items
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-column-gap: 30px;
+		grid-row-gap: 20px;
+		margin-bottom: 30px;
+	}
+}
