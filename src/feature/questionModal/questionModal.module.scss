@@ -27,17 +27,23 @@
 		align-items: center;
 		width: 100%;
 		margin-bottom: 20px;
-		position: relative;
 	}
 	// .modal__close
 	&__close {
 		font-size: 17px;
 		color: $colorGray;
-		position: absolute;
-		right: 0;
 		transition: $transition;
 		&:hover {
 			color: $colorLightGray;
+		}
+	}
+	&__add {
+		color: $colorLightBlue;
+		transition: $transition;
+		cursor: pointer;
+		font-size: 14px;
+		&:hover {
+			color: $colorBlue;
 		}
 	}
 }
@@ -45,10 +51,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
 	// .form__items
 	&__items {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
 		grid-column-gap: 30px;
 		grid-row-gap: 20px;
 		margin-bottom: 30px;
