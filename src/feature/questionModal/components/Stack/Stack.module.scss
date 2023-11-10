@@ -1,7 +1,8 @@
 @import "/src/app/styles/vars";
 
 .stack {
-	width: 100%;
+	width: 100px;
+	margin-bottom: 20px;
 	// .stack__items
 	&__items {
 		position: relative;
@@ -15,8 +16,10 @@
 	// .stack__input
 	&__input {
 		width: 100%;
-		text-align: center;
-		padding-left: 15px;
+		padding-left: 5px;
+		&::placeholder {
+			color: $colorLightGray;
+		}
 	}
 	// .stack__btn
 	&__btn {

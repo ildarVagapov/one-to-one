@@ -6,6 +6,8 @@ import { openCloseModal2 } from "shared/api/baseSlice";
 import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import style from './QuestionModal.module.scss'
 import { Stack } from "./components/Stack/Stack";
+import { QuestionInput } from "./components/Question/QuestionInput";
+import { ResponseInput } from "./components/Response/ResponseInput";
 
 export const QuestionModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm()
@@ -28,6 +30,7 @@ export const QuestionModal = () => {
 					</div>
 					<form className={style.form}>
 						<div className={style.form__items}>
+							<ResponseInput />
 							<Controller
 								control={control}
 								name={'technology'}
@@ -41,6 +44,7 @@ export const QuestionModal = () => {
 									/>
 								)}
 							/>
+							<QuestionInput />
 						</div>
 						<Button text="Сохранить" />
 					</form>

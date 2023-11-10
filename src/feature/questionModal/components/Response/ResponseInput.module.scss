@@ -1,0 +1,14 @@
+@import "/src/app/styles/vars";
+
+.response {
+	border: 1px solid $colorLightGray;
+	border-radius: 5px;
+	height: 80px;
+	width: 100%;
+	padding: 10px 5px;
+	resize: none;
+	margin-bottom: 15px;
+	&::placeholder {
+		color: $colorLightGray;
+	}
+}
