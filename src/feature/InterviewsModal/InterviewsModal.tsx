@@ -11,11 +11,12 @@ import { useCreateInterviewMutation } from "./api/interviewsModalApi";
 import { FormData } from "./model/types";
 import { useDispatch, useSelector } from "react-redux";
 import { openCloseModal1 } from "shared/api/baseSlice";
+import { useEffect } from "react";
 
 
 export const InterviewsModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm<FormData>()
-	const [createInterview, { isError, isLoading }] = useCreateInterviewMutation()
+	const [createInterview, { isError, isLoading, isSuccess }] = useCreateInterviewMutation()
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		reset()
@@ -40,6 +41,12 @@ export const InterviewsModal = () => {
 
 		createInterview(userData)
 	}
+
+	useEffect(() => {
+		if (isSuccess) {
+			dispatch(openCloseModal1(false));
+		}
+	}, [isSuccess])
 
 	const modalState = useSelector((state: any) => state.baseSlice.modalState1)
 	const dispatch = useDispatch()
