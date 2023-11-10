@@ -1,35 +1,37 @@
-import { Dialog } from "@headlessui/react";
-import { FiX } from "react-icons/fi";
-import { Button, Error } from "shared/components";
-import { useDispatch, useSelector } from "react-redux";
-import { openCloseModal1, openCloseModal2 } from "shared/api/baseSlice";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+// import { Dialog } from "@headlessui/react";
+// import { FiX } from "react-icons/fi";
+// import { Button, Error } from "shared/components";
+// import { useDispatch, useSelector } from "react-redux";
+// import { openCloseModal1, openCloseModal2 } from "shared/api/baseSlice";
+// import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 
-export const InterviewsModal = () => {
-	const { handleSubmit, control, reset, formState: { isValid } } = useForm()
+// export const InterviewsModal = () => {
+// 	const { handleSubmit, control, reset, formState: { isValid } } = useForm()
+// 	const modalState = useSelector((state: any) => state.baseSlice.modalState2)
 
-	const onSubmit: SubmitHandler<FieldValues> = (data) => {
-		reset()
-	}
+// 	const dispatch = useDispatch()
 
-	const modalState = useSelector((state: any) => state.baseSlice.modalState2)
-	const dispatch = useDispatch()
+// 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
+// 		reset()
+// 	}
 
-	return (
-		<div>
-			<Dialog open={modalState} onClose={() => dispatch(openCloseModal2(false))}>
-				<div >
-					<Dialog.Panel >
-						<div >
-							<Dialog.Title>Создание собеседования</Dialog.Title>
-							<button onClick={() => dispatch(openCloseModal2(false))}> <FiX /> </button>
-						</div>
-						<form >
-						</form>
-					</Dialog.Panel >
-				</div >
-			</Dialog >
-		</div >
-	)
-};
+
+
+// 	return (
+// 		<div>
+// 			<Dialog open={modalState} onClose={() => dispatch(openCloseModal2(false))}>
+// 				<div >
+// 					<Dialog.Panel >
+// 						<div >
+// 							<Dialog.Title>Создание собеседования</Dialog.Title>
+// 							<button onClick={() => dispatch(openCloseModal2(false))}> <FiX /> </button>
+// 						</div>
+// 						<form >
+// 						</form>
+// 					</Dialog.Panel >
+// 				</div >
+// 			</Dialog >
+// 		</div >
+// 	)
+// };
