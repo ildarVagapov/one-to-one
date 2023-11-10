@@ -30,7 +30,6 @@ export const QuestionModal = () => {
 					</div>
 					<form className={style.form}>
 						<div className={style.form__items}>
-							<ResponseInput />
 							<Controller
 								control={control}
 								name={'technology'}
@@ -44,6 +43,7 @@ export const QuestionModal = () => {
 									/>
 								)}
 							/>
+							<ResponseInput />
 							<QuestionInput />
 						</div>
 						<Button text="Сохранить" />

@@ -3,11 +3,11 @@
 .response {
 	border: 1px solid $colorLightGray;
 	border-radius: 5px;
-	height: 80px;
+	height: 60px;
 	width: 100%;
 	padding: 10px 5px;
 	resize: none;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	&::placeholder {
 		color: $colorLightGray;
 	}

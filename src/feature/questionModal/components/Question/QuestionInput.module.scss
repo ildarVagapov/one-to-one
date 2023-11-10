@@ -3,10 +3,10 @@
 .question {
 	border: 1px solid $colorLightGray;
 	border-radius: 5px;
-	height: 200px;
+	height: 150px;
 	width: 100%;
 	padding: 10px 5px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	resize: none;
 	&::placeholder {
 		color: $colorLightGray;
