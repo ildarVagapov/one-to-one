@@ -38,8 +38,7 @@ export const InterviewsModal = () => {
 			dateTime: formattedDateTime,
 			levelId: data.level.id,
 		};
-
-		createInterview(userData)
+		createInterview(userData);
 	}
 
 	useEffect(() => {
