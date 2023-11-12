@@ -4,7 +4,7 @@ const baseSlice = createSlice({
 	name: 'base',
 	initialState: {
 		modalState1: false,
-		modalState2: false
+		modalState2: true
 	},
 	reducers: {
 		openCloseModal1: (state, action) => {

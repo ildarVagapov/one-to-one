@@ -7,11 +7,12 @@ interface ButtonProps {
 	disabled?: boolean,
 	btn?: string,
 	loading?: boolean,
-	type?: string
+	type?: string,
+	onClick?: () => void
 }
 
 export const Button = (props: ButtonProps) => {
-	const { text, disabled, loading, btn, type } = props
+	const { text, onClick, disabled, loading, btn, type } = props
 
 	const btnClass = classNames(
 		styles.button,
@@ -25,7 +26,7 @@ export const Button = (props: ButtonProps) => {
 
 	return (
 		<>
-			<button disabled={disabled || loading} className={btnClass}>{loading ? <Loader /> : `${text}`}</button >
+			<button onClick={onClick} disabled={disabled || loading} className={btnClass}>{loading ? <Loader /> : `${text}`}</button >
 		</>
 	)
 }

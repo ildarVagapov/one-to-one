@@ -14,63 +14,38 @@ import { FormDataQuestion, IQuestion } from "./model/types";
 
 export const QuestionModal = () => {
 	const [questionsList, setQuestionsList] = useState<IQuestion[]>([]);
-	const { handleSubmit, control, reset, formState: { isValid }, getValues } = useForm()
+	const { handleSubmit, control, reset, formState: { isValid }, getValues, trigger } = useForm()
 	const modalState = useSelector((state: any) => state.baseSlice.modalState2)
 	const [addQuestion, { isError, isLoading, isSuccess }] = useAddQuestionMutation()
 
 	const dispatch = useDispatch()
 
-	const onSubmit: SubmitHandler<FieldValues> = (data) => {
+
+	const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+
 		const formDataQuestion: FormDataQuestion = data as FormDataQuestion;
 
-		// const bodyQuestion = {
-		// 	userId: 1,
-		// 	questions: questionsList.concat([
-		// 		{
-		// 			question: formDataQuestion.question,
-		// 			answer: formDataQuestion.answer,
-		// 			technologyId: formDataQuestion.technology.id,
-		// 			userId: 1
-		// 		}
-		// 	])
-		// }
-
-		// setQuestionsList((prevList) => [
-		// 	...prevList,
-		// 	{
-		// 		question: formDataQuestion.question,
-		// 		answer: formDataQuestion.answer,
-		// 		technologyId: formDataQuestion.technology.id,
-		// 		userId: 1
-		// 	}
-		// ])
-
-		// addQuestion({
-		// 	userId: 1,
-		// 	questions: [
-		// 		...questionsList,
-		// 		{
-		// 			question: formDataQuestion.question,
-		// 			answer: formDataQuestion.answer,
-		// 			technologyId: formDataQuestion.technology.id,
-		// 			userId: 1
-		// 		}
-		// 	]
-		// });
-
-		console.log({
-			userId: 1,
-			questions: [
-				...questionsList,
-				{
-					question: formDataQuestion.question,
-					answer: formDataQuestion.answer,
-					technologyId: formDataQuestion.technology.id,
-					userId: 1
-				}
-			]
-		})
-		reset()
+		if (questionsList.length > 0 && isValid) {
+			await addQuestion({
+				userId: 1,
+				questions: [
+					...questionsList,
+					{
+						question: formDataQuestion.question,
+						answer: formDataQuestion.answer,
+						technologyId: formDataQuestion.technology?.id,
+						userId: 1
+					}
+				]
+			});
+		} else if (questionsList.length > 0 && !isValid) {
+			await addQuestion({
+				userId: 1,
+				questions: questionsList
+			});
+		}
+		reset();
+		setQuestionsList([]);
 	};
 
 	const addOneMoreQuestionHandler = () => {
@@ -157,7 +132,7 @@ export const QuestionModal = () => {
 								)}
 							/>
 						</div>
-						<Button loading={isLoading} text="Сохранить" disabled={!isValid} />
+						<Button onClick={async () => { await trigger(); await onSubmit(getValues()); }} loading={isLoading} text="Сохранить" disabled={questionsList.length === 0 && !isValid} />
 						{isError && <Error />}
 					</form>
 				</Dialog.Panel >
