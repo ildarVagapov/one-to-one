@@ -27,6 +27,7 @@
 		align-items: center;
 		width: 100%;
 		margin-bottom: 20px;
+		position: relative;
 	}
 	// .modal__close
 	&__close {
@@ -41,10 +42,23 @@
 		color: $colorLightBlue;
 		transition: $transition;
 		cursor: pointer;
-		font-size: 14px;
+		font-size: 16px;
 		&:hover {
 			color: $colorBlue;
 		}
+	}
+	&__tooltip {
+		position: absolute;
+		background-color: $colorYellow;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		top: 10px;
+		font-size: 10px;
+		padding-top: 1px;
+	}
+	&__added {
+		position: relative;
 	}
 }
 .form {

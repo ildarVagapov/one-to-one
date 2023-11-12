@@ -1,15 +1,15 @@
 import { Dialog } from "@headlessui/react";
+import { useEffect, useState } from "react";
+import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FiPlusCircle, FiX } from "react-icons/fi";
-import { Button, Error } from "shared/components";
 import { useDispatch, useSelector } from "react-redux";
 import { openCloseModal2 } from "shared/api/baseSlice";
-import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import style from './QuestionModal.module.scss'
-import { Stack } from "./components/Stack/Stack";
-import { QuestionInput } from "./components/Question/QuestionInput";
-import { Answer } from "./components/Answer/Answer";
-import { useEffect, useState } from "react";
+import { Button, Error } from "shared/components";
+import style from './QuestionModal.module.scss';
 import { useAddQuestionMutation } from "./api/questionModalApi";
+import { Answer } from "./components/Answer/Answer";
+import { QuestionInput } from "./components/Question/QuestionInput";
+import { Stack } from "./components/Stack/Stack";
 import { FormDataQuestion, IQuestion } from "./model/types";
 
 export const QuestionModal = () => {
@@ -57,6 +57,7 @@ export const QuestionModal = () => {
 		// 		}
 		// 	]
 		// });
+
 		console.log({
 			userId: 1,
 			questions: [
@@ -108,7 +109,10 @@ export const QuestionModal = () => {
 			<div className={style.modal}>
 				<Dialog.Panel className={style.modal__body}>
 					<div className={style.modal__item}>
-						<FiPlusCircle className={style.modal__add} onClick={addOneMoreQuestionHandler} />
+						<button disabled={!isValid} className={style.modal__added}>
+							<FiPlusCircle className={style.modal__add} onClick={addOneMoreQuestionHandler} />
+							<span className={style.modal__tooltip}>{questionsList.length}</span>
+						</button>
 						<button className={style.modal__close} onClick={() => dispatch(openCloseModal2(false))}> <FiX /> </button>
 					</div>
 					<form onSubmit={handleSubmit(onSubmit)} className={style.form}>
