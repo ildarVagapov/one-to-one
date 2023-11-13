@@ -24,6 +24,7 @@
 }
 
 .loading {
+	cursor: not-allowed;
 	background-color: $colorLightBlue;
 	&:hover {
 		background-color: $colorLightBlue;

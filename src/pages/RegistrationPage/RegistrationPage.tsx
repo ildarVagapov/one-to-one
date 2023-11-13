@@ -5,17 +5,28 @@ import { useRegistrationMutation } from "./api/registrationApi";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { arrReg } from "./consts/constRegistration";
 import { UserRegistrationData } from "./model/types";
+import { useEffect } from "react";
 
 
 export const RegistrationPage = () => {
 	const [registration, { isError, isLoading, isSuccess }] = useRegistrationMutation();
-	const { handleSubmit, control, reset, formState: { errors } } = useForm<UserRegistrationData>()
+	const { handleSubmit, control, reset, formState: { errors, isValid } } = useForm<UserRegistrationData>()
 
 	const onSubmit: SubmitHandler<UserRegistrationData> = (data) => {
-		registration(data);
-		reset()
-		console.log(data)
+
+		const body = {
+			email: data.email,
+			password: data.password,
+			name: data.name,
+			surName: data.surName,
+		};
+		registration(body);
+		console.log(body)
 	};
+
+	useEffect(() => {
+		isSuccess && reset()
+	}, [isSuccess])
 
 	return (
 		<section className={style.registration}>
@@ -46,7 +57,7 @@ export const RegistrationPage = () => {
 										/>)}
 								/>
 							))}
-							<Button type='fill' loading={isLoading} text="Войти" />
+							<Button disabled={!isValid} type='fill' loading={isLoading} text="Зарегистрироваться" />
 						</form>
 						<p className={style.registration__info}>Есть аккаунт ? <Link to='/auth'>Войти</Link></p>
 						{isError && <Error />}

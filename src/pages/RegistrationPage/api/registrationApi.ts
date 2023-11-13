@@ -8,7 +8,7 @@ export const registrationApi = baseApi.injectEndpoints({
 			query: (userData) => ({
 				url: '/user/register',
 				method: 'POST',
-				body: userData,
+				body: { ...userData },
 			}),
 		}),
 	}),
