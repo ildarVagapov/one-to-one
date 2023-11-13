@@ -2,8 +2,8 @@ import { Dialog } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FiPlusCircle, FiX } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
-import { openCloseModal2 } from "shared/api/baseSlice";
+import { useDispatch } from "react-redux";
+import { modalState2, openCloseModal2 } from "shared/api/modalSlice";
 import { Button, Error } from "shared/components";
 import style from './QuestionModal.module.scss';
 import { useAddQuestionMutation } from "./api/questionModalApi";
@@ -15,9 +15,7 @@ import { FormDataQuestion, IQuestion } from "./model/types";
 export const QuestionModal = () => {
 	const [questionsList, setQuestionsList] = useState<IQuestion[]>([]);
 	const { handleSubmit, control, reset, formState: { isValid }, getValues, trigger } = useForm()
-	const modalState = useSelector((state: any) => state.baseSlice.modalState2)
 	const [addQuestion, { isError, isLoading, isSuccess }] = useAddQuestionMutation()
-
 	const dispatch = useDispatch()
 
 
@@ -80,7 +78,7 @@ export const QuestionModal = () => {
 
 
 	return (
-		<Dialog open={modalState} onClose={() => dispatch(openCloseModal2(false))}>
+		<Dialog open={modalState2} onClose={() => dispatch(openCloseModal2(false))}>
 			<div className={style.modal}>
 				<Dialog.Panel className={style.modal__body}>
 					<div className={style.modal__item}>

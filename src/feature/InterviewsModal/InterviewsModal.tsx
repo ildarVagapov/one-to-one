@@ -9,8 +9,8 @@ import { Controller, FieldValues, SubmitHandler, useForm } from "react-hook-form
 import { Button, Error } from "shared/components";
 import { useCreateInterviewMutation } from "./api/interviewsModalApi";
 import { FormData } from "./model/types";
-import { useDispatch, useSelector } from "react-redux";
-import { openCloseModal1 } from "shared/api/baseSlice";
+import { useDispatch } from "react-redux";
+import { modalState2, openCloseModal1 } from "shared/api/modalSlice";
 import { useEffect } from "react";
 
 
@@ -47,11 +47,10 @@ export const InterviewsModal = () => {
 		}
 	}, [isSuccess])
 
-	const modalState = useSelector((state: any) => state.baseSlice.modalState1)
 	const dispatch = useDispatch()
 
 	return (
-		<Dialog open={modalState} onClose={() => dispatch(openCloseModal1(false))}>
+		<Dialog open={modalState2} onClose={() => dispatch(openCloseModal1(false))}>
 			<div className={style.modal}>
 				<Dialog.Panel className={style.modal__body}>
 					<div className={style.modal__item}>

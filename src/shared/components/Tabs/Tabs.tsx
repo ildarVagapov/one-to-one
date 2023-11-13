@@ -3,7 +3,7 @@ import style from "./Tabs.module.scss"
 import { FiPlusCircle } from "react-icons/fi"
 import { TabsProps } from "./model/types"
 import { useDispatch } from "react-redux"
-import { openCloseModal1, openCloseModal2 } from "shared/api/baseSlice"
+import { openCloseModal1, openCloseModal2 } from "shared/api/modalSlice"
 
 
 export const Tabs = (props: TabsProps) => {
