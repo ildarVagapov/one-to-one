@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 import { RootState } from "./store";
 
 
@@ -20,7 +19,7 @@ const modalSlice = createSlice({
 })
 
 export const { openCloseModal1, openCloseModal2 } = modalSlice.actions;
-export default modalSlice.reducer;
+export const modalReducer = modalSlice.reducer;
 
-export const modalState2 = useSelector((state: RootState) => state.modalSlice.modalState2)
-export const modalState1 = useSelector((state: RootState) => state.modalSlice.modalState1)
+export const modalState2 = (state: RootState) => state.modal.modalState2
+export const modalState1 = (state: RootState) => state.modal.modalState1
