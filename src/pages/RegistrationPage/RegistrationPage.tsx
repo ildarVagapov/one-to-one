@@ -12,16 +12,10 @@ export const RegistrationPage = () => {
 	const [registration, { isError, isLoading, isSuccess }] = useRegistrationMutation();
 	const { handleSubmit, control, reset, formState: { errors, isValid } } = useForm<UserRegistrationData>()
 
-	const onSubmit: SubmitHandler<UserRegistrationData> = (data) => {
+	const onSubmit: SubmitHandler<UserRegistrationData> = ({ email, password, name, surName }) => {
+		const registrationData = { email, password, name, surName, }
 
-		const body = {
-			email: data.email,
-			password: data.password,
-			name: data.name,
-			surName: data.surName,
-		};
-		registration(body);
-		console.log(body)
+		registration(registrationData);
 	};
 
 	useEffect(() => {
