@@ -13,16 +13,23 @@ export const AuthPage = () => {
 	const { handleSubmit, control, formState: { errors, isValid } } = useForm<UserAuthData>()
 	const navigate = useNavigate()
 
-	const onSubmit: SubmitHandler<UserAuthData> = (authData) => {
-		auth(authData);
-		console.log(authData)
+	const onSubmit: SubmitHandler<UserAuthData> = async (authData) => {
+
+		try {
+			const userData = await auth(authData).unwrap();
+			localStorage.setItem('access', JSON.stringify(userData.jwtToken));
+			localStorage.setItem('id', JSON.stringify(userData.id));
+		} catch (error) {
+			console.error("Ошибка при аутентификации:", error);
+		}
 	};
+
 
 	useEffect(() => {
 		if (isSuccess) {
 			const timeoutId = setTimeout(() => {
 				navigate('/')
-			}, 2000)
+			}, 1800)
 			return () => clearTimeout(timeoutId)
 		}
 	}, [isSuccess])

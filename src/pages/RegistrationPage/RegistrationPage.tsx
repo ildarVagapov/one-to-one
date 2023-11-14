@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 export const RegistrationPage = () => {
 	const [registration, { isError, isLoading, isSuccess }] = useRegistrationMutation();
-	const { handleSubmit, control, reset, formState: { errors, isValid } } = useForm<UserRegistrationData>()
+	const { handleSubmit, control, formState: { errors, isValid } } = useForm<UserRegistrationData>()
 
 	const onSubmit: SubmitHandler<UserRegistrationData> = ({ email, password, name, surName }) => {
 		const registrationData = { email, password, name, surName, }
@@ -18,9 +18,6 @@ export const RegistrationPage = () => {
 		registration(registrationData);
 	};
 
-	useEffect(() => {
-		isSuccess && reset()
-	}, [isSuccess])
 
 	return (
 		<section className={style.registration}>

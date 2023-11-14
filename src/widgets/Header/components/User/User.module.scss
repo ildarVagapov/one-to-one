@@ -25,7 +25,7 @@
 		border-radius: 100%;
 	}
 	&__out {
-		margin-left: 5px;
+		margin-left: 15px;
 		margin-top: 2px;
 		transition: $transition;
 		font-size: 20px;
@@ -33,6 +33,21 @@
 		cursor: pointer;
 		&:hover {
 			color: $colorGray;
+		}
+	}
+	& button {
+		position: relative;
+		&:hover {
+			&::before {
+				content: "Выйти";
+				background-color: $colorLightBlue;
+				position: absolute;
+				color: $colorWhite;
+				padding: 5px 10px;
+				border-radius: 5px;
+				top: 30px;
+				left: 15px;
+			}
 		}
 	}
 }

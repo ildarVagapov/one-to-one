@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import style from "./User.module.scss";
 import { FiLogOut } from "react-icons/fi"
 
 export const User = () => {
+	const navigate = useNavigate()
 
 	const user = [
 		{
@@ -11,6 +13,12 @@ export const User = () => {
 		}
 	]
 
+	const OutClick = () => {
+		localStorage.removeItem('id')
+		localStorage.removeItem('access')
+		navigate('/auth')
+	}
+
 	return (
 		<div className={style.user}>
 			{user.map((user, i) => (
@@ -19,8 +27,9 @@ export const User = () => {
 					<span className={style.user__mail}>{user.email}</span>
 				</div>
 			))}
-			<div className={style.user__img}></div>
-			<FiLogOut className={style.user__out} />
+			<button onClick={OutClick}>
+				<FiLogOut className={style.user__out} />
+			</button>
 		</div>
 	)
 }
