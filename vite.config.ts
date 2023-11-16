@@ -10,6 +10,7 @@ export default defineConfig({
 			"widgets": '/src/widgets',
 			"shared": '/src/shared',
 			"feature": '/src/feature',
+			"entities": '/src/entities',
 		}
 	}
 })

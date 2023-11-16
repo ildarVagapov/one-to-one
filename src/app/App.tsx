@@ -1,14 +1,22 @@
 import { FeedBackPage } from 'pages/FeedbackPage/FeedBackPage'
 import { MyInterviewsPage } from 'pages/MyInterviewsPage/MyInterviewsPage'
 import { RatingPage } from 'pages/RatingPage/RatingPage'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage'
 import { AuthPage } from 'pages/AuthPage/AuthPage'
 import { Layout } from 'shared/components'
-
+import { useEffect } from 'react'
 
 
 export const App = () => {
+
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (localStorage.getItem('access') === null) {
+			navigate('/auth')
+		}
+	}, [navigate]);
 
 	return (
 		<div className='wrapper'>

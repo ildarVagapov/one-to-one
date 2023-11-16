@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import style from './Header.module.scss'
-import { User } from "./components/User/User"
 import { Button } from "shared/components"
+import { User } from "entities/User/User"
 
 
 export const Header = () => {
