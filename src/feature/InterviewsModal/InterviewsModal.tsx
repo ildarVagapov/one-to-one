@@ -12,6 +12,7 @@ import { FormData } from "./model/types";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { modalState1, openCloseModal1 } from "../../shared/api/modalSlice";
+import { userId } from "shared/api/userIdSlice";
 
 
 export const InterviewsModal = () => {
@@ -25,14 +26,14 @@ export const InterviewsModal = () => {
 		const hours = parseInt(timeParts[0], 10);
 		const minutes = parseInt(timeParts[1], 10);
 
+
 		const dateTime = new Date(data.date);
 		dateTime.setHours(hours);
 		dateTime.setMinutes(minutes);
-
 		const formattedDateTime = dateTime.toISOString();
 
 		const userData = {
-			initiatorId: 1,
+			initiatorId: useSelector(userId),
 			comment: '',
 			technologyId: data.technology.id,
 			dateTime: formattedDateTime,

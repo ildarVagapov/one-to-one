@@ -19,6 +19,7 @@ export const AuthPage = () => {
 			const userData = await auth(authData).unwrap();
 			localStorage.setItem('access', JSON.stringify(userData.jwtToken))
 			localStorage.setItem('id', JSON.stringify(userData.id))
+
 		} catch (error) {
 			console.error("Ошибка при аутентификации:", error);
 		}
