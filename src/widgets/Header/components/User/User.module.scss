@@ -26,18 +26,14 @@
 	}
 	&__out {
 		margin-left: 15px;
-		margin-top: 2px;
+		margin-top: 5px;
 		transition: $transition;
-		font-size: 20px;
 		color: $colorLightGray;
 		cursor: pointer;
+		position: relative;
+		font-size: 25px;
 		&:hover {
 			color: $colorGray;
-		}
-	}
-	& button {
-		position: relative;
-		&:hover {
 			&::before {
 				content: "Выйти";
 				background-color: $colorLightBlue;
@@ -47,6 +43,7 @@
 				border-radius: 5px;
 				top: 30px;
 				left: 15px;
+				font-size: 15px;
 			}
 		}
 	}

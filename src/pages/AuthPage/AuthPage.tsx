@@ -17,8 +17,8 @@ export const AuthPage = () => {
 
 		try {
 			const userData = await auth(authData).unwrap();
-			localStorage.setItem('access', JSON.stringify(userData.jwtToken));
-			localStorage.setItem('id', JSON.stringify(userData.id));
+			localStorage.setItem('access', JSON.stringify(userData.jwtToken))
+			localStorage.setItem('id', JSON.stringify(userData.id))
 		} catch (error) {
 			console.error("Ошибка при аутентификации:", error);
 		}
@@ -29,7 +29,7 @@ export const AuthPage = () => {
 		if (isSuccess) {
 			const timeoutId = setTimeout(() => {
 				navigate('/')
-			}, 1800)
+			}, 1500)
 			return () => clearTimeout(timeoutId)
 		}
 	}, [isSuccess])

@@ -5,7 +5,6 @@ import { useRegistrationMutation } from "./api/registrationApi";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { arrReg } from "./consts/constRegistration";
 import { UserRegistrationData } from "./model/types";
-import { useEffect } from "react";
 
 
 export const RegistrationPage = () => {
@@ -14,7 +13,6 @@ export const RegistrationPage = () => {
 
 	const onSubmit: SubmitHandler<UserRegistrationData> = ({ email, password, name, surName }) => {
 		const registrationData = { email, password, name, surName, }
-
 		registration(registrationData);
 	};
 

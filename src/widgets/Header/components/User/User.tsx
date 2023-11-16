@@ -13,7 +13,7 @@ export const User = () => {
 		}
 	]
 
-	const OutClick = () => {
+	const outClick = () => {
 		localStorage.removeItem('id')
 		localStorage.removeItem('access')
 		navigate('/auth')
@@ -27,8 +27,8 @@ export const User = () => {
 					<span className={style.user__mail}>{user.email}</span>
 				</div>
 			))}
-			<button onClick={OutClick}>
-				<FiLogOut className={style.user__out} />
+			<button className={style.user__out} onClick={outClick}>
+				<FiLogOut />
 			</button>
 		</div>
 	)
