@@ -12,7 +12,7 @@ export const User = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-	const { data, isLoading, isError } = useGetUserIdQuery(localStorage.getItem('id'))
+	const { data, isLoading } = useGetUserIdQuery(localStorage.getItem('id'))
 
 	const outClick = () => {
 		localStorage.removeItem('id')
@@ -23,8 +23,6 @@ export const User = () => {
 	useEffect(() => {
 		if (data) {
 			dispatch(setUserId(data.id))
-		} else {
-			console.error(isError)
 		}
 	}, [data])
 

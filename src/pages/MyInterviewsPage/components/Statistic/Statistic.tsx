@@ -1,31 +1,36 @@
+import { useSelector } from 'react-redux';
+import { useGetStatisticQuery } from '../api/statisticApi';
 import style from './Statistic.module.scss'
 import { FiStar } from "react-icons/fi";
+import { userId } from 'shared/api/userIdSlice';
 
 export const Statistic = () => {
 
-	const data = [
+	const { data, isSuccess } = useGetStatisticQuery(useSelector(userId))
+
+	const dataArr = [
 		{
 			title: 'Оценки пользователей',
-			count: '4.4',
+			count: 0,
 			icon: true,
 		},
 		{
 			title: 'Пройдено собеседований',
-			count: '3',
+			count: isSuccess ? data?.totalOneToOneCount : 0,
 		},
 		{
 			title: 'Набрано баллов',
-			count: '2',
+			count: isSuccess ? data?.totalPoint : 0,
 		},
 		{
 			title: 'Задано вопросов',
-			count: '2',
+			count: isSuccess ? data?.totalQuestionCount : 0,
 		},
 	];
 
 	return (
 		<div className={style.statistic}>
-			{data.map((item, index) => (
+			{dataArr.map((item, index) => (
 				<div key={index} className={style.statistic__items}>
 					<div className={style.statistic__subtitle}>{item.title}</div>
 					<div className={style.statistic__item}>

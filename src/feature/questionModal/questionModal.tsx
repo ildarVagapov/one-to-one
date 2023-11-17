@@ -11,6 +11,7 @@ import { QuestionInput } from "./components/Question/QuestionInput";
 import { Stack } from "./components/Stack/Stack";
 import { FormDataQuestion, IQuestion } from "./model/types";
 import { modalState2, openCloseModal2 } from "shared/api/modalSlice";
+import { userId } from "shared/api/userIdSlice";
 
 export const QuestionModal = () => {
 	const [questionsList, setQuestionsList] = useState<IQuestion[]>([]);
@@ -26,20 +27,20 @@ export const QuestionModal = () => {
 
 		if (questionsList.length > 0 && isValid) {
 			await addQuestion({
-				userId: 1,
+				userId: useSelector(userId),
 				questions: [
 					...questionsList,
 					{
 						question: formDataQuestion.question,
 						answer: formDataQuestion.answer,
 						technologyId: formDataQuestion.technology?.id,
-						userId: 1
+						userId: useSelector(userId)
 					}
 				]
 			});
 		} else if (questionsList.length > 0 && !isValid) {
 			await addQuestion({
-				userId: 1,
+				userId: useSelector(userId),
 				questions: questionsList
 			});
 		}
@@ -63,7 +64,7 @@ export const QuestionModal = () => {
 				question: question,
 				answer: answer,
 				technologyId: technologyId,
-				userId: 1
+				userId: useSelector(userId)
 			}
 		]);
 

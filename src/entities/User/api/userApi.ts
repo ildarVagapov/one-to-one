@@ -1,10 +1,10 @@
 import { baseApi } from "shared/api/baseApi";
-import { userData } from "shared/types/user";
+import { User } from "shared/types/user";
 
 
 const userApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getUserId: builder.query<userData, string | null>({
+		getUserId: builder.query<User, string | null>({
 			query: (id) => `/user/${id}`,
 		})
 	})
