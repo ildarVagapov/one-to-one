@@ -1,4 +1,4 @@
-export { Input } from './Input/Input'
+export { Input } from './input/Input'
 export { Layout } from './Layout/Layout'
 export { Logo } from './Logo/Logo'
 export { Button } from './Button/Button'
