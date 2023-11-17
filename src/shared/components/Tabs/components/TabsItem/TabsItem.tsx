@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-
+import style from './TabsItem.module.scss'
 
 
 interface IData {
@@ -16,7 +16,7 @@ export const TabsItem = (props: TabsItemProps) => {
 	const { children, data } = props
 
 	return (
-		<div className="tabs">
+		<div className={style.tabs}>
 			<>
 				{data.map((item, i) => (
 					<div key={i}>{item.title}</div>

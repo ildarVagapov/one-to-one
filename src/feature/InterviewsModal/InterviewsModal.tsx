@@ -18,6 +18,9 @@ import { userId } from "shared/api/userIdSlice";
 export const InterviewsModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm<FormData>()
 	const [createInterview, { isError, isLoading, isSuccess }] = useCreateInterviewMutation()
+	const stateModal = useSelector(modalState1)
+	const id = useSelector(userId)
+	const dispatch = useDispatch()
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		reset()
@@ -26,14 +29,13 @@ export const InterviewsModal = () => {
 		const hours = parseInt(timeParts[0], 10);
 		const minutes = parseInt(timeParts[1], 10);
 
-
 		const dateTime = new Date(data.date);
 		dateTime.setHours(hours);
 		dateTime.setMinutes(minutes);
 		const formattedDateTime = dateTime.toISOString();
 
 		const userData = {
-			initiatorId: useSelector(userId),
+			initiatorId: id,
 			comment: '',
 			technologyId: data.technology.id,
 			dateTime: formattedDateTime,
@@ -42,7 +44,7 @@ export const InterviewsModal = () => {
 		createInterview(userData);
 	}
 
-	const stateModal = useSelector(modalState1)
+
 
 	useEffect(() => {
 		if (isSuccess) {
@@ -50,7 +52,7 @@ export const InterviewsModal = () => {
 		}
 	}, [isSuccess])
 
-	const dispatch = useDispatch()
+
 
 	return (
 		<Dialog open={stateModal} onClose={() => dispatch(openCloseModal1(false))}>

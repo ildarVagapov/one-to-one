@@ -19,33 +19,32 @@ export const QuestionModal = () => {
 	const [addQuestion, { isError, isLoading, isSuccess }] = useAddQuestionMutation()
 	const stateModa2 = useSelector(modalState2)
 	const dispatch = useDispatch()
-
+	const id = useSelector(userId)
 
 	const onSubmit: SubmitHandler<FieldValues> = async (data) => {
 
 		const formDataQuestion: FormDataQuestion = data as FormDataQuestion;
 
-		if (questionsList.length > 0 && isValid) {
+		if (questionsList.length === 0 && isValid) {
 			await addQuestion({
-				userId: useSelector(userId),
+				userId: id,
 				questions: [
 					...questionsList,
 					{
 						question: formDataQuestion.question,
 						answer: formDataQuestion.answer,
 						technologyId: formDataQuestion.technology?.id,
-						userId: useSelector(userId)
+						userId: id
 					}
 				]
 			});
 		} else if (questionsList.length > 0 && !isValid) {
 			await addQuestion({
-				userId: useSelector(userId),
+				userId: id,
 				questions: questionsList
 			});
 		}
-		reset();
-		setQuestionsList([]);
+
 	};
 
 	const addOneMoreQuestionHandler = () => {
@@ -64,7 +63,7 @@ export const QuestionModal = () => {
 				question: question,
 				answer: answer,
 				technologyId: technologyId,
-				userId: useSelector(userId)
+				userId: id
 			}
 		]);
 
@@ -73,8 +72,9 @@ export const QuestionModal = () => {
 
 	useEffect(() => {
 		if (isSuccess) {
+			reset();
+			setQuestionsList([]);
 			dispatch(openCloseModal2(false));
-			setQuestionsList([])
 		}
 	}, [isSuccess])
 
@@ -133,7 +133,7 @@ export const QuestionModal = () => {
 								)}
 							/>
 						</div>
-						<Button onClick={async () => { await trigger(); await onSubmit(getValues()); }} loading={isLoading} text="Сохранить" disabled={questionsList.length === 0 && !isValid} />
+						<Button onClick={async () => { await trigger(); await onSubmit(getValues()); }} loading={isLoading} text="Сохранить" disabled={!isValid && questionsList.length === 0} />
 						{isError && <Error />}
 					</form>
 				</Dialog.Panel >
