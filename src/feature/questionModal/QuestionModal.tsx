@@ -108,11 +108,11 @@ export const QuestionModal = () => {
 							/>
 							<Controller
 								control={control}
-								name={'answer'}
+								name={'question'}
 								rules={{ required: true }}
 								render={({ field: { onChange, value, name }, }) => (
 
-									<Answer
+									<QuestionInput
 										value={value}
 										onChange={onChange}
 										name={name}
@@ -121,11 +121,11 @@ export const QuestionModal = () => {
 							/>
 							<Controller
 								control={control}
-								name={'question'}
+								name={'answer'}
 								rules={{ required: true }}
 								render={({ field: { onChange, value, name }, }) => (
 
-									<QuestionInput
+									<Answer
 										value={value}
 										onChange={onChange}
 										name={name}

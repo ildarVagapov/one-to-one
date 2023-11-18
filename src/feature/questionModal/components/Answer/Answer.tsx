@@ -15,7 +15,7 @@ export const Answer = (props: AnswerTypeProps) => {
 			onChange={onChange}
 			name={name}
 			value={value || ''}
-			placeholder="Вопрос"
+			placeholder="Ответ"
 		/>
 	)
 }

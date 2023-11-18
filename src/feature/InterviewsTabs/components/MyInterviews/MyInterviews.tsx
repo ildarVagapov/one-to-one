@@ -3,10 +3,14 @@ import style from "./MyInterviews.module.scss"
 import { TabsFilter } from "shared/components/Tabs/components/TabsFiter/TabsFilter"
 import { StatusButton } from "shared/components/Tabs/components/StatusButton/StatusButton"
 import { TabsButton } from "shared/components/Tabs/components/TabsButton/TabsButton"
-import { TabsItem } from "shared/components/Tabs/components/TabsItem/TabsItem"
+import { useGetMyInterviewsTabInfoQuery } from "feature/InterviewsTabs/api/myInterviewsTabApi"
+import { useGetUserIdQuery } from "shared/api/userApi"
 
 
 export const MyInterviews = () => {
+	const { data } = useGetMyInterviewsTabInfoQuery()
+	const opponentId = data?.items.map(item => item.initiatorId)
+	const { data: user } = useGetUserIdQuery(opponentId)
 
 	const filters = [
 		{ id: 1, title: 'Дата, время' },
@@ -16,21 +20,22 @@ export const MyInterviews = () => {
 		{ id: 6, title: 'Фитбэк' },
 		{ id: 7, title: 'Статус' },
 	]
-	const data = [
-		{ id: 1, title: '03.02.2023 10:00 MSK' },
-		{ id: 2, title: 'Python' },
-		{ id: 3, title: 'Виктор Иванов' },
-		{ id: 5, title: 'Middle' },
-	]
 
 	return (
 		<div className={style.interviews}>
 			<TabsFilter filters={filters} />
 			<div className={style.content}>
-				<TabsItem data={data} >
-					<Link to='/feed-back' ><TabsButton text='Подробнее' /> </Link>
-					<StatusButton text='Откликнуться' />
-				</TabsItem>
+				{data?.items.map((item, i) => (
+					<ul key={i} className={style.items}>
+						<li>{item.dateTime}</li>
+						<li>{item.technology.name}</li>
+						<li>{item.opponentId}</li>
+						<li>{item.level}</li>
+						<li>{item.status}</li>
+						<Link to='/feed-back' ><TabsButton text='Подробнее' /> </Link>
+						<StatusButton text='Откликнуться' />
+					</ul>
+				))}
 			</div>
 		</div>
 	)

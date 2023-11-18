@@ -6,6 +6,7 @@
 	border: solid 1px $colorLightGray;
 	border-radius: 10px;
 	height: 500px;
+	overflow: auto;
 	// .content__items
 	&__items {
 		display: flex;
@@ -39,4 +40,15 @@
 			border-bottom-right-radius: 5px;
 		}
 	}
+}
+
+.items {
+	display: flex;
+	align-items: center;
+	min-height: 37px;
+	border: 1px solid $colorLightGray;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	padding: 0 15px;
+	justify-content: space-around;
 }
