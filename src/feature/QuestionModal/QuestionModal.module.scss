@@ -1,0 +1,73 @@
+@import "/src/app/styles/vars";
+
+.modal {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba($color: #000000, $alpha: 0.5);
+	// .modal__body
+	&__body {
+		background-color: $colorWhite;
+		border-radius: 10px;
+		padding: 25px 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 600px;
+	}
+	// .modal__item
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 20px;
+		position: relative;
+	}
+	// .modal__close
+	&__close {
+		font-size: 17px;
+		color: $colorGray;
+		transition: $transition;
+		&:hover {
+			color: $colorLightGray;
+		}
+	}
+	&__add {
+		color: $colorLightBlue;
+		transition: $transition;
+		cursor: pointer;
+		font-size: 16px;
+		&:hover {
+			color: $colorBlue;
+		}
+	}
+	&__tooltip {
+		position: absolute;
+		background-color: $colorYellow;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		top: 10px;
+		font-size: 10px;
+		padding-top: 1px;
+	}
+	&__added {
+		position: relative;
+	}
+}
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	// .form__items
+	&__items {
+		width: 100%;
+	}
+}
