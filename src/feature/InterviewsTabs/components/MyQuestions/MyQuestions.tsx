@@ -1,9 +1,8 @@
 import { useGetMyQuestionTabInfoQuery } from "feature/InterviewsTabs/api/myQuestionTabApiInfo"
 import { useSelector } from "react-redux"
 import { userId } from "shared/api/userIdSlice"
-import { TabsFilter } from "shared/components/Tabs/components/TabsFiter/TabsFilter"
 import style from './MyQuestion.module.scss'
-import { useEffect, useState } from "react"
+import { Suspense, useEffect } from "react"
 
 interface MyQuestionType {
 	totalItems: number
@@ -24,43 +23,26 @@ interface Technology {
 }
 
 export const MyQuestions = () => {
-	const { data } = useGetMyQuestionTabInfoQuery(useSelector(userId))
-	const [question, setQuestion] = useState<MyQuestionType | null>(null);
+	const { data, isLoading } = useGetMyQuestionTabInfoQuery(useSelector(userId))
 
 	useEffect(() => {
-		if (data) {
-			setQuestion(data)
-		}
 		console.log(data, 'data изменилась')
 	}, [data])
-
-	const filters = [
-		{ id: 1, title: 'Список вопросов' },
-		{ id: 2, title: 'Стэк' },
-	]
 
 
 	return (
 		<div className={style.question}>
-			{/* <TabsFilter filters={filters} /> */}
-
-			<ul className={style.filter}>
-				{filters.map(filter => (
-					<li>{filter.title}</li>
-				))}
-			</ul>
-			<div className={style.content}>
-				{question?.items.length === 0 ?
-					<div>у вас пока не вопросов</div>
-					:
-					question?.items.map((item, i) => (
+			<Suspense fallback={isLoading && <p>загрузка</p>}>
+				<div className={style.content}>
+					{data?.items.map((item, i) => (
 						<ul key={i} className={style.items}>
 							<li>{item.question}</li>
 							<li>{item.technology.name}</li>
 						</ul>
 					))}
-			</div>
-		</div>
+				</div>
+			</Suspense>
+		</div >
 	)
 }
 
