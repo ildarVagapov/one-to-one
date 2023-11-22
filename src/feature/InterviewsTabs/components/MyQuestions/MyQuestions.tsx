@@ -4,23 +4,6 @@ import { userId } from "shared/api/userIdSlice"
 import style from './MyQuestion.module.scss'
 import { Suspense, useEffect } from "react"
 
-interface MyQuestionType {
-	totalItems: number
-	items: Item[]
-}
-
-interface Item {
-	id: number
-	question: string
-	answer: string
-	technology: Technology
-	userId: number
-}
-
-interface Technology {
-	id: number
-	name: string
-}
 
 export const MyQuestions = () => {
 	const { data, isLoading } = useGetMyQuestionTabInfoQuery(useSelector(userId))

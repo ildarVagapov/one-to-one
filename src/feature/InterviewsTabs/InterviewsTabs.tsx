@@ -15,8 +15,8 @@ export const InterviewsTabs = () => {
 
 	const tabs = [
 		{ id: 1, title: `Мои собеседования (${dataInterviews?.totalItems})`, component: <MyInterviews />, popap: true },
-		{ id: 2, title: 'Поиск собеседований', component: <SearchInterviews />, },
-		{ id: 3, title: `Мои вопросы (${dataQuestion?.totalItems})`, component: <MyQuestions />, popap: true },
+		{ id: 2, title: `Мои вопросы (${dataQuestion?.totalItems})`, component: <MyQuestions />, popap: true },
+		{ id: 3, title: 'Поиск собеседований', component: <SearchInterviews />, },
 		{ id: 4, title: 'Моя статистика', component: <MyStatistics />, },
 	]
 
