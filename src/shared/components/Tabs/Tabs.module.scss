@@ -12,6 +12,7 @@
 		button {
 			width: 100%;
 			min-height: 39px;
+			padding: 5px 10px;
 			transition: $transition;
 			border-right: 1px solid $colorLightGray;
 			border-bottom: 1px solid $colorLightGray;
@@ -40,8 +41,8 @@
 }
 
 .icon {
-	position: absolute;
-	right: 20px;
+	margin-left: 10px;
+	// margin-right: 10px;
 	color: $colorLightBlue;
 	transition: $transition;
 	&:hover {

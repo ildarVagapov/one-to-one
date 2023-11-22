@@ -26,8 +26,8 @@ interface Technology {
 
 const myInterviewsTabApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getMyInterviewsTabInfo: builder.query<MyInterviewsType, void>({
-			query: () => `/one-to-one`
+		getMyInterviewsTabInfo: builder.query<MyInterviewsType, number>({
+			query: (id) => `/one-to-one/user/${id}`
 		})
 	})
 })

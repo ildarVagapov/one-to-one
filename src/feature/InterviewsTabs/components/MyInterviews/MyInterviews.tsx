@@ -1,17 +1,14 @@
-import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 import style from "./MyInterviews.module.scss"
-import { TabsFilter } from "shared/components/Tabs/components/TabsFiter/TabsFilter"
-import { StatusButton } from "shared/components/Tabs/components/StatusButton/StatusButton"
-import { TabsButton } from "shared/components/Tabs/components/TabsButton/TabsButton"
 import { useGetMyInterviewsTabInfoQuery } from "feature/InterviewsTabs/api/myInterviewsTabApi"
-import { useGetUserIdQuery } from "shared/api/userApi"
+import { userId } from "shared/api/userIdSlice"
+import { Link, useNavigate } from "react-router-dom"
+import { Button } from "shared/components"
 
 
 export const MyInterviews = () => {
-	const { data } = useGetMyInterviewsTabInfoQuery()
-	const opponentId = data?.items.map(item => item.initiatorId)
-	const { data: user } = useGetUserIdQuery(opponentId)
-
+	const { data } = useGetMyInterviewsTabInfoQuery(useSelector(userId))
+	const navigate = useNavigate()
 	const filters = [
 		{ id: 1, title: 'Дата, время' },
 		{ id: 2, title: 'Стэк' },
@@ -21,19 +18,19 @@ export const MyInterviews = () => {
 		{ id: 7, title: 'Статус' },
 	]
 
+	const handleFeedback = () => {
+		navigate('/feed-back')
+	}
+
 	return (
 		<div className={style.interviews}>
-			<TabsFilter filters={filters} />
 			<div className={style.content}>
 				{data?.items.map((item, i) => (
 					<ul key={i} className={style.items}>
 						<li>{item.dateTime}</li>
 						<li>{item.technology.name}</li>
-						<li>{item.opponentId}</li>
 						<li>{item.level}</li>
-						<li>{item.status}</li>
-						<Link to='/feed-back' ><TabsButton text='Подробнее' /> </Link>
-						<StatusButton text='Откликнуться' />
+						<Button type="border" text="Подробнее" disabled={item.initiatorFeedback === 'NO_WRITE'} onClick={handleFeedback} />
 					</ul>
 				))}
 			</div>

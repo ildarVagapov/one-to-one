@@ -1,0 +1,54 @@
+@import "/src/app/styles/vars";
+
+.content {
+	padding: 11px;
+	justify-items: center;
+	border: solid 1px $colorLightGray;
+	border-radius: 10px;
+	height: 500px;
+	overflow: auto;
+	// .content__items
+	&__items {
+		display: flex;
+		justify-content: space-around;
+		min-height: 35px;
+		justify-items: center;
+		border: solid 1px $colorLightGray;
+		border-radius: 5px;
+		background-color: #fff;
+		margin: 0 auto;
+		position: relative;
+		align-items: center;
+		&::after {
+			content: "";
+			width: 5px;
+			height: 100%;
+			background-color: $colorBlue;
+			position: absolute;
+			left: 0;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+		&::before {
+			content: "";
+			width: 5px;
+			height: 100%;
+			background-color: $colorBlue;
+			position: absolute;
+			right: 0;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+	}
+}
+
+.items {
+	display: flex;
+	align-items: center;
+	min-height: 37px;
+	border: 1px solid $colorLightGray;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	padding: 0 15px;
+	justify-content: space-around;
+}

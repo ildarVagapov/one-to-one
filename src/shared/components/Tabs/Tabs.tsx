@@ -15,7 +15,7 @@ export const Tabs = (props: TabsProps) => {
 	const handleModal = (popapId: number) => {
 		if (popapId === 1) {
 			dispatch(openCloseModal1(true))
-		} else if (popapId === 2) {
+		} else if (popapId === 4) {
 			dispatch(openCloseModal2(true))
 		}
 	}

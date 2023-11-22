@@ -42,3 +42,23 @@
 	font-size: $textLh14;
 	width: 100%;
 }
+
+.border {
+	background-color: inherit;
+	color: $colorLightGreen;
+	border: 1px solid $colorLightGreen;
+	&:hover {
+		color: $colorGreen;
+		border: 1px solid $colorGreen;
+	}
+}
+
+.disabledBorder {
+	border: 1px solid $colorLightGray;
+	color: $colorLightGray;
+	&:hover {
+		color: $colorLightGray;
+		border: 1px solid $colorLightGray;
+		background-color: inherit;
+	}
+}

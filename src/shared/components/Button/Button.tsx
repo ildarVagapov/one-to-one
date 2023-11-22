@@ -21,6 +21,8 @@ export const Button = (props: ButtonProps) => {
 			[styles.fill]: type === 'fill',
 			[styles.loading]: loading,
 			[styles.disabled]: disabled,
+			[styles.border]: type === 'border',
+			[styles.disabledBorder]: disabled && type === 'border',
 		}
 	);
 
