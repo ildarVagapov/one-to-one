@@ -1,4 +1,3 @@
-import { StatusButton } from "shared/components/Tabs/components/StatusButton/StatusButton"
 import { useGetSearchInterviewsQuery } from "./api/searchInterviewsApi"
 import style from './SearchInterviews.module.scss'
 import { userId } from "shared/api/userIdSlice"
@@ -21,7 +20,7 @@ export const SearchInterviews = () => {
 							<li>{item.technology.name}</li>
 							<li>{item.opponentId}</li>
 							<li>{item.level}</li>
-							<StatusButton text='Откликнуться' />
+							{/* <StatusButton text='Откликнуться' /> */}
 						</ul>
 					))}
 				</div >

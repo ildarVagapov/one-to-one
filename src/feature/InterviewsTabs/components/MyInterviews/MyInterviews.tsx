@@ -4,20 +4,12 @@ import { useGetMyInterviewsTabInfoQuery } from "feature/InterviewsTabs/api/myInt
 import { userId } from "shared/api/userIdSlice"
 import { Button } from "shared/components"
 import { useNavigate } from "react-router-dom"
+import { Status } from "./components/Status"
 
 
 export const MyInterviews = () => {
 	const { data } = useGetMyInterviewsTabInfoQuery(useSelector(userId))
 	const navigate = useNavigate()
-
-	const filters = [
-		{ id: 1, title: 'Дата, время' },
-		{ id: 2, title: 'Стэк' },
-		{ id: 3, title: 'Оппонент' },
-		{ id: 5, title: 'Уровень' },
-		{ id: 6, title: 'Фитбэк' },
-		{ id: 7, title: 'Статус' },
-	]
 
 	return (
 		<div className={style.interviews}>
@@ -28,7 +20,7 @@ export const MyInterviews = () => {
 						<li>{item.technology.name}</li>
 						<li>{item.level}</li>
 						<Button type="border" text="Подробнее" disabled={item.initiatorFeedback === 'NO_WRITE'} onClick={() => navigate('/feed-back')} />
-						<li>{item.status}</li>
+						<Status status={item.status} />
 					</ul>
 				))}
 			</div>
