@@ -2,13 +2,14 @@ import { useSelector } from "react-redux"
 import style from "./MyInterviews.module.scss"
 import { useGetMyInterviewsTabInfoQuery } from "feature/InterviewsTabs/api/myInterviewsTabApi"
 import { userId } from "shared/api/userIdSlice"
-import { Link, useNavigate } from "react-router-dom"
 import { Button } from "shared/components"
+import { useNavigate } from "react-router-dom"
 
 
 export const MyInterviews = () => {
 	const { data } = useGetMyInterviewsTabInfoQuery(useSelector(userId))
 	const navigate = useNavigate()
+
 	const filters = [
 		{ id: 1, title: 'Дата, время' },
 		{ id: 2, title: 'Стэк' },
@@ -18,10 +19,6 @@ export const MyInterviews = () => {
 		{ id: 7, title: 'Статус' },
 	]
 
-	const handleFeedback = () => {
-		navigate('/feed-back')
-	}
-
 	return (
 		<div className={style.interviews}>
 			<div className={style.content}>
@@ -30,7 +27,8 @@ export const MyInterviews = () => {
 						<li>{item.dateTime}</li>
 						<li>{item.technology.name}</li>
 						<li>{item.level}</li>
-						<Button type="border" text="Подробнее" disabled={item.initiatorFeedback === 'NO_WRITE'} onClick={handleFeedback} />
+						<Button type="border" text="Подробнее" disabled={item.initiatorFeedback === 'NO_WRITE'} onClick={() => navigate('/feed-back')} />
+						<li>{item.status}</li>
 					</ul>
 				))}
 			</div>

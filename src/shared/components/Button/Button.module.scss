@@ -49,6 +49,8 @@
 	border: 1px solid $colorLightGreen;
 	&:hover {
 		color: $colorGreen;
+		background-color: inherit;
+
 		border: 1px solid $colorGreen;
 	}
 }
