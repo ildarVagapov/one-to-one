@@ -1,4 +1,4 @@
-import { useGetMyQuestionTabInfoQuery } from "feature/InterviewsTabs/api/myQuestionTabApiInfo"
+import { useGetMyQuestionTabInfoQuery } from "feature/InterviewsTabs/components/MyQuestion/api/myQuestionTabApiInfo"
 import { useSelector } from "react-redux"
 import { userId } from "shared/api/userIdSlice"
 import style from './MyQuestion.module.scss'

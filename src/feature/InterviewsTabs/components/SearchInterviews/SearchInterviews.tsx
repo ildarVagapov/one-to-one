@@ -7,12 +7,12 @@ import { SearchInterviewItem } from "./components/SearchInterviewsItem"
 
 
 export const SearchInterviews = () => {
-	const { data } = useGetSearchInterviewsQuery();
+	const { data, isLoading } = useGetSearchInterviewsQuery();
 	const id = useSelector(userId);
 
 	return (
 		<div className={style.search}>
-			<Suspense fallback={<p>Loading...</p>}>
+			<Suspense fallback={isLoading && <p>Loading...</p>}>
 				<div className={style.content}>
 					{data?.items.map((item, i) => (
 						id !== item.initiatorId && (

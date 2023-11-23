@@ -8,27 +8,3 @@
 	height: 500px;
 	overflow: auto;
 }
-
-.items {
-	display: flex;
-	align-items: center;
-	min-height: 37px;
-	border: 1px solid $colorLightGray;
-	margin-bottom: 5px;
-	border-radius: 5px;
-	padding: 0 15px;
-	justify-content: space-between;
-}
-
-.btn {
-	border: 1px solid $colorLightBlue;
-	color: $colorLightBlue;
-	border-radius: 5px;
-	min-height: 25px;
-	min-width: 139px;
-	transition: $transition;
-	&:hover {
-		color: $colorBlue;
-		border: 1px solid $colorBlue;
-	}
-}

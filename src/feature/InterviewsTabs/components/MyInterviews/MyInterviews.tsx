@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import style from "./MyInterviews.module.scss"
-import { useGetMyInterviewsTabInfoQuery } from "feature/InterviewsTabs/api/myInterviewsTabApi"
+import { useGetMyInterviewsTabInfoQuery } from "feature/InterviewsTabs/components/MyInterviews/api/myInterviewsTabApi"
 import { userId } from "shared/api/userIdSlice"
 import { Button } from "shared/components"
 import { useNavigate } from "react-router-dom"

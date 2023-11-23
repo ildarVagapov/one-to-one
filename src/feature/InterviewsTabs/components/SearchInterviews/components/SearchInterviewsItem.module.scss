@@ -1,23 +1,31 @@
 @import "/src/app/styles/vars";
 
 .items {
-	display: flex;
-	align-items: center;
 	min-height: 37px;
 	border: 1px solid $colorLightGray;
 	margin-bottom: 5px;
 	border-radius: 5px;
 	padding: 0 15px;
+	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	& li {
+		text-align: left;
+		min-width: 150px;
+	}
 }
 
 .btn {
 	border: 1px solid $colorLightBlue;
+	padding: 2px 5px;
 	color: $colorLightBlue;
 	border-radius: 5px;
 	min-height: 25px;
-	min-width: 139px;
+	width: 140px;
 	transition: $transition;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	&:hover {
 		color: $colorBlue;
 		border: 1px solid $colorBlue;
