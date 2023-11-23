@@ -1,27 +1,10 @@
 import { baseApi } from "shared/api/baseApi";
-
-interface MyQuestionType {
-	totalItems: number
-	items: Item[]
-}
-
-interface Item {
-	id: number
-	question: string
-	answer: string
-	technology: Technology
-	userId: number
-}
-
-interface Technology {
-	id: number
-	name: string
-}
+import { IQuestions } from "shared/types/IQuestions";
 
 
 const myQuestionTabApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getMyQuestionTabInfo: builder.query<MyQuestionType, number>({
+		getMyQuestionTabInfo: builder.query<IQuestions, number>({
 			query: (userId) => `/user/${userId}/question`
 		})
 	})

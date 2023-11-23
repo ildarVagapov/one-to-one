@@ -7,21 +7,17 @@ import { useGetMyQuestionTabInfoQuery } from "./api/myQuestionTabApiInfo"
 import { useSelector } from "react-redux"
 import { userId } from "shared/api/userIdSlice"
 import { MyQuestions } from "./components/MyQuestion/MyQuestions"
-import { StudiesInterviews } from "./components/StudiesInterviews/StudiesInterviews"
-import { CompletedInterviews } from "./components/CompletedInterviews copy/CompletedInterviews"
 
 
 export const InterviewsTabs = () => {
-	const { data: dataInterviews } = useGetMyInterviewsTabInfoQuery(useSelector(userId))
-	const { data: dataQuestion } = useGetMyQuestionTabInfoQuery(useSelector(userId))
+	const { data: dataInterviews, isSuccess: successInterv } = useGetMyInterviewsTabInfoQuery(useSelector(userId))
+	const { data: dataQuestion, isSuccess: successQuest } = useGetMyQuestionTabInfoQuery(useSelector(userId))
 
 	const tabs = [
-		{ id: 1, title: `Мои собеседования (${dataInterviews?.totalItems})`, component: <MyInterviews />, popap: true },
-		{ id: 2, title: `Пройденные (0)`, component: <CompletedInterviews />, },
-		{ id: 3, title: `Проведенные (0)`, component: <StudiesInterviews /> },
-		{ id: 4, title: `Мои вопросы (${dataQuestion?.totalItems})`, component: <MyQuestions />, popap: true },
-		{ id: 5, title: 'Поиск собеседований', component: <SearchInterviews />, },
-		{ id: 6, title: 'Моя статистика', component: <MyStatistics />, },
+		{ id: 1, title: `Мои собеседования (${successInterv ? dataInterviews?.totalItems : 0})`, component: <MyInterviews />, popap: true },
+		{ id: 2, title: 'Поиск собеседований', component: <SearchInterviews />, },
+		{ id: 3, title: `Мои вопросы (${successQuest ? dataQuestion?.totalItems : 0})`, component: <MyQuestions />, popap: true },
+		{ id: 4, title: 'Моя статистика', component: <MyStatistics />, },
 	]
 
 	return (

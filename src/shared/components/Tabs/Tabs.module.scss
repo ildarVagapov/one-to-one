@@ -41,7 +41,9 @@
 }
 
 .icon {
-	margin-left: 10px;
+	// margin-left: 10px;
+	position: absolute;
+	right: 15px;
 	// margin-right: 10px;
 	color: $colorLightBlue;
 	transition: $transition;

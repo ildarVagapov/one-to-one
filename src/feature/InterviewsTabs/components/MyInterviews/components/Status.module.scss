@@ -1,0 +1,13 @@
+@import "../../../../../app/styles/vars";
+
+.open {
+	display: flex;
+	gap: 5px;
+	color: $colorLightBlue;
+}
+
+.close {
+	display: flex;
+	gap: 5px;
+	color: $colorLightGreen;
+}

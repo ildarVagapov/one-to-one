@@ -20,7 +20,7 @@ export const MyQuestions = () => {
 					{data?.items.map((item, i) => (
 						<ul key={i} className={style.items}>
 							<li>{item.question}</li>
-							<li>{item.technology.name}</li>
+							<li>{item.technology?.name}</li>
 						</ul>
 					))}
 				</div>

@@ -3,28 +3,25 @@ import style from './SearchInterviews.module.scss'
 import { userId } from "shared/api/userIdSlice"
 import { useSelector } from "react-redux"
 import { Suspense } from "react"
+import { SearchInterviewItem } from "./components/SearchInterviewsItem"
+
 
 export const SearchInterviews = () => {
-	const { data } = useGetSearchInterviewsQuery()
-	const id = useSelector(userId)
+	const { data } = useGetSearchInterviewsQuery();
+	const id = useSelector(userId);
 
 	return (
 		<div className={style.search}>
-			{/* <TabsFilter filters={filters} /> */}
 			<Suspense fallback={<p>Loading...</p>}>
 				<div className={style.content}>
 					{data?.items.map((item, i) => (
-						id !== item.initiatorId &&
-						<ul key={i} className={style.items} >
-							<li>{item.dateTime}</li>
-							<li>{item.technology.name}</li>
-							<li>{item.opponentId}</li>
-							<li>{item.level}</li>
-							{/* <StatusButton text='Откликнуться' /> */}
-						</ul>
+						id !== item.initiatorId && (
+							<SearchInterviewItem key={i} item={item} userId={id} />
+						)
 					))}
-				</div >
+				</div>
 			</Suspense>
-		</div >
-	)
-}
+		</div>
+	);
+};
+

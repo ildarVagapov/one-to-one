@@ -1,5 +1,6 @@
 import { baseApi } from "shared/api/baseApi"
-import { AddQuestion, IQuestion } from "../model/types"
+import { AddQuestion } from "../model/types"
+import { IQuestion } from "shared/types/IQuestions"
 
 const questionModalApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({

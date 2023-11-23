@@ -1,9 +1,9 @@
 import { baseApi } from "shared/api/baseApi";
-import { User } from "shared/types/user";
+import { IUser } from "shared/types/IUser";
 
 interface StatisticData {
 	id: number
-	user: User
+	user: IUser
 	totalOneToOneCount: number
 	totalQuestionCount: number
 	totalPoint: number

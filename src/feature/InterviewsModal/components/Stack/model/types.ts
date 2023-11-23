@@ -1,7 +1,5 @@
-export interface ITechnology {
-	id?: number;
-	name: string;
-}
+import { ITechnology } from "shared/types/ITechnology";
+
 export interface ITechnologyResponse {
 	totalItems: number;
 	items: ITechnology[];

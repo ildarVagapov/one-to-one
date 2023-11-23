@@ -1,18 +1,5 @@
-import { ITechnology } from "../components/Stack/model/types";
+import { ITechnology } from "shared/types/ITechnology";
 
-export interface IInterviewItem {
-	id: number;
-	initiatorId: number;
-	opponentId: number | null;
-	technology: {
-		id: number;
-		name: string;
-	};
-	dateTime: string;
-	status: string;
-	comment: string;
-	level: string;
-}
 export interface ICreateInterview {
 	technologyId: number | undefined;
 	dateTime: string | undefined;
