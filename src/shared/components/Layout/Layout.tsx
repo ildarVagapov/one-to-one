@@ -1,7 +1,15 @@
 import { Header } from "widgets/Header/Header"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 export const Layout = () => {
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (localStorage.getItem('id') === null) {
+			navigate('/auth')
+		}
+	}, [])
 
 	return (
 		<>
