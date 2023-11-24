@@ -22,6 +22,7 @@
 	border: 1px solid $colorLightGray;
 	border-radius: 5px;
 	height: 40px;
+	position: relative;
 	& input {
 		border-radius: 5px;
 		padding: 0 5px;
@@ -38,4 +39,7 @@
 .icon {
 	opacity: 0.5;
 	font-size: 17px;
+	position: absolute;
+	right: 7px;
+	top: 12px;
 }
