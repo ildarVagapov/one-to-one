@@ -25,7 +25,6 @@ export const AuthPage = () => {
 		}
 	};
 
-
 	useEffect(() => {
 		if (isSuccess) {
 			const timeoutId = setTimeout(() => {
@@ -33,7 +32,10 @@ export const AuthPage = () => {
 			}, 1500)
 			return () => clearTimeout(timeoutId)
 		}
+
 	}, [isSuccess])
+
+
 
 	return (
 		<section className={style.auth}>
@@ -66,7 +68,7 @@ export const AuthPage = () => {
 							))}
 							<Button type='fill' disabled={!isValid} loading={isLoading} text="Войти" />
 						</form>
-						<p className={style.auth__info}>Нет аккаунта ? <Link to='/registration'>Зарегистрироваться</Link> </p>
+						<p className={style.auth__info}  >Нет аккаунта ? <Link to='/registration'>Зарегистрироваться</Link> </p>
 						{isError && <Error />}
 					</>
 				}

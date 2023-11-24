@@ -13,10 +13,10 @@ export const App = () => {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (localStorage.getItem('access') === null) {
+		if (localStorage.getItem('id') === null) {
 			navigate('/auth')
 		}
-	}, [navigate]);
+	}, [])
 
 	return (
 		<div className='wrapper'>
