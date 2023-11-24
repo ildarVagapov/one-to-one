@@ -14,14 +14,12 @@ export const SearchInterviews = () => {
 		<div className={style.search}>
 			<Suspense fallback={isLoading && <p>Loading...</p>}>
 				<div className={style.content}>
-					{data?.items.map((item, i) => (
-						id !== item.initiatorId && (
-							<SearchInterviewItem key={i} item={item} userId={id} />
-						)
+					{data?.items.filter(item => item.initiatorId !== id).map((item, i) => (
+						<SearchInterviewItem key={i} item={item} userId={id} />
 					))}
 				</div>
 			</Suspense>
 		</div>
-	);
-};
+	)
+}
 
