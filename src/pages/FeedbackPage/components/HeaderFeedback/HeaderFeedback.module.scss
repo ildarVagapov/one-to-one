@@ -6,9 +6,13 @@
 	border-bottom: 1px solid $colorGray;
 	padding: 20px 0;
 	margin-bottom: 30px;
-	&__item {
+	& li {
 		gap: 5px;
 		display: flex;
 		align-items: center;
+		& span {
+			color: $colorLightBlue;
+			font-size: 14px;
+		}
 	}
 }

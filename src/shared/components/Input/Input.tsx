@@ -15,7 +15,6 @@ interface InputProps {
 
 export const Input = (props: InputProps) => {
 	const { label, type, name, value, onChange, errors } = props;
-
 	const [visible, setVisible] = useState(false)
 
 	return (
