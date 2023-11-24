@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Combobox } from '@headlessui/react'
 import { FiChevronDown } from "react-icons/fi"
 import style from './Stack.module.scss'
-import { ITechnology } from './model/types'
 import { useStackQuery } from './api/stackApi'
+import { ITechnology } from 'shared/types/ITechnology'
 
 interface StackProps {
 	value?: ITechnology[],

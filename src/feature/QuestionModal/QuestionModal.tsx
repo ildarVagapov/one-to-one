@@ -9,9 +9,10 @@ import { useAddQuestionMutation } from "./api/questionModalApi";
 import { Answer } from "./components/Answer/Answer";
 import { QuestionInput } from "./components/Question/QuestionInput";
 import { Stack } from "./components/Stack/Stack";
-import { FormDataQuestion, IQuestion } from "./model/types";
+import { FormDataQuestion, } from "./model/types";
 import { modalState2, openCloseModal2 } from "shared/api/modalSlice";
 import { userId } from "shared/api/userIdSlice";
+import { IQuestion } from "shared/types/IQuestions";
 
 export const QuestionModal = () => {
 	const [questionsList, setQuestionsList] = useState<IQuestion[]>([]);
