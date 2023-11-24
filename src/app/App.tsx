@@ -1,4 +1,4 @@
-import { FeedBackPage } from 'pages/FeedbackPage/FeedBackPage'
+import { FeedbackPage } from 'pages/FeedbackPage/FeedbackPage'
 import { MyInterviewsPage } from 'pages/MyInterviewsPage/MyInterviewsPage'
 import { RatingPage } from 'pages/RatingPage/RatingPage'
 import { Routes, Route } from 'react-router-dom'
@@ -17,7 +17,7 @@ export const App = () => {
 				<Route path='/' element={<Layout />}>
 					<Route index element={< MyInterviewsPage />} />
 					<Route path='/rating' element={< RatingPage />} />
-					<Route path='/feed-back' element={< FeedBackPage />} />
+					<Route path='/feed-back' element={< FeedbackPage />} />
 				</Route>
 			</Routes>
 		</div>

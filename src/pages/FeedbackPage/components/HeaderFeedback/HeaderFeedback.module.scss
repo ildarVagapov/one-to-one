@@ -1,0 +1,14 @@
+@import "/src/app/styles/vars";
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid $colorGray;
+	padding: 20px 0;
+	margin-bottom: 30px;
+	&__item {
+		gap: 5px;
+		display: flex;
+		align-items: center;
+	}
+}
