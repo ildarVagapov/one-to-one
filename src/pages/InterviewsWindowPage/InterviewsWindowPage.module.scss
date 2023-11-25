@@ -1,0 +1,17 @@
+@import "../../app/styles/vars.scss";
+
+.interview {
+	display: flex;
+	gap: 0 20px;
+}
+
+.items {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+}
+
+.accordeon {
+	border: 1px solid $colorGray;
+	border-radius: 5px;
+}
