@@ -14,24 +14,23 @@ export const InterviewsWindowPage = () => {
 			<div>
 				поиск вопросов
 			</div>
-			<div>
-				<header>header</header>
+			<div className={style.content}>
+				<header className={style.header}>header</header>
+
 				<div className={style.items}>
 					{data?.items.map((item, i) => (
-						<>
-							<Disclosure >
-								<div className={style.accordeon}>
-									<Disclosure.Button >
-										{item.technology?.name}
-										{item.question}
-										<FiChevronUp />
-									</Disclosure.Button>
-									<Disclosure.Panel >
-										{item.answer}
-									</Disclosure.Panel>
-								</div>
-							</Disclosure>
-						</>
+						<Disclosure key={i}>
+							<div className={style.accordeon}>
+								<Disclosure.Button >
+									{item.technology?.name}
+									{item.question}
+									<FiChevronUp />
+								</Disclosure.Button>
+								<Disclosure.Panel >
+									{item.answer}
+								</Disclosure.Panel>
+							</div>
+						</Disclosure>
 					))}
 				</div>
 			</div>
