@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { baseApi } from './baseApi'
-import { modalReducer } from './modalSlice'
-import { userIdReducer } from './userIdSlice'
+import { baseApi } from '../../shared/api/baseApi'
+import { modalReducer } from '../../shared/api/modalSlice'
+import { userIdReducer } from '../../shared/api/userIdSlice'
 
 
 export const store = configureStore({
