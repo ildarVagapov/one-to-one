@@ -1,0 +1,19 @@
+@import "../../../../../app/styles/vars";
+
+.title {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+.icon {
+	transition: all 0.3s ease-in-out;
+	color: $colorGray;
+	font-size: 20px;
+	&__open {
+		transform: rotate(180deg);
+		transition: all 0.3s ease-in-out;
+	}
+}

@@ -1,12 +1,12 @@
-import { Disclosure } from "@headlessui/react"
 import { useSelector } from "react-redux"
 import { useGetMyQuestionTabInfoQuery } from "shared/api/myQuestionTabApiInfo"
 import { myId } from "shared/api/myIdSlice"
-import { FiChevronUp } from "react-icons/fi"
 import style from './InterviewsWindowPage.module.scss'
 import { FiSearch } from "react-icons/fi"
 import { useState } from "react"
 import { Accordion } from "shared/components"
+import { AccordionTitle } from "shared/components/Accordion/components/AccordionTitle/AccordionTitle"
+import { AccordionBody } from "shared/components/Accordion/components/AccordionBody/AccordionBody"
 
 export const InterviewsWindowPage = () => {
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(useSelector(myId))
@@ -50,7 +50,16 @@ export const InterviewsWindowPage = () => {
 						</Disclosure>
 					))}
 				</div> */}
-				<Accordion />
+
+
+				<Accordion>
+					<AccordionTitle>
+						title
+					</AccordionTitle>
+					<AccordionBody>
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio maiores suscipit obcaecati fugit aspernatur officia, alias itaque natus deserunt provident nobis soluta. Quod, quis placeat vero quia eos doloremque quisquam.
+					</AccordionBody>
+				</Accordion>
 			</div>
 		</section >
 	)

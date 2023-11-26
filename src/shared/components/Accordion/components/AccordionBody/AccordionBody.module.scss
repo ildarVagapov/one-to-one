@@ -1,0 +1,11 @@
+.content {
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	&_open {
+		height: 160px;
+		opacity: 1;
+		overflow: scroll;
+	}
+}
