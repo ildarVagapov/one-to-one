@@ -12,14 +12,6 @@
 	row-gap: 10px;
 }
 
-.accordeon {
-	border: 1px solid $colorLightGray;
-	border-radius: 5px;
-	padding: 10px;
-	display: flex;
-	flex-direction: column;
-}
-
 .content {
 	padding: 20px;
 	width: 100%;
@@ -45,7 +37,7 @@
 	border-radius: 5px;
 	margin-bottom: 20px;
 	min-width: 330px;
-	overflow: scroll;
+	overflow: auto;
 }
 
 .search {
@@ -81,42 +73,4 @@
 	&:hover {
 		box-shadow: $blurShadow;
 	}
-}
-
-.title {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 10px;
-	align-items: center;
-}
-
-.arrow {
-	color: $colorGray;
-	font-size: 20px;
-}
-
-.rotate {
-	transform: rotate(180deg);
-}
-
-.transition-enter {
-	opacity: 0;
-	transform: scale(0.95);
-}
-
-.transition-enter-active {
-	transition: opacity 300ms, transform 300ms;
-	opacity: 1;
-	transform: scale(1);
-}
-
-.transition-exit {
-	opacity: 1;
-	transform: scale(1);
-}
-
-.transition-exit-active {
-	transition: opacity 300ms, transform 300ms;
-	opacity: 0;
-	transform: scale(0.95);
 }
