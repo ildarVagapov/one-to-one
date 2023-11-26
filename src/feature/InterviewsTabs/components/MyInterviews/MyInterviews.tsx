@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux"
 import style from "./MyInterviews.module.scss"
 import { useGetMyInterviewsTabInfoQuery } from "feature/InterviewsTabs/components/MyInterviews/api/myInterviewsTabApi"
-import { userId } from "shared/api/userIdSlice"
+import { myId } from "shared/api/myIdSlice"
 import { Button } from "shared/components"
 import { useNavigate } from "react-router-dom"
 import { Status } from "./components/Status"
 
 
 export const MyInterviews = () => {
-	const { data } = useGetMyInterviewsTabInfoQuery(useSelector(userId))
+	const { data } = useGetMyInterviewsTabInfoQuery(useSelector(myId))
 	const navigate = useNavigate()
 
 	return (

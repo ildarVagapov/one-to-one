@@ -1,12 +1,12 @@
 import { useGetMyQuestionTabInfoQuery } from "shared/api/myQuestionTabApiInfo"
 import { useSelector } from "react-redux"
-import { userId } from "shared/api/userIdSlice"
+import { myId } from "shared/api/myIdSlice"
 import style from './MyQuestion.module.scss'
 import { Suspense, useEffect } from "react"
 
 
 export const MyQuestions = () => {
-	const { data, isLoading } = useGetMyQuestionTabInfoQuery(useSelector(userId))
+	const { data, isLoading } = useGetMyQuestionTabInfoQuery(useSelector(myId))
 
 	useEffect(() => {
 		console.log(data, 'data изменилась')

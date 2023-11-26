@@ -7,12 +7,12 @@ import { Loader } from 'shared/components';
 
 interface ISearchItemProps {
 	item: IItem
-	userId: number
+	myId: number
 }
 
 export const SearchInterviewItem = (props: ISearchItemProps) => {
 	const [respondInterviews, { isLoading, isSuccess, isError }] = useRespondInterviewsMutation()
-	const { item, userId } = props
+	const { item, myId } = props
 	const { data } = useGetUserIdQuery(item.initiatorId)
 
 	return (
@@ -24,7 +24,7 @@ export const SearchInterviewItem = (props: ISearchItemProps) => {
 			<button
 				className={style.btn}
 				onClick={() => respondInterviews({
-					opponentId: userId,
+					opponentId: myId,
 					oneToOneId: item.id,
 				})}
 				disabled={isLoading || isSuccess || isError}

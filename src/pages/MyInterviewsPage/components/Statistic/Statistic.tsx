@@ -2,11 +2,11 @@ import { useSelector } from 'react-redux';
 import { useGetStatisticQuery } from '../api/statisticApi';
 import style from './Statistic.module.scss'
 import { FiStar } from "react-icons/fi";
-import { userId } from 'shared/api/userIdSlice';
+import { myId } from 'shared/api/myIdSlice';
 
 export const Statistic = () => {
 
-	const { data, isSuccess } = useGetStatisticQuery(useSelector(userId))
+	const { data, isSuccess } = useGetStatisticQuery(useSelector(myId))
 
 	const dataArr = [
 		{

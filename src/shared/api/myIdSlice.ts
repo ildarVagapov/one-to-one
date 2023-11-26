@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store/store";
 
 const initialState = {
-	userId: 0,
+	myId: 0,
 };
 
 const userInfoSlice = createSlice({
@@ -10,11 +10,11 @@ const userInfoSlice = createSlice({
 	initialState,
 	reducers: {
 		setUserId: (state, action: PayloadAction<number>) => {
-			state.userId = action.payload;
+			state.myId = action.payload;
 		},
 	},
 });
 
 export const { setUserId } = userInfoSlice.actions;
 export const userIdReducer = userInfoSlice.reducer;
-export const userId = (state: RootState) => state.userId.userId
+export const myId = (state: RootState) => state.myId.myId

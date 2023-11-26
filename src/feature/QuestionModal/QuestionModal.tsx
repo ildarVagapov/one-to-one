@@ -11,7 +11,7 @@ import { QuestionInput } from "./components/Question/QuestionInput";
 import { Stack } from "./components/Stack/Stack";
 import { FormDataQuestion, } from "./model/types";
 import { modalState2, openCloseModal2 } from "shared/api/modalSlice";
-import { userId } from "shared/api/userIdSlice";
+import { myId } from "shared/api/myIdSlice";
 import { IQuestion } from "shared/types/IQuestions";
 
 export const QuestionModal = () => {
@@ -20,7 +20,7 @@ export const QuestionModal = () => {
 	const [addQuestion, { isError, isLoading, isSuccess }] = useAddQuestionMutation()
 	const stateModa2 = useSelector(modalState2)
 	const dispatch = useDispatch()
-	const id = useSelector(userId)
+	const id = useSelector(myId)
 
 	const onSubmit: SubmitHandler<FieldValues> = async (data) => {
 

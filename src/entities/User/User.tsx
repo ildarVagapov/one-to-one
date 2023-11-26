@@ -3,7 +3,7 @@ import style from "./User.module.scss";
 import { FiLogOut } from "react-icons/fi"
 import { useGetUserIdQuery } from "shared/api/userApi";
 import { useEffect } from 'react'
-import { setUserId } from "shared/api/userIdSlice";
+import { setUserId } from "shared/api/myIdSlice";
 import { useDispatch } from "react-redux";
 import { SkeletonUser } from "./components/SkeletonUser";
 

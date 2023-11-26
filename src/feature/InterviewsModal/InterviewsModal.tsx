@@ -12,14 +12,14 @@ import { FormData } from "./model/types";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { modalState1, openCloseModal1 } from "../../shared/api/modalSlice";
-import { userId } from "shared/api/userIdSlice";
+import { myId } from "shared/api/myIdSlice";
 
 
 export const InterviewsModal = () => {
 	const { handleSubmit, control, reset, formState: { isValid } } = useForm<FormData>()
 	const [createInterview, { isError, isLoading, isSuccess }] = useCreateInterviewMutation()
 	const stateModal = useSelector(modalState1)
-	const id = useSelector(userId)
+	const id = useSelector(myId)
 	const dispatch = useDispatch()
 
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {

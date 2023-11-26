@@ -10,6 +10,6 @@ export interface IQuestion {
 	question: string;
 	answer: string;
 	technology?: ITechnology
-	technologyId: number | undefined;
+	technologyId?: number | undefined;
 	userId: number | undefined;
 }
