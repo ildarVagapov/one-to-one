@@ -4,9 +4,7 @@ import { myId } from "shared/api/myIdSlice"
 import style from './InterviewsWindowPage.module.scss'
 import { FiSearch } from "react-icons/fi"
 import { useState } from "react"
-import { Accordion } from "shared/components"
-import { AccordionTitle } from "shared/components/Accordion/components/AccordionTitle/AccordionTitle"
-import { AccordionBody } from "shared/components/Accordion/components/AccordionBody/AccordionBody"
+import { Accordion, AccordionBody, AccordionTitle } from "shared/components"
 
 export const InterviewsWindowPage = () => {
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(useSelector(myId))
@@ -32,34 +30,27 @@ export const InterviewsWindowPage = () => {
 			</div>
 			<div className={style.content}>
 				<header className={style.header}>header</header>
-				{/* <div className={style.items}>
+				<div className={style.items}>
 					{data?.items.map((item, i) => (
-						<Disclosure key={i}>
-							<div className={style.accordion}>
-								<Disclosure.Button >
-									<div className={style.title}>
-										<p className={style.stack}>{item.technology?.name}</p>
-										<p>{item.question}</p>
-										<FiChevronUp className={style.arrow} />
-									</div>
-								</Disclosure.Button>
-								<Disclosure.Panel >
+						<Accordion key={i}>
+							<AccordionTitle id={item.id}>
+								<div className={style.item}>
+									<p className={style.stack}>{item.technology?.name}</p>
+									<p>{item.question}</p>
+								</div>
+								<div className={style.rating}>
+									8888888
+								</div>
+							</AccordionTitle >
+							<AccordionBody id={item.id}>
+								<div className={style.body}>
 									{item.answer}
-								</Disclosure.Panel>
-							</div>
-						</Disclosure>
+									<textarea placeholder="Введите комментарий к ответу" className={style.textarea} ></textarea>
+								</div>
+							</AccordionBody>
+						</Accordion>
 					))}
-				</div> */}
-
-
-				<Accordion>
-					<AccordionTitle>
-						title
-					</AccordionTitle>
-					<AccordionBody>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio maiores suscipit obcaecati fugit aspernatur officia, alias itaque natus deserunt provident nobis soluta. Quod, quis placeat vero quia eos doloremque quisquam.
-					</AccordionBody>
-				</Accordion>
+				</div>
 			</div>
 		</section >
 	)

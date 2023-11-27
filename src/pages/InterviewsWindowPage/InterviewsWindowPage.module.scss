@@ -74,3 +74,32 @@
 		box-shadow: $blurShadow;
 	}
 }
+
+.item {
+	display: flex;
+	column-gap: 40px;
+}
+
+.rating {
+	margin-right: 100px;
+}
+
+.textarea {
+	width: 390px;
+	height: 90px;
+	background-color: inherit;
+	border: 1px solid $colorLightGray;
+	border-radius: 5px;
+	resize: none;
+	padding: 10px 15px;
+	&::placeholder {
+		color: $colorLightGray;
+	}
+}
+
+.body {
+	display: flex;
+	justify-content: space-between;
+	column-gap: 10px;
+	margin-top: 10px;
+}

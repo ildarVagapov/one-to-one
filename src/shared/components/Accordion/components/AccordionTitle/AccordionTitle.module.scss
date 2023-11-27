@@ -1,17 +1,24 @@
 @import "../../../../../app/styles/vars";
 
 .title {
-	cursor: pointer;
 	display: flex;
-	justify-content: space-between;
 	margin-bottom: 10px;
 	align-items: center;
+	position: relative;
+	justify-content: space-between;
 }
 
 .icon {
 	transition: all 0.3s ease-in-out;
 	color: $colorGray;
 	font-size: 20px;
+	position: absolute;
+	right: 0;
+	width: 50px;
+	cursor: pointer;
+	&:hover {
+		color: $colorLightGray;
+	}
 	&__open {
 		transform: rotate(180deg);
 		transition: all 0.3s ease-in-out;
