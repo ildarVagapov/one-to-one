@@ -6,7 +6,7 @@ import { Suspense, useEffect } from "react"
 
 
 export const MyQuestions = () => {
-	const { data, isLoading } = useGetMyQuestionTabInfoQuery(useSelector(myId))
+	const { data, isLoading, isSuccess, isError } = useGetMyQuestionTabInfoQuery(useSelector(myId))
 
 	useEffect(() => {
 		console.log(data, 'data изменилась')
@@ -17,12 +17,14 @@ export const MyQuestions = () => {
 		<div className={style.question}>
 			<Suspense fallback={isLoading && <p>загрузка</p>}>
 				<div className={style.content}>
-					{data?.items.map((item, i) => (
+					{isLoading && <p>Загрузка...</p>}
+					{isSuccess && data?.items.map((item, i) => (
 						<ul key={i} className={style.items}>
 							<li>{item.question}</li>
 							<li>{item.technology?.name}</li>
 						</ul>
 					))}
+					{isError && <p>Произошла ошибка при загрузке вопросов</p>}
 				</div>
 			</Suspense>
 		</div >

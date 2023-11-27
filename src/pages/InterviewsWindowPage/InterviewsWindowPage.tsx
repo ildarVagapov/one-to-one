@@ -4,7 +4,7 @@ import { myId } from "shared/api/myIdSlice"
 import style from './InterviewsWindowPage.module.scss'
 import { FiSearch } from "react-icons/fi"
 import { useState } from "react"
-import { Accordion, AccordionBody, AccordionTitle } from "shared/components"
+import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
 
 export const InterviewsWindowPage = () => {
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(useSelector(myId))
@@ -19,7 +19,7 @@ export const InterviewsWindowPage = () => {
 					<FiSearch className={style.searchIcon} />
 				</div>
 				<div>
-					{isLoading && <p>Loading...</p>}
+					{isLoading && <p>Загрузка...</p>}
 					{isSuccess && data?.items.filter((item) => item.answer.toLowerCase().includes(value?.toLowerCase()) || item.technology?.name.toLowerCase().includes(value?.toLowerCase())).map((item, i) => (
 						<ul key={i} className={style.questionItem}>
 							<li className={style.stack}>{item.technology?.name}</li>
@@ -31,7 +31,8 @@ export const InterviewsWindowPage = () => {
 			<div className={style.content}>
 				<header className={style.header}>header</header>
 				<div className={style.items}>
-					{data?.items.map((item, i) => (
+					{isLoading && <p>Загрузка...</p>}
+					{isSuccess && data?.items.map((item, i) => (
 						<Accordion key={i}>
 							<AccordionTitle id={item.id}>
 								<div className={style.item}>
@@ -44,12 +45,19 @@ export const InterviewsWindowPage = () => {
 							</AccordionTitle >
 							<AccordionBody id={item.id}>
 								<div className={style.body}>
-									{item.answer}
+									<p className={style.answer}>
+										{item.answer}
+									</p>
 									<textarea placeholder="Введите комментарий к ответу" className={style.textarea} ></textarea>
 								</div>
 							</AccordionBody>
 						</Accordion>
 					))}
+					{isError && <p>Произошла ошибка</p>}
+				</div>
+				<div className={style.feedback}>
+					<textarea className={style.feedback__text} placeholder="Общий комментарий к собеседованию"></textarea>
+					<Button text="Сохранить и выйти" />
 				</div>
 			</div>
 		</section >

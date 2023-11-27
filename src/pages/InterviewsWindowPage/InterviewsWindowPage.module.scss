@@ -10,15 +10,18 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
+	overflow: scroll;
+	flex: 1 1 auto;
 }
 
 .content {
-	padding: 20px;
+	padding: 20px 20px 10px;
 	width: 100%;
 	border: 1px solid $colorLightGray;
 	margin-bottom: 20px;
 	border-radius: 5px;
-	overflow: scroll;
+	display: flex;
+	flex-direction: column;
 }
 
 .header {
@@ -102,4 +105,27 @@
 	justify-content: space-between;
 	column-gap: 10px;
 	margin-top: 10px;
+}
+
+.answer {
+	max-width: 400px;
+	max-height: 100px;
+	overflow: scroll;
+}
+
+.feedback {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	border-top: 1px solid $colorLightGray;
+	padding-top: 10px;
+	&__text {
+		resize: none;
+		max-height: 50px;
+		width: 100%;
+		margin-right: 20px;
+		&::placeholder {
+			color: $colorLightGray;
+		}
+	}
 }

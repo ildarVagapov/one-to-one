@@ -8,13 +8,14 @@ import { Status } from "./components/Status"
 
 
 export const MyInterviews = () => {
-	const { data } = useGetMyInterviewsTabInfoQuery(useSelector(myId))
+	const { data, isSuccess, isLoading, isError } = useGetMyInterviewsTabInfoQuery(useSelector(myId))
 	const navigate = useNavigate()
 
 	return (
 		<div className={style.interviews}>
 			<div className={style.content}>
-				{data?.items.map((item, i) => (
+				{isLoading && <p>Загрузка...</p>}
+				{isSuccess && data?.items.map((item, i) => (
 					<ul key={i} className={style.items}>
 						<li>{item.dateTime}</li>
 						<li>{item.technology.name}</li>
@@ -23,6 +24,7 @@ export const MyInterviews = () => {
 						<Status status={item.status} />
 					</ul>
 				))}
+				{isError && <p>Произошла ошибка при загрузке собеседований</p>}
 			</div>
 		</div>
 	)
