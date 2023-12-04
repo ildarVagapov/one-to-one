@@ -120,6 +120,7 @@
 	border-top: 1px solid $colorLightGray;
 	padding-top: 10px;
 	&__text {
+		background: inherit;
 		resize: none;
 		max-height: 50px;
 		width: 100%;
