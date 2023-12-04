@@ -1,0 +1,10 @@
+@import "/src/app/styles/vars";
+
+.content {
+	padding: 11px;
+	justify-items: center;
+	border: solid 1px $colorLightGray;
+	border-radius: 10px;
+	height: 500px;
+	overflow: auto;
+}

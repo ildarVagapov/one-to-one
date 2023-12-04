@@ -10,14 +10,12 @@ export const SearchInterviews = () => {
 	const id = useSelector(myId);
 
 	return (
-		<div className={style.search}>
-			<div className={style.content}>
-				{isLoading && <p>Загрузка...</p>}
-				{isSuccess && data?.items.filter(item => item.initiatorId !== id).map((item, i) => (
-					<SearchInterviewItem key={i} item={item} myId={id} />
-				))}
-				{isError && <p>Произошла ошибка при поиске</p>}
-			</div>
+		<div className={style.content}>
+			{isLoading && <p>Загрузка...</p>}
+			{isSuccess && data?.items.filter(item => item.initiatorId !== id).map((item, i) => (
+				<SearchInterviewItem key={i} item={item} myId={id} />
+			))}
+			{isError && <p>Произошла ошибка при поиске</p>}
 		</div>
 	)
 }
