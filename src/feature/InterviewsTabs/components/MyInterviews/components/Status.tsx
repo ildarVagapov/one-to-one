@@ -10,8 +10,8 @@ export const Status = (props: StatusProps) => {
 
 	return (
 		<>
-			{status === 'OPEN' && <p className={style.open} ><FiClock />  Ожидание </p >}
-			{status === 'close' && <p className={style.close} ><FiCheckCircle />  Завершено </p >}
+			{status === 'ACCEPT' || 'OPEN' && <p className={style.open} ><FiClock />  Ожидание </p >}
+			{status === '' && <p className={style.close} ><FiCheckCircle />  Завершено </p >}
 		</>
 	)
 }

@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux"
 import { useGetMyQuestionTabInfoQuery } from "shared/api/myQuestionTabApiInfo"
-import { myId } from "shared/api/myIdSlice"
 import style from './InterviewsWindowPage.module.scss'
 import { FiSearch } from "react-icons/fi"
 import { useState } from "react"
 import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
+import { selectInitiatorId } from "shared/api/initiatorIdSlice"
 
 export const InterviewsWindowPage = () => {
-	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(useSelector(myId))
+	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(useSelector(selectInitiatorId))
 	const [value, setValue] = useState<string>('')
 
 
