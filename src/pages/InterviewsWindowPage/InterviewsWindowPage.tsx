@@ -4,16 +4,13 @@ import style from './InterviewsWindowPage.module.scss'
 import { FiSearch } from "react-icons/fi"
 import { useState } from "react"
 import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
-import { selectInitiatorDate, selectInitiatorId, selectInitiatorName, selectInitiatorSurName } from "shared/api/initiatorIdSlice"
+import { selectInitiatorId } from "shared/api/initiatorIdSlice"
+import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
 
 export const InterviewsWindowPage = () => {
-	const id = useSelector(selectInitiatorId)
-	const name = useSelector(selectInitiatorName)
-	const date = useSelector(selectInitiatorDate)
-	const surName = useSelector(selectInitiatorSurName)
-
-	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
 	const [value, setValue] = useState<string>('')
+	const id = useSelector(selectInitiatorId)
+	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
 
 
 	return (
@@ -34,10 +31,7 @@ export const InterviewsWindowPage = () => {
 				</div>
 			</div>
 			<div className={style.content}>
-				<header className={style.header}>
-					<div className={style.date}>{date}</div>
-					<div className={style.name}>{`${name} ${surName}`}</div>
-				</header>
+				<HeaderInterviewsWindowPage />
 				<div className={style.items}>
 					{isLoading && <p>Загрузка...</p>}
 					{isSuccess && data?.items.map((item, i) => (
@@ -48,7 +42,7 @@ export const InterviewsWindowPage = () => {
 									<p>{item.question}</p>
 								</div>
 								<div className={style.rating}>
-									8888888
+									******
 								</div>
 							</AccordionTitle >
 							<AccordionBody id={item.id}>
