@@ -20,15 +20,13 @@ export const InterviewsWindowPage = () => {
 					<input type="text" placeholder="Поиск вопросов" value={value} onChange={(e) => setValue(e.target.value)} />
 					<FiSearch className={style.searchIcon} />
 				</div>
-				<div>
-					{isLoading && <p>Загрузка...</p>}
-					{isSuccess && data?.items.filter((item) => item.answer.toLowerCase().includes(value?.toLowerCase()) || item.technology?.name.toLowerCase().includes(value?.toLowerCase())).map((item, i) => (
-						<ul key={i} className={style.questionItem}>
-							<li className={style.stack}>{item.technology?.name}</li>
-							<li>{item.question}</li>
-						</ul>))}
-					{isError && <p>Произошла ошибка</p>}
-				</div>
+				{isLoading && <p>Загрузка...</p>}
+				{isSuccess && data?.items.filter((item) => item.answer.toLowerCase().includes(value?.toLowerCase()) || item.technology?.name.toLowerCase().includes(value?.toLowerCase())).map((item, i) => (
+					<ul key={i} className={style.questionItem}>
+						<li className={style.stack}>{item.technology?.name}</li>
+						<li>{item.question}</li>
+					</ul>))}
+				{isError && <p>Произошла ошибка</p>}
 			</div>
 			<div className={style.content}>
 				<HeaderInterviewsWindowPage />

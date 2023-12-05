@@ -21,7 +21,6 @@ export const SearchInterviewItem = (props: ISearchItemProps) => {
 			<li>{item.technology.name}</li>
 			<li>{data?.name} {data?.surName}</li>
 			<li>{item.level}</li>
-			<li>{item.status}</li>
 			<button
 				className={style.btn}
 				onClick={() => respondInterviews({
