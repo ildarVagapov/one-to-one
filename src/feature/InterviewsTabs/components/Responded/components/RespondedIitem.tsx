@@ -17,13 +17,13 @@ export const RespondedIitem = (props: IResItemProps) => {
 	const { data } = useGetUserIdQuery(item.initiatorId)
 	const dispatch = useDispatch()
 
-	const handleClick = (id: number) => {
+	const handleClick = () => {
 		try {
-			dispatch(setInitiator({ id, item.dateTime, data?.name }))
+			dispatch(setInitiator({ initiatorId: item.initiatorId, date: item.dateTime, name: data?.name, surName: data?.surName }))
+			navigate('/interviews-window')
 		} catch (error) {
-			'ошибка при добавлении id'
+			'ошибка при добавлении в стэйт айди инициатора'
 		}
-		navigate('/interviews-window')
 	}
 
 	return (
@@ -33,7 +33,7 @@ export const RespondedIitem = (props: IResItemProps) => {
 			<li>{data?.name} {data?.surName}</li>
 			<li>{item.level}</li>
 			<li>{item.status}</li>
-			<Button type="border" text="Провести собеседование" onClick={() => handleClick(item.initiatorId)} />
+			<Button type="border" text="Провести собеседование" onClick={() => handleClick()} />
 		</ul >
 	)
 }

@@ -6,17 +6,12 @@ import { RootState } from "app/store/store";
 interface initiatorState {
 	initiatorId: number
 	date: string
-	name: string
+	name: string | undefined
+	surName: string | undefined
 }
 
-// const initialState: initiatorState = {
-// 	initiatorId: 0,
-// 	date: '',
-// 	name: ''
-// }
-
 const initiatorSlice = createSlice({
-	name: 'initiatorId',
+	name: 'initiator',
 	initialState: {} as initiatorState,
 	reducers: {
 		setInitiator: (_, action: PayloadAction<initiatorState>) => {
@@ -28,3 +23,6 @@ const initiatorSlice = createSlice({
 export const { setInitiator } = initiatorSlice.actions
 export const initiatorReducer = initiatorSlice.reducer
 export const selectInitiatorId = (state: RootState) => state.initiator.initiatorId
+export const selectInitiatorDate = (state: RootState) => state.initiator.date
+export const selectInitiatorName = (state: RootState) => state.initiator.name
+export const selectInitiatorSurName = (state: RootState) => state.initiator.surName

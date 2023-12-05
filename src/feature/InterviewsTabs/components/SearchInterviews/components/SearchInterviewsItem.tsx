@@ -32,7 +32,7 @@ export const SearchInterviewItem = (props: ISearchItemProps) => {
 			>
 				{isLoading && <Loader />}
 				{isSuccess && 'Заявка отправлена'}
-				{isError && 'Ошибка при отправке'}
+				{isError && 'Ошибка'}
 				{!isLoading && !isSuccess && !isError && 'Откликнуться'}
 			</button>
 		</ul>
