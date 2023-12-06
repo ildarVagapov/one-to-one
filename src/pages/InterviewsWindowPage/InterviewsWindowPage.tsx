@@ -6,12 +6,38 @@ import { useState } from "react"
 import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
 import { selectInitiatorId } from "shared/api/initiatorIdSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
+import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
 
 export const InterviewsWindowPage = () => {
 	const [value, setValue] = useState<string>('')
+	const [generalComment, setGegerealComment] = useState('')
 	const id = useSelector(selectInitiatorId)
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
+	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
 
+	const sendFeedbackHandler = () => {
+
+		const body = {
+			oneToOneId: 0,
+			authorId: id,
+			recipientId: id,
+			questions: data?.items.map((item) => {
+				return {
+					question: {
+						id: 0,
+						question: "string",
+						answer: "string",
+						technologyId: 0,
+						userId: 0
+					},
+					responseLevel: 5,
+					comment: "string",
+				}
+			}),
+			message: generalComment,
+		}
+		// sendFeedbackCreate(body)
+	}
 
 	return (
 		<section className={style.interview}>
@@ -58,10 +84,11 @@ export const InterviewsWindowPage = () => {
 					{isError && <p>Произошла ошибка</p>}
 				</div>
 				<div className={style.feedback}>
-					<textarea className={style.feedback__text} placeholder="Общий комментарий к собеседованию"></textarea>
-					<Button text="Сохранить и выйти" />
+					<textarea onChange={(e) => setGegerealComment(e.target.value)} className={style.feedback__text} placeholder="Общий комментарий к собеседованию"></textarea>
+					<Button onClick={sendFeedbackHandler} text="Сохранить и выйти" />
 				</div>
 			</div>
 		</section >
 	)
 }
+
