@@ -28,6 +28,27 @@
 
 .stack {
 	color: $colorGray;
+	margin-bottom: 7px;
+}
+
+.rightIcon {
+	transition: $transition;
+	font-size: 24px;
+	color: $colorYellow;
+}
+.checkIcon {
+	color: $colorGreen;
+	font-size: 20px;
+}
+
+.iconX {
+	font-size: 17px;
+	color: $colorGray;
+	transition: $transition;
+	cursor: pointer;
+	&:hover {
+		color: $colorLightGray;
+	}
 }
 
 .searchBar {
@@ -65,24 +86,30 @@
 	color: $colorLightGray;
 }
 
-.questionItem {
+.questionItems {
 	padding: 10px;
 	border: 1px solid $colorLightGray;
 	border-radius: 5px;
 	margin-bottom: 5px;
 	display: flex;
-	flex-direction: column;
 	row-gap: 5px;
+	justify-content: space-between;
+	align-items: center;
 	cursor: pointer;
 	transition: $transition;
 	&:hover {
 		box-shadow: $blurShadow;
+		.rightIcon {
+			transition: $transition;
+			transform: translateX(5px);
+		}
 	}
 }
 
 .item {
 	display: flex;
 	column-gap: 40px;
+	align-items: start;
 }
 
 .rating {

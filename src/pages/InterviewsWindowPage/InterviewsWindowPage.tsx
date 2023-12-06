@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
 import { useGetMyQuestionTabInfoQuery } from "shared/api/myQuestionTabApiInfo"
 import style from './InterviewsWindowPage.module.scss'
-import { FiSearch } from "react-icons/fi"
-import { useEffect, useState } from "react"
+import { FiSearch, FiChevronRight, FiX, FiCheck } from "react-icons/fi"
+import { useState } from "react"
 import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
 import { selectInitiatorId } from "shared/api/initiatorIdSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
@@ -11,6 +11,7 @@ import { IQuestion } from "shared/types/IQuestions"
 
 export const InterviewsWindowPage = () => {
 	// переделать стэйт добавления вопросов на редакс
+
 	const [value, setValue] = useState<string>('')
 	const [generalComment, setGegerealComment] = useState('')
 	const id = useSelector(selectInitiatorId)
@@ -24,6 +25,11 @@ export const InterviewsWindowPage = () => {
 		}
 		setQuestion((prevQuest => [...prevQuest, question]))
 	}
+
+	const removeQuestion = (item: IQuestion) => {
+		const updatedQuestions = questions.filter(q => q.id !== item.id);
+		setQuestion(updatedQuestions)
+	};
 
 	const sendFeedbackHandler = () => {
 
@@ -49,9 +55,6 @@ export const InterviewsWindowPage = () => {
 		// sendFeedbackCreate(body)
 	}
 
-	useEffect(() => {
-		console.log(questions)
-	}, [questions])
 
 	return (
 		<section className={style.interview}>
@@ -63,9 +66,12 @@ export const InterviewsWindowPage = () => {
 				<div className={style.searchItems}>
 					{isLoading && <p>Загрузка...</p>}
 					{isSuccess && data?.items.filter((item) => item.answer.toLowerCase().includes(value?.toLowerCase()) || item.technology?.name.toLowerCase().includes(value?.toLowerCase())).map((item, i) => (
-						<ul key={i} className={style.questionItem} onClick={() => addQuestion(item)}>
-							<li className={style.stack}>{item.technology?.name}</li>
-							<li>{item.question}</li>
+						<ul key={i} className={style.questionItems} onClick={() => addQuestion(item)}>
+							<div>
+								<li className={style.stack}>{item.technology?.name}</li>
+								<li>{item.question}</li>
+							</div>
+							{questions.some((q) => q.id === item.id) ? <FiCheck className={style.checkIcon} /> : <FiChevronRight className={style.rightIcon} />}
 						</ul>))}
 					{isError && <p>Произошла ошибка</p>}
 				</div>
@@ -78,6 +84,7 @@ export const InterviewsWindowPage = () => {
 						<Accordion key={i}>
 							<AccordionTitle id={item.id}>
 								<div className={style.item}>
+									<FiX className={style.iconX} onClick={() => removeQuestion(item)} />
 									<p className={style.stack}>{item.technology?.name}</p>
 									<p>{item.question}</p>
 								</div>
