@@ -15,7 +15,7 @@ export const authApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
 		auth: builder.mutation<UserAuthRes, UserAuthData>({
 			query: (userData) => ({
-				url: '/auth/jwt',
+				url: '/auth/jwt/index.php',
 				method: 'POST',
 				body: { ...userData },
 			}),

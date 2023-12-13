@@ -9,7 +9,10 @@ import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHea
 import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
 import { IQuestion } from "shared/types/IQuestions"
 
+
+
 export const InterviewsWindowPage = () => {
+
 	// переделать стэйт добавления вопросов на редакс
 
 	const [value, setValue] = useState<string>('')
