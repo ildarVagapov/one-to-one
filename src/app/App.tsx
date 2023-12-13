@@ -1,4 +1,3 @@
-import { FeedbackPage } from 'pages/FeedbackPage/FeedbackPage'
 import { MyInterviewsPage } from 'pages/MyInterviewsPage/MyInterviewsPage'
 import { RatingPage } from 'pages/RatingPage/RatingPage'
 import { Routes, Route } from 'react-router-dom'
@@ -6,6 +5,7 @@ import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage'
 import { AuthPage } from 'pages/AuthPage/AuthPage'
 import { Layout } from 'shared/components'
 import { InterviewsWindowPage } from 'pages/InterviewsWindowPage/InterviewsWindowPage'
+import { FeedbackPage } from 'pages/FeedbackPage/FeedbackPage'
 
 
 export const App = () => {
