@@ -5,7 +5,7 @@ import { RegistrationPage } from 'pages/RegistrationPage/RegistrationPage'
 import { AuthPage } from 'pages/AuthPage/AuthPage'
 import { Layout } from 'shared/components'
 import { InterviewsWindowPage } from 'pages/InterviewsWindowPage/InterviewsWindowPage'
-import { FeedbackPage } from 'pages/FeedbackPage/FeedbackPage'
+// import { FeedbackPage } from 'pages/FeedbackPage/FeedbackPage'
 
 
 export const App = () => {
@@ -18,7 +18,7 @@ export const App = () => {
 				<Route path='/' element={<Layout />}>
 					<Route index element={< MyInterviewsPage />} />
 					<Route path='/rating' element={< RatingPage />} />
-					<Route path='/feed-back' element={< FeedbackPage />} />
+					{/* <Route path='/feed-back' element={< FeedbackPage />} /> */}
 					<Route path='/interviews-window' element={< InterviewsWindowPage />} />
 				</Route>
 			</Routes>
