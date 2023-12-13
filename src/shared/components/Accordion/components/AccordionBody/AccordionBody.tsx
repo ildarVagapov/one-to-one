@@ -8,8 +8,6 @@ export const AccordionBody = ({ children, id }: any) => {
 	const cx = classNames.bind(style);
 	const open = useSelector((state: RootState) => accordionState(state, id));
 
-
-
 	return (
 		<div className={cx('content', open && 'content_open')} >
 			{children}

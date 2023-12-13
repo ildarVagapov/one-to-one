@@ -6,21 +6,22 @@ import { useState } from "react"
 import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
 import { selectInitiatorId } from "shared/api/initiatorIdSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
-// import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
+import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
+import { IFeedbackQuestionItems } from "shared/types/IFeedback"
 import { IQuestion } from "shared/types/IQuestions"
-
 
 
 export const InterviewsWindowPage = () => {
 
 	// переделать стэйт добавления вопросов на редакс
-
 	const [value, setValue] = useState<string>('')
+	const [comment, setComment] = useState('')
 	const [generalComment, setGegerealComment] = useState('')
 	const id = useSelector(selectInitiatorId)
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
-	// const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
-	const [questions, setQuestion] = useState<IQuestion[]>([])
+	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
+	const [questions, setQuestion] = useState<IFeedbackQuestionItems[]>([])
+
 
 	const addQuestion = (question: IQuestion) => {
 		if (questions.some((q: any) => q.id === question.id)) {
@@ -29,8 +30,8 @@ export const InterviewsWindowPage = () => {
 		setQuestion((prevQuest => [...prevQuest, question]))
 	}
 
-	const removeQuestion = (item: IQuestion) => {
-		const updatedQuestions = questions.filter(q => q.id !== item.id);
+	const removeQuestion = (id: number) => {
+		const updatedQuestions = questions.filter(q => q.question.id !== id);
 		setQuestion(updatedQuestions)
 	};
 
@@ -40,18 +41,17 @@ export const InterviewsWindowPage = () => {
 			oneToOneId: 0,
 			authorId: id,
 			recipientId: id,
-			questions: data?.items.map((item) => {
+			questions: questions.map((item) => {
 				return {
 					question: {
-						id: 0,
-						item,
-						question: "string",
-						answer: "string",
-						technologyId: 0,
-						userId: 0
+						id: item.question.id,
+						question: item.question.question,
+						answer: item.question.answer,
+						technologyId: item.question.technologyId,
+						userId: item.question.userId
 					},
 					responseLevel: 5,
-					comment: "string",
+					comment: item.comment,
 				}
 			}),
 			message: generalComment,
@@ -71,12 +71,12 @@ export const InterviewsWindowPage = () => {
 				<div className={style.searchItems}>
 					{isLoading && <p>Загрузка...</p>}
 					{isSuccess && data?.items.filter((item) => item.answer.toLowerCase().includes(value?.toLowerCase()) || item.technology?.name.toLowerCase().includes(value?.toLowerCase())).map((item, i) => (
-						<ul key={i} className={style.questionItems} onClick={() => addQuestion(item)}>
+						<ul key={i} className={style.questionItems} onClick={() => addQuestion(item.id)}>
 							<div>
 								<li className={style.stack}>{item.technology?.name}</li>
 								<li>{item.question}</li>
 							</div>
-							{questions.some((q) => q.id === item.id) ? <FiCheck className={style.checkIcon} /> : <FiChevronRight className={style.rightIcon} />}
+							{questions.some((q) => q.question.id === item.id) ? <FiCheck className={style.checkIcon} /> : <FiChevronRight className={style.rightIcon} />}
 						</ul>))}
 					{isError && <p>Произошла ошибка</p>}
 				</div>
@@ -87,22 +87,25 @@ export const InterviewsWindowPage = () => {
 					{isLoading && <p>Загрузка...</p>}
 					{questions.length === 0 ? <p>Добавьте вопрос из списка слева</p> : questions.map((item, i) => (
 						<Accordion key={i}>
-							<AccordionTitle id={item.id}>
+							<AccordionTitle id={item.question.id}>
 								<div className={style.item}>
 									<FiX className={style.iconX} onClick={() => removeQuestion(item)} />
-									<p className={style.stack}>{item.technology?.name}</p>
-									<p>{item.question}</p>
+									<p className={style.stack}>{item.question.technology?.name}</p>
+									<p>{item.question.question}</p>
 								</div>
 								<div className={style.rating}>
 									******
 								</div>
 							</AccordionTitle >
-							<AccordionBody id={item.id}>
+							<AccordionBody id={item.question.id}>
 								<div className={style.body}>
 									<p className={style.answer}>
-										{item.answer}
+										{item.question.answer}
 									</p>
-									<textarea placeholder="Введите комментарий к ответу" className={style.textarea} ></textarea>
+									<div className={style.feedbackItem}>
+										<textarea onChange={(e) => setComment(e.target.value)} placeholder="Введите комментарий к ответу" className={style.textarea} ></textarea>
+										<Button text="Подтвердить" />
+									</div>
 								</div>
 							</AccordionBody>
 						</Accordion>

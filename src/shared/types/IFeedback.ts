@@ -1,3 +1,5 @@
+import { IQuestion } from "./IQuestions"
+
 export interface IFeedbackCreate {
 	oneToOneId: number
 	authorId: number
@@ -7,18 +9,18 @@ export interface IFeedbackCreate {
 }
 
 export interface IFeedbackQuestionItems {
-	question: IFeedbackQuestionItem
+	question: IQuestion
 	responseLevel: number
 	comment: string
 }
 
-export interface IFeedbackQuestionItem {
-	id: number
-	question: string
-	answer: string
-	technologyId: number
-	userId: number
-}
+// export interface IFeedbackQuestionItem {
+// 	id: number
+// 	question: string
+// 	answer: string
+// 	technologyId: number
+// 	userId: number
+// }
 
 export interface IFeedbackResponse {
 	id: number
