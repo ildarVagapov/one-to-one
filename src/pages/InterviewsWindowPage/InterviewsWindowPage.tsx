@@ -6,7 +6,7 @@ import { useState } from "react"
 import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
 import { selectInitiatorId } from "shared/api/initiatorIdSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
-import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
+// import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
 import { IQuestion } from "shared/types/IQuestions"
 
 
@@ -19,7 +19,7 @@ export const InterviewsWindowPage = () => {
 	const [generalComment, setGegerealComment] = useState('')
 	const id = useSelector(selectInitiatorId)
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
-	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
+	// const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
 	const [questions, setQuestion] = useState<IQuestion[]>([])
 
 	const addQuestion = (question: IQuestion) => {
@@ -44,6 +44,7 @@ export const InterviewsWindowPage = () => {
 				return {
 					question: {
 						id: 0,
+						item,
 						question: "string",
 						answer: "string",
 						technologyId: 0,
@@ -56,6 +57,7 @@ export const InterviewsWindowPage = () => {
 			message: generalComment,
 		}
 		// sendFeedbackCreate(body)
+		console.log(body)
 	}
 
 
