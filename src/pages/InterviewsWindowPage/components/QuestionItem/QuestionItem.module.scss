@@ -1,0 +1,36 @@
+@import "../../app/styles/vars.scss";
+
+.question {
+	padding: 10px;
+	border: 1px solid $colorLightGray;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	display: flex;
+	row-gap: 5px;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	transition: $transition;
+	&:hover {
+		box-shadow: $blurShadow;
+		.rightIcon {
+			transition: $transition;
+			transform: translateX(5px);
+		}
+	}
+}
+
+.stack {
+	color: $colorGray;
+	margin-bottom: 7px;
+}
+
+.rightIcon {
+	transition: $transition;
+	font-size: 24px;
+	color: $colorYellow;
+}
+.checkIcon {
+	color: $colorGreen;
+	font-size: 20px;
+}

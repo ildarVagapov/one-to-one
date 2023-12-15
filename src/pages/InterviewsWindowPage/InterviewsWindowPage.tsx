@@ -7,7 +7,6 @@ import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/compone
 import { selectInitiatorId } from "shared/api/initiatorIdSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
 import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
-import { IFeedbackQuestionItems } from "shared/types/IFeedback"
 import { IQuestion } from "shared/types/IQuestions"
 
 
@@ -20,7 +19,7 @@ export const InterviewsWindowPage = () => {
 	const id = useSelector(selectInitiatorId)
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
 	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
-	const [questions, setQuestion] = useState<IFeedbackQuestionItems[]>([])
+	const [questions, setQuestion] = useState<IQuestion[]>([])
 
 
 	const addQuestion = (question: IQuestion) => {
@@ -71,13 +70,16 @@ export const InterviewsWindowPage = () => {
 				<div className={style.searchItems}>
 					{isLoading && <p>Загрузка...</p>}
 					{isSuccess && data?.items.filter((item) => item.answer.toLowerCase().includes(value?.toLowerCase()) || item.technology?.name.toLowerCase().includes(value?.toLowerCase())).map((item, i) => (
+
 						<ul key={i} className={style.questionItems} onClick={() => addQuestion(item.id)}>
 							<div>
 								<li className={style.stack}>{item.technology?.name}</li>
 								<li>{item.question}</li>
 							</div>
 							{questions.some((q) => q.question.id === item.id) ? <FiCheck className={style.checkIcon} /> : <FiChevronRight className={style.rightIcon} />}
-						</ul>))}
+						</ul>
+					))
+					}
 					{isError && <p>Произошла ошибка</p>}
 				</div>
 			</div>
