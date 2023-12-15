@@ -1,62 +1,49 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useGetMyQuestionTabInfoQuery } from "shared/api/myQuestionTabApiInfo"
 import style from './InterviewsWindowPage.module.scss'
-import { FiSearch, FiChevronRight, FiX, FiCheck } from "react-icons/fi"
+import { FiSearch, FiX, } from "react-icons/fi"
 import { useState } from "react"
 import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
 import { selectInitiatorId } from "shared/api/initiatorIdSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
 import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
-import { IQuestion } from "shared/types/IQuestions"
+import { QuestionItem } from "./components/QuestionItem/QuestionItem"
+import { questionsInterviewsWindow, removeQuestion } from "./api/setQuestionSlice"
 
 
 export const InterviewsWindowPage = () => {
-
-	// переделать стэйт добавления вопросов на редакс
 	const [value, setValue] = useState<string>('')
 	const [comment, setComment] = useState('')
-	const [generalComment, setGegerealComment] = useState('')
+	const [generalComment, setGegeneralComment] = useState('')
 	const id = useSelector(selectInitiatorId)
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
 	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
-	const [questions, setQuestion] = useState<IQuestion[]>([])
-
-
-	const addQuestion = (question: IQuestion) => {
-		if (questions.some((q: any) => q.id === question.id)) {
-			return
-		}
-		setQuestion((prevQuest => [...prevQuest, question]))
-	}
-
-	const removeQuestion = (id: number) => {
-		const updatedQuestions = questions.filter(q => q.question.id !== id);
-		setQuestion(updatedQuestions)
-	};
+	const questions = useSelector(questionsInterviewsWindow)
+	const dispatch = useDispatch()
 
 	const sendFeedbackHandler = () => {
 
-		const body = {
-			oneToOneId: 0,
-			authorId: id,
-			recipientId: id,
-			questions: questions.map((item) => {
-				return {
-					question: {
-						id: item.question.id,
-						question: item.question.question,
-						answer: item.question.answer,
-						technologyId: item.question.technologyId,
-						userId: item.question.userId
-					},
-					responseLevel: 5,
-					comment: item.comment,
-				}
-			}),
-			message: generalComment,
-		}
+		// const body = {
+		// 	oneToOneId: 0,
+		// 	authorId: id,
+		// 	recipientId: id,
+		// 	questions: questions.map((item) => {
+		// 		return {
+		// 			question: {
+		// 				id: item.question.id,
+		// 				question: item.question.question,
+		// 				answer: item.question.answer,
+		// 				technologyId: item.question.technologyId,
+		// 				userId: item.question.userId
+		// 			},
+		// 			responseLevel: 5,
+		// 			comment: item.comment,
+		// 		}
+		// 	}),
+		// 	message: generalComment,
+		// }
 		// sendFeedbackCreate(body)
-		console.log(body)
+		// console.log(body)
 	}
 
 
@@ -70,16 +57,8 @@ export const InterviewsWindowPage = () => {
 				<div className={style.searchItems}>
 					{isLoading && <p>Загрузка...</p>}
 					{isSuccess && data?.items.filter((item) => item.answer.toLowerCase().includes(value?.toLowerCase()) || item.technology?.name.toLowerCase().includes(value?.toLowerCase())).map((item, i) => (
-
-						<ul key={i} className={style.questionItems} onClick={() => addQuestion(item.id)}>
-							<div>
-								<li className={style.stack}>{item.technology?.name}</li>
-								<li>{item.question}</li>
-							</div>
-							{questions.some((q) => q.question.id === item.id) ? <FiCheck className={style.checkIcon} /> : <FiChevronRight className={style.rightIcon} />}
-						</ul>
-					))
-					}
+						<QuestionItem key={i} item={item} />
+					))}
 					{isError && <p>Произошла ошибка</p>}
 				</div>
 			</div>
@@ -89,20 +68,20 @@ export const InterviewsWindowPage = () => {
 					{isLoading && <p>Загрузка...</p>}
 					{questions.length === 0 ? <p>Добавьте вопрос из списка слева</p> : questions.map((item, i) => (
 						<Accordion key={i}>
-							<AccordionTitle id={item.question.id}>
+							<AccordionTitle id={item.id}>
 								<div className={style.item}>
-									<FiX className={style.iconX} onClick={() => removeQuestion(item)} />
-									<p className={style.stack}>{item.question.technology?.name}</p>
-									<p>{item.question.question}</p>
+									<FiX className={style.iconX} onClick={() => dispatch(removeQuestion(item.id))} />
+									<p className={style.stack}>{item.technology?.name}</p>
+									<p>{item.question}</p>
 								</div>
 								<div className={style.rating}>
 									******
 								</div>
 							</AccordionTitle >
-							<AccordionBody id={item.question.id}>
+							<AccordionBody id={item.id}>
 								<div className={style.body}>
 									<p className={style.answer}>
-										{item.question.answer}
+										{item.answer}
 									</p>
 									<div className={style.feedbackItem}>
 										<textarea onChange={(e) => setComment(e.target.value)} placeholder="Введите комментарий к ответу" className={style.textarea} ></textarea>
@@ -115,7 +94,7 @@ export const InterviewsWindowPage = () => {
 					{isError && <p>Произошла ошибка</p>}
 				</div>
 				<div className={style.feedback}>
-					<textarea onChange={(e) => setGegerealComment(e.target.value)} className={style.feedback__text} placeholder="Общий комментарий к собеседованию"></textarea>
+					<textarea onChange={(e) => setGegeneralComment(e.target.value)} className={style.feedback__text} placeholder="Общий комментарий к собеседованию"></textarea>
 					<Button onClick={sendFeedbackHandler} text="Сохранить и выйти" />
 				</div>
 			</div>

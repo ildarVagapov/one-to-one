@@ -4,6 +4,7 @@ import { modalReducer } from '../../shared/api/modalSlice'
 import { userIdReducer } from '../../shared/api/myIdSlice'
 import { accordionReducer } from 'shared/api/accordionSlice'
 import { initiatorReducer } from 'shared/api/initiatorIdSlice'
+import { setQuestionReducer } from 'pages/InterviewsWindowPage/api/setQuestionSlice'
 
 
 export const store = configureStore({
@@ -12,7 +13,8 @@ export const store = configureStore({
 		modal: modalReducer,
 		myId: userIdReducer,
 		accordion: accordionReducer,
-		initiator: initiatorReducer
+		initiator: initiatorReducer,
+		questionsInterviewsWindow: setQuestionReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(baseApi.middleware),

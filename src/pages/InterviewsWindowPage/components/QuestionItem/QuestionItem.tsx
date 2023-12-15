@@ -1,24 +1,34 @@
+import { useDispatch, useSelector } from 'react-redux'
 import style from '../QuestionItem/QuestionItem.module.scss'
 import { FiChevronRight, FiCheck } from "react-icons/fi"
+import { questionsInterviewsWindow, setQuestion } from 'pages/InterviewsWindowPage/api/setQuestionSlice'
+import { IQuestion } from 'shared/types/IQuestions'
 
 interface QuestionProps {
-	onClick: () => void
-	technology: string
-	answer: string
+	item: IQuestion
 }
 
 export const QuestionItem = (props: QuestionProps) => {
-	const { onClick, technology, answer } = props
+	const { item } = props
+	const dispatch = useDispatch()
+	const questions = useSelector(questionsInterviewsWindow)
+
+	const addQuestion = (question: IQuestion) => {
+		if (questions.some((q) => q.id === question.id)) {
+			return
+		}
+		dispatch(setQuestion(question))
+	}
 
 	return (
-		<ul key={i} className={style.question} onClick={onClick}>
+		<ul className={style.question} onClick={() => addQuestion(item)}>
 			<div>
-				<li className={style.stack}>{technology}</li>
-				<li>{answer}</li>
+				<li className={style.stack}>{item.technology?.name}</li>
+				<li>{item.answer}</li>
 			</div>
-			{questions.some((q) => q.question.id === item.id)
-				? (<FiCheck className={style.checkIcon} />)
-				: (<FiChevronRight className={style.rightIcon} />)
+			{questions.some((q) => q.id === item.id)
+				? <FiCheck className={style.checkIcon} />
+				: <FiChevronRight className={style.rightIcon} />
 			}
 		</ul>
 	)
