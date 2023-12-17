@@ -10,7 +10,7 @@ import { questionsInterviewsWindow } from "./api/setQuestionSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
 import { QuestionItem } from "./components/QuestionItem/QuestionItem"
 import { QuestionWindowItem } from "./components/QuestionWindowItem/QuestionWindowItem"
-import { acceptQuestion } from "./api/acceptQuestionSlice"
+import { acceptQuestion, addAcceptQuestions } from "./api/acceptQuestionSlice"
 
 
 export const InterviewsWindowPage = () => {
@@ -22,6 +22,8 @@ export const InterviewsWindowPage = () => {
 	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
 	const questions = useSelector(questionsInterviewsWindow)
 	const acceptQuestions = useSelector(acceptQuestion)
+
+	console.log(acceptQuestions)
 
 	const sendFeedbackHandler = () => {
 
@@ -38,7 +40,7 @@ export const InterviewsWindowPage = () => {
 						technologyId: item.question.technologyId,
 						userId: item.question.userId
 					},
-					responseLevel: 5,
+					responseLevel: item.responseLevel,
 					comment: item.comment,
 				}
 			}),
@@ -75,6 +77,7 @@ export const InterviewsWindowPage = () => {
 							question={item.question}
 							stackId={item.technology?.id}
 							stackName={item.technology?.name}
+							userId={item.userId}
 						/>
 					))}
 					{isError && <p>Произошла ошибка</p>}
@@ -85,7 +88,7 @@ export const InterviewsWindowPage = () => {
 						className={style.feedback__text} placeholder="Общий комментарий к собеседованию"
 					>
 					</textarea>
-					<Button onClick={sendFeedbackHandler} text="Сохранить и выйти" />
+					<Button disabled={addAcceptQuestions.length === 1} onClick={sendFeedbackHandler} text="Сохранить и выйти" />
 				</div>
 			</div>
 		</section >

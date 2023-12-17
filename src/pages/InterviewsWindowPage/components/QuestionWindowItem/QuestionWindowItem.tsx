@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux"
 import { removeQuestion } from "pages/InterviewsWindowPage/api/setQuestionSlice"
 import { FiX } from "react-icons/fi"
 import { useState } from "react"
+import { addAcceptQuestions } from "pages/InterviewsWindowPage/api/acceptQuestionSlice"
+import { useForm } from "react-hook-form"
 
 
 interface QuestionWProps {
@@ -12,12 +14,30 @@ interface QuestionWProps {
 	id: number | undefined
 	question: string
 	answer: string
+	userId: number
 }
 
 export const QuestionWindowItem = (props: QuestionWProps) => {
-	const { stackName, stackId, id, question, answer } = props
+	const { formState: { isValid } } = useForm()
 	const [comment, setComment] = useState('')
+	const { stackName, stackId, id, question, answer, userId } = props
 	const dispatch = useDispatch()
+
+	const acceptQuestionHandler = () => {
+		dispatch(
+			addAcceptQuestions({
+				question: {
+					id: id,
+					question: question,
+					answer: answer,
+					technologyId: stackId,
+					userId: userId,
+				},
+				responseLevel: 5,
+				comment: comment,
+			}))
+	}
+
 
 	return (
 		<Accordion>
@@ -38,7 +58,7 @@ export const QuestionWindowItem = (props: QuestionWProps) => {
 					</p>
 					<div className={style.feedbackItem}>
 						<textarea onChange={(e) => setComment(e.target.value)} placeholder="Введите комментарий к ответу" className={style.textarea} ></textarea>
-						<Button onClick={() => 'void'} text="Подтвердить" />
+						<Button disabled={!isValid} onClick={acceptQuestionHandler} text="Подтвердить" />
 					</div>
 				</div>
 			</AccordionBody>

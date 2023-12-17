@@ -14,10 +14,10 @@ export interface IFeedbackQuestionItems {
 }
 
 export interface IFeedbackQuestionItem {
-	id: number
+	id: number | undefined
 	question: string
 	answer: string
-	technologyId: number
+	technologyId: number | undefined
 	userId: number
 }
 

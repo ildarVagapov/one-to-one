@@ -11,5 +11,5 @@ export interface IQuestion {
 	answer: string;
 	technology?: ITechnology
 	technologyId?: number | undefined;
-	userId: number | undefined;
+	userId: number
 }
