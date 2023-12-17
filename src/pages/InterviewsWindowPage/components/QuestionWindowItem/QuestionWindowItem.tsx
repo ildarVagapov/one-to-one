@@ -23,7 +23,7 @@ export const QuestionWindowItem = (props: QuestionWProps) => {
 		<Accordion>
 			<AccordionTitle id={id}>
 				<div className={style.item}>
-					<FiX className={style.iconX} onClick={() => dispatch(removeQuestion(id))} />
+					<FiX className={style.close} onClick={() => dispatch(removeQuestion(id))} />
 					<p className={style.stack}>{stackName}</p>
 					<p>{question}</p>
 				</div>

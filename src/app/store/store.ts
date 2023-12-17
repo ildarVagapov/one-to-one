@@ -5,6 +5,7 @@ import { userIdReducer } from '../../shared/api/myIdSlice'
 import { accordionReducer } from 'shared/api/accordionSlice'
 import { initiatorReducer } from 'shared/api/initiatorIdSlice'
 import { setQuestionReducer } from 'pages/InterviewsWindowPage/api/setQuestionSlice'
+import { acceptQuestionReducer } from 'pages/InterviewsWindowPage/api/acceptQuestionSlice'
 
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
 		accordion: accordionReducer,
 		initiator: initiatorReducer,
 		questionsInterviewsWindow: setQuestionReducer,
+		acceptQuestion: acceptQuestionReducer
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(baseApi.middleware),

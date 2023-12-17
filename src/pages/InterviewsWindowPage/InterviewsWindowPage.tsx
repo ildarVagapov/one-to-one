@@ -10,6 +10,7 @@ import { questionsInterviewsWindow } from "./api/setQuestionSlice"
 import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
 import { QuestionItem } from "./components/QuestionItem/QuestionItem"
 import { QuestionWindowItem } from "./components/QuestionWindowItem/QuestionWindowItem"
+import { acceptQuestion } from "./api/acceptQuestionSlice"
 
 
 export const InterviewsWindowPage = () => {
@@ -20,6 +21,7 @@ export const InterviewsWindowPage = () => {
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
 	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
 	const questions = useSelector(questionsInterviewsWindow)
+	const acceptQuestions = useSelector(acceptQuestion)
 
 	const sendFeedbackHandler = () => {
 
@@ -27,17 +29,17 @@ export const InterviewsWindowPage = () => {
 			oneToOneId: 0,
 			authorId: id,
 			recipientId: id,
-			questions: questions.map((item) => {
+			questions: acceptQuestions.map((item) => {
 				return {
 					question: {
-						id: item.id,
-						question: item.question,
-						answer: item.answer,
-						technologyId: item.technologyId,
-						userId: item.userId
+						id: item.question.id,
+						question: item.question.question,
+						answer: item.question.answer,
+						technologyId: item.question.technologyId,
+						userId: item.question.userId
 					},
 					responseLevel: 5,
-					// comment: comment,
+					comment: item.comment,
 				}
 			}),
 			message: generalComment,
