@@ -1,12 +1,5 @@
 @import "../../app/styles/vars.scss";
 
-.feedbackItem {
-	display: flex;
-	flex-direction: column;
-	align-items: end;
-	row-gap: 5px;
-}
-
 .interview {
 	display: flex;
 	gap: 0 20px;
@@ -31,16 +24,6 @@
 	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
-}
-
-.iconX {
-	font-size: 17px;
-	color: $colorGray;
-	transition: $transition;
-	cursor: pointer;
-	&:hover {
-		color: $colorLightGray;
-	}
 }
 
 .searchBar {
@@ -77,42 +60,6 @@
 
 .searchIcon {
 	color: $colorLightGray;
-}
-
-.item {
-	display: flex;
-	column-gap: 40px;
-	align-items: start;
-}
-
-.rating {
-	margin-right: 100px;
-}
-
-.textarea {
-	width: 390px;
-	height: 90px;
-	background-color: inherit;
-	border: 1px solid $colorLightGray;
-	border-radius: 5px;
-	resize: none;
-	padding: 10px 15px;
-	&::placeholder {
-		color: $colorLightGray;
-	}
-}
-
-.body {
-	display: flex;
-	justify-content: space-between;
-	column-gap: 10px;
-	margin-top: 10px;
-}
-
-.answer {
-	max-width: 400px;
-	max-height: 100px;
-	overflow: scroll;
 }
 
 .feedback {

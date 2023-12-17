@@ -1,51 +1,50 @@
-import { useDispatch, useSelector } from "react-redux"
-import { useGetMyQuestionTabInfoQuery } from "shared/api/myQuestionTabApiInfo"
-import style from './InterviewsWindowPage.module.scss'
-import { FiSearch, FiX, } from "react-icons/fi"
 import { useState } from "react"
-import { Accordion, AccordionBody, AccordionTitle, Button } from "shared/components"
+import { FiSearch } from "react-icons/fi"
+import { useDispatch, useSelector } from "react-redux"
 import { selectInitiatorId } from "shared/api/initiatorIdSlice"
-import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
+import { useGetMyQuestionTabInfoQuery } from "shared/api/myQuestionTabApiInfo"
+import { Button } from "shared/components"
+import style from './InterviewsWindowPage.module.scss'
 import { useSendFeedbackCreateMutation } from "./api/feedbackCreateApi"
+import { questionsInterviewsWindow } from "./api/setQuestionSlice"
+import { HeaderInterviewsWindowPage } from "./components/InterviewsWindowPageHeader/InterviewsWindowPageHeader"
 import { QuestionItem } from "./components/QuestionItem/QuestionItem"
-import { questionsInterviewsWindow, removeQuestion } from "./api/setQuestionSlice"
+import { QuestionWindowItem } from "./components/QuestionWindowItem/QuestionWindowItem"
 
 
 export const InterviewsWindowPage = () => {
-	const [value, setValue] = useState<string>('')
-	const [comment, setComment] = useState('')
-	const [generalComment, setGegeneralComment] = useState('')
 	const id = useSelector(selectInitiatorId)
+	const dispatch = useDispatch()
+	const [value, setValue] = useState<string>('')
+	const [generalComment, setGegeneralComment] = useState('')
 	const { data, isSuccess, isLoading, isError } = useGetMyQuestionTabInfoQuery(id)
 	const [sendFeedbackCreate] = useSendFeedbackCreateMutation()
 	const questions = useSelector(questionsInterviewsWindow)
-	const dispatch = useDispatch()
 
 	const sendFeedbackHandler = () => {
 
-		// const body = {
-		// 	oneToOneId: 0,
-		// 	authorId: id,
-		// 	recipientId: id,
-		// 	questions: questions.map((item) => {
-		// 		return {
-		// 			question: {
-		// 				id: item.question.id,
-		// 				question: item.question.question,
-		// 				answer: item.question.answer,
-		// 				technologyId: item.question.technologyId,
-		// 				userId: item.question.userId
-		// 			},
-		// 			responseLevel: 5,
-		// 			comment: item.comment,
-		// 		}
-		// 	}),
-		// 	message: generalComment,
-		// }
+		const body = {
+			oneToOneId: 0,
+			authorId: id,
+			recipientId: id,
+			questions: questions.map((item) => {
+				return {
+					question: {
+						id: item.id,
+						question: item.question,
+						answer: item.answer,
+						technologyId: item.technologyId,
+						userId: item.userId
+					},
+					responseLevel: 5,
+					// comment: comment,
+				}
+			}),
+			message: generalComment,
+		}
 		// sendFeedbackCreate(body)
-		// console.log(body)
+		console.log(body)
 	}
-
 
 	return (
 		<section className={style.interview}>
@@ -67,34 +66,23 @@ export const InterviewsWindowPage = () => {
 				<div className={style.items}>
 					{isLoading && <p>Загрузка...</p>}
 					{questions.length === 0 ? <p>Добавьте вопрос из списка слева</p> : questions.map((item, i) => (
-						<Accordion key={i}>
-							<AccordionTitle id={item.id}>
-								<div className={style.item}>
-									<FiX className={style.iconX} onClick={() => dispatch(removeQuestion(item.id))} />
-									<p className={style.stack}>{item.technology?.name}</p>
-									<p>{item.question}</p>
-								</div>
-								<div className={style.rating}>
-									******
-								</div>
-							</AccordionTitle >
-							<AccordionBody id={item.id}>
-								<div className={style.body}>
-									<p className={style.answer}>
-										{item.answer}
-									</p>
-									<div className={style.feedbackItem}>
-										<textarea onChange={(e) => setComment(e.target.value)} placeholder="Введите комментарий к ответу" className={style.textarea} ></textarea>
-										<Button text="Подтвердить" />
-									</div>
-								</div>
-							</AccordionBody>
-						</Accordion>
+						<QuestionWindowItem
+							key={i}
+							id={item.id}
+							answer={item.answer}
+							question={item.question}
+							stackId={item.technology?.id}
+							stackName={item.technology?.name}
+						/>
 					))}
 					{isError && <p>Произошла ошибка</p>}
 				</div>
 				<div className={style.feedback}>
-					<textarea onChange={(e) => setGegeneralComment(e.target.value)} className={style.feedback__text} placeholder="Общий комментарий к собеседованию"></textarea>
+					<textarea
+						onChange={(e) => setGegeneralComment(e.target.value)}
+						className={style.feedback__text} placeholder="Общий комментарий к собеседованию"
+					>
+					</textarea>
 					<Button onClick={sendFeedbackHandler} text="Сохранить и выйти" />
 				</div>
 			</div>

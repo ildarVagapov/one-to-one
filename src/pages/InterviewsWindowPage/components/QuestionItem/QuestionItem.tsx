@@ -26,10 +26,13 @@ export const QuestionItem = (props: QuestionProps) => {
 				<li className={style.stack}>{item.technology?.name}</li>
 				<li>{item.answer}</li>
 			</div>
-			{questions.some((q) => q.id === item.id)
-				? <FiCheck className={style.checkIcon} />
-				: <FiChevronRight className={style.rightIcon} />
+
+			{
+				questions.some((q) => q.id === item.id)
+					? <FiCheck className={style.checkIcon} />
+					: <FiChevronRight className={style.rightIcon} />
 			}
+
 		</ul>
 	)
 }
